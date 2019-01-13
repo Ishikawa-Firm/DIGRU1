@@ -1,0 +1,2 @@
+class DiscNumber < ApplicationRecord
+end
