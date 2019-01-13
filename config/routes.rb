@@ -16,5 +16,37 @@ Rails.application.routes.draw do
     passwords:     'artists/passwords',
     registrations: 'artists/registrations'
   }
+
+  resources :admins, only: [:show, :edit, :update]
+  get    '/admins/user_history',    to: 'admins#user_history'
+  get    '/admins/user_index',    to: 'admins#user_index'
+  get    '/admins/user_search',    to: 'admins#user_search'
+  get    '/admins/user_history',    to: 'admins#user_history'
+
+  resources :users, only: [:show, :edit, :update, :destroy]
+  get    '/users/help',    to: 'users#help'
+  get    '/users/address',    to: 'users#address'
+  post   '/users/address',   to: 'users#create_address'
+  get    '/users/select',    to: 'users#select'
+
+  resources :artists, only: [:index, :show, :edit, :update, :destroy]
+  # get    '/artists/searsh/',    to: 'artists#search'
+  get    '/artists/history',    to: 'artists#product_history'
+  patch  '/artists/history',    to: 'artists#update_history'
+
+  resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:create, :update, :destroy]
+  end
+
+  post   '/cart_items',    to: 'cart_items#add_cart_item'
+  get    '/cart_items',    to: 'cart_items#cart_index'
+  patch  '/cart_items',    to: 'cart_items#update_volume'
+  delete '/cart_items',    to: 'cart_items#destroy_cart_item'
+
+  resources :order_details, only: [:create]
+  get    '/order_details/thanks',    to: 'order_details#thanks'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
