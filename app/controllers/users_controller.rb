@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def adress
   end
 
-  def create_adress
+  def create_address
   end
 
   def select
