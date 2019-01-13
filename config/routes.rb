@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get    '/users/select',    to: 'users#select'
 
   resources :artists, only: [:index, :show, :edit, :update, :destroy]
-  # get    '/artists/searsh/',    to: 'artists#search'
+  # get    '/artists/search/',    to: 'artists#search'
   get    '/artists/history',    to: 'artists#product_history'
   patch  '/artists/history',    to: 'artists#update_history'
 
