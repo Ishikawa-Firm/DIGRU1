@@ -2,7 +2,7 @@
 
 <h2> 出品フォーム </h2>
 
-<%= form_for(@post) do |f| %>
+<%= form_for(@product) do |f| %>
 
   <h4> アーティスト名</h4>
   <span>※ ログインしているアーティスト名を自動表示 ※</span>
@@ -19,11 +19,11 @@
   <h4> ジャンル</h4>
   <%= f.text_area :genre, class: "" %>
 
-  <h4> 曲名</h4>
-  <%= f.text_area :name, class: "" %>
-
   <h4> 在庫数</h4>
   <%= f.text_area :stock, class: "" %>
+
+  <h4> ジャケット写真</h4>
+  <%= f.attachment_field :image %>
 
   <h4> 動画URL</h4>
   <%= f.text_area :movie_url, class: "" %>
