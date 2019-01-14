@@ -1,29 +1,32 @@
 <h1>products#new</h1>
 
+<% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+
 <h2> 出品フォーム </h2>
+
+  <h4> アーティスト名</h4>
 
 <%= form_for(@product) do |f| %>
 
-  <h4> アーティスト名</h4>
-  <span>※ ログインしているアーティスト名を自動表示 ※</span>
-
   <h4> シングル/アルバム名</h4>
-  <%= f.text_area :name, class: "" %>
+  <%= f.text_field :name, class: "" %>
 
   <h4> 値段</h4>
-  <%= f.text_area :price, class: "" %>
+  <%= f.text_field :price, class: "" %>
 
   <h4> レーベル名</h4>
-  <%= f.text_area :label, class: "" %>
+  <%= f.text_field :label, class: "" %>
 
   <h4> ジャンル</h4>
-  <%= f.text_area :genre, class: "" %>
+  <%= f.text_field :genre, class: "" %>
 
   <h4> 在庫数</h4>
-  <%= f.text_area :stock, class: "" %>
+  <%= f.text_field :stock, class: "" %>
 
   <h4> ジャケット写真</h4>
-  <%= f.attachment_field :image %>
+  <%= f.attachment_field :image, class: "" %>
 
   <h4> 動画URL</h4>
   <%= f.text_area :movie_url, class: "" %>
