@@ -8,6 +8,7 @@
 	<div class="row">
 		<div class="col-xs-8">
 			<!-- 商品の基本情報 -->
+			<div class="border1"> 基本情報</div>
 			<div class="product-information">
 				<div class="product-image">
 				<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
@@ -28,12 +29,14 @@
 			<!-- 商品の基本情報 -->
 
 			<!-- 商品の詳細情報 -->
+			<div class="border2"> CD詳細情報</div>
 			<div class="product-detailed-information">
-				<p> CD詳細情報「CD構成」，「曲名」</p>
+				<p>「CD構成」，「曲名」</p>
 			</div>
 			<!-- 商品の詳細情報 -->
 
 			<!-- 商品へのコメント -->
+			<div class="border3"> コメント</div>
 			<div class="comment">
 				<p> コメント一覧</p>
 			</div>
