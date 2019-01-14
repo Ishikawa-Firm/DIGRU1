@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
 		t.string   :other_postal_code
 		t.string   :other_adress
 		t.string   :status
-		t.detetime :created_at
+		t.datetime :created_at
         t.timestamps
     end
   end

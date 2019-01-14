@@ -1,0 +1,46 @@
+
+<h1>products#index</h1>
+<li>
+    <%= link_to destroy_artist_session_path, class: "", method: :delete do %>
+   		<span>logout</span>
+    <% end %>
+</li>
+
+<!-- 検索フォーム -->
+<%= form_tag(:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+<!-- 検索フォーム -->
+
+<!-- スライダー -->
+<div class="slider">スライダー挿入</div>
+<!-- スライダー -->
+
+<!-- 商品一覧 -->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<div class="product-index">
+				<% @products.each do |product| %>
+					<div class="product-item">
+						<%= link_to product_path(product.id), class: "" do %>
+					   	 	<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+					    	<p><%= product.name %></p>
+					    <% end %>
+					    <!-- アーティスト名が登録できるようになったら，email を name に変更し，アーティスト名をクリックしたら artist#show へ飛べるようにする -->
+					    <p><%= product.artist.email %></p>
+					    <p>価格 | ¥<%= product.price %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
+<!-- 商品一覧 -->
+
+<!-- ランキング -->
+		<div class="col-xs-4">
+			<div class="ranking" style="background-color: skyblue;">ランキング</div>
+		</div>
+<!-- ランキング -->
+    </div>
+</div>
