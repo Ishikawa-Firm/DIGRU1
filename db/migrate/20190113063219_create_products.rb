@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
 		t.string   :label
 		t.integer  :genre
 		t.integer  :stock
-		t.text     :image_url
+		t.string   :image_id
 		t.text     :movie_url
 		t.boolean  :delete_at
         t.timestamps

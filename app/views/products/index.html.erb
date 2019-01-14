@@ -6,3 +6,19 @@
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
 <!-- 検索フォーム -->
+
+
+<% @products.each do |product| %>
+
+    <%= link_to product_path(product.id), class: "" do %>
+      	<%= attachment_image_tag product, :image, size: "50x50" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+        <%= product.name %>
+    <% end %>
+
+    <%= link_to artist_path(artist.id), class: "" do %>
+    	<%= artist.name %>
+    <% end %>
+
+    <%= product.price %>
+
+<% end %>

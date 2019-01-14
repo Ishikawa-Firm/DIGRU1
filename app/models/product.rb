@@ -3,4 +3,6 @@ class Product < ApplicationRecord
 	belongs_to :order_detail
 	belongs_to :artist
 	has_many :disc_numbers
+
+	attachment :image
 end

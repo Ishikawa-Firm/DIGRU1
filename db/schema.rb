@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "label"
     t.integer "genre"
     t.integer "stock"
-    t.text "image_url"
+    t.string "image_id"
     t.text "movie_url"
     t.boolean "delete_at"
     t.datetime "created_at", null: false
