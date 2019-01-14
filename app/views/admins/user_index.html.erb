@@ -1,7 +1,13 @@
 <h1>Admins#user_index!</h1>
 
-<% @users.each do |user| %>
+<%= form_tag("user_index", :method => 'get' ) do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag 'Search', :name => nil  %>
+<% end %>
 
-<%= user.email %>
+<% @users.each do |user| %>
+<ul class="users">
+	<%= user.email %>
+</ul>
 
 <% end %>
