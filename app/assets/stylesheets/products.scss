@@ -2,3 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* index */
+
+.slider {
+	width: 100%;
+	height: 200px;
+	background-color: orange;
+}
+
+.product-index {
+	margin-top: 50px;
+}
+
+.product-item {
+	float: left;
+	margin: 10px 30px 10px 0px;
+}
+
+.ranking {
+	width: 100%;
+	height: 1024px;
+	background-color: skyblue;
+}
+
+/* show */
+
+.border1 {
+	width: 100%;
+	height: 30px;
+	color: white;
+	background-color: black;
+}
+
+.product-information {
+	width: 100%;
+	height: 300px;
+	background-color: yellow;
+	padding:20px 0px 0px 20px;
+}
+
+.product-image {
+	float: left;
+}
+
+.product-informarion-text {
+	float: left;
+	padding-left: 30px;
+}
+
+.border2 {
+	width: 100%;
+	height: 30px;
+	color: white;
+	background-color: black;
+}
+
+.product-detailed-information {
+	width: 100%;
+	height: 300px;
+	background-color: green;
+}
+
+.show-sidebar{
+	width: 100%;
+	height: 1024px;
+	background-color: pink;
+}
+
+.border3 {
+	width: 100%;
+	height: 30px;
+	color: white;
+	background-color: black;
+}
+
+.comment{
+	width: 100%;
+	height: 300px;
+	background-color: orange;
+}
+

@@ -1,1 +1,8 @@
 <h1>Artists#edit</h1>
+
+	<%= form_for(@artist) do |f| %>
+		<p>Name<%= f.text_field :name, class: "" %></p>
+		<p>Image<%= f.attachment_field :artist_image, class: "" %></p>
+		<p>Introduction<%= f.text_area :introduction, class: "" %></p>
+		<%= f.submit "Update Artist" %>
+	<% end %>

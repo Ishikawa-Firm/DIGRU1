@@ -1,14 +1,23 @@
 <h1>products#new</h1>
 
-<% flash.each do |key, value| %>
-     <%= content_tag(:div, value, class: "#{key}") %>
-<% end %>
-
 <h2> 出品フォーム </h2>
 
-  <h4> アーティスト名</h4>
+<!--後でemailをname(ログインしているアーティスト名に変更)-->
+<h4> アーティスト名</h4>
+<%= current_artist.email %>
 
 <%= form_for(@product) do |f| %>
+
+  <% if @product.errors.any? %>  <!-- form forの@bookに合わせる -->
+      <div id="error_explanation" class="alert-danger">
+        <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
 
   <h4> シングル/アルバム名</h4>
   <%= f.text_field :name, class: "" %>
@@ -31,6 +40,6 @@
   <h4> 動画URL</h4>
   <%= f.text_area :movie_url, class: "" %>
 
-  <p><%= f.submit 'Create Book' %></p>
+  <p><%= f.submit '商品を出品する' %></p>
 
 <% end %>

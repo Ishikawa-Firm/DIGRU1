@@ -34,12 +34,12 @@ class DeviseCreateArtists < ActiveRecord::Migration[5.2]
 
       t.string :name
       t.string :name_kana
-      t.string :hundle_name
+      t.string :member
       t.string :postal_code
       t.string :user_address
       t.string :phone_number
       t.boolean :delete_at
-      t.boolean :admin
+      t.text :profile_image_id
       t.timestamps null: false
     end
 

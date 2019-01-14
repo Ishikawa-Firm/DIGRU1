@@ -1,0 +1,49 @@
+<!--商品編集成功メッセージ-->
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+<!--商品編集成功メッセージ-->
+
+<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+	<div class="row">
+		<div class="col-xs-8">
+			<!-- 商品の基本情報 -->
+			<div class="border1"> 基本情報</div>
+			<div class="product-information">
+				<div class="product-image">
+				<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+				</div>
+				<div class="product-informarion-text">
+					<p>商品情報：</p>
+					<p><%= @product.name%> </p> <!-- 本当はアーティスト名 -->
+					<p>/<%= @product.artist.email%></p>
+					<p>ジャンル：<%= @product.genre%></p>
+					<p>レーベル：<%= @product.label%></p>
+					<p>在庫数：<%= @product.stock%></p>
+				</div>
+
+				<p><%= link_to "トップへ", products_path, class: "" %></p>
+				<p><%= link_to "Edit", edit_product_path(@product), class: "" %></p>
+				<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>
+			</div>
+			<!-- 商品の基本情報 -->
+
+			<!-- 商品の詳細情報 -->
+			<div class="border2"> CD詳細情報</div>
+			<div class="product-detailed-information">
+				<p>「CD構成」，「曲名」</p>
+			</div>
+			<!-- 商品の詳細情報 -->
+
+			<!-- 商品へのコメント -->
+			<div class="border3"> コメント</div>
+			<div class="comment">
+				<p> コメント一覧</p>
+			</div>
+			<!-- 商品へのコメント -->
+		</div>
+		<div class="col-xs-4">
+			<div class="show-sidebar">「カートに入れるボタン」，「数量変更増減矢印」，「小計」</div>
+		</div>
+	</div>
+</div>
