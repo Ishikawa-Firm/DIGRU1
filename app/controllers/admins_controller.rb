@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
   end
 
   def user_index
+    @users = User.search(params[:search])
   end
 
   def user_search

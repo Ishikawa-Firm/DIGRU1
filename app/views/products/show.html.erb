@@ -1,0 +1,10 @@
+show.html.erb
+
+<!--商品編集成功メッセージ-->
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+<!--商品編集成功メッセージ-->
+
+<p><%= link_to "Edit", edit_product_path(@product), class: "" %></p>
+<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>

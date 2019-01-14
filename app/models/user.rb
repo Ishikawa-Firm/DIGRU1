@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
     has_many :addresses
     has_many :cart_items
+
+  def self.search(search)
+    if search
+        User.where(['email LIKE ?', "%#{search}%"])
+    else
+        User.all
+    end
+  end
 end
+
