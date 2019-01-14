@@ -39,14 +39,6 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
-    t.string "name_kana"
-    t.string "hundle_name"
-    t.string "postal_code"
-    t.string "user_address"
-    t.string "phone_number"
-    t.boolean "delete_at"
-    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_artists_on_email", unique: true
@@ -104,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "label"
     t.integer "genre"
     t.integer "stock"
-    t.string "image_id"
+    t.text "image_url"
     t.text "movie_url"
     t.boolean "delete_at"
     t.datetime "created_at", null: false
@@ -117,14 +109,6 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
-    t.string "name_kana"
-    t.string "hundle_name"
-    t.string "postal_code"
-    t.string "user_address"
-    t.string "phone_number"
-    t.boolean "delete_at"
-    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
