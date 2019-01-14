@@ -8,8 +8,51 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+<header class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <span class="title"><h3>DIGRU</h3></span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <p>こんにちは　ゲストさん</p>
+      <li>
+      </li>
+      <li>
+        <%= link_to " sign up", "/users/sign_up", class: 'glyphicon glyphicon-edit sign_up' %>
+      </li>
+      <li>
+      <li>
+        <%= link_to " login", "/users/sign_in", class: 'glyphicon glyphicon-log-in sign_in' %>
+      </li>
+      <li>
+        <%= link_to " artists", "#{}", class: 'glyphicon glyphicon-headphones
+ artists' %>
+      </li>
+      <li>
+        <%= link_to " help", "#{}", class: 'glyphicon glyphicon-question-sign help' %>
+      </li>
+      <li>
+        <%= link_to " logout", "#{}", method: :delete, class: 'glyphicon glyphicon-log-out logout' %>
+      </li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</header>
   <body>
-    <%= yield %>
+    <br><br><br>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
+  <footer class="footer mt-auto py-3">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-3 col-xs-offset-9'>
+      <span class="text-muted">CopyRight DIGRU.inc</span>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
