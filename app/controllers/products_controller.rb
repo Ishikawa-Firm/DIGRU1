@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.artist_id = current_artist.id
     if @product.save
-        flash.notice = 'メッセージを送信しました。'
+        flash.notice = '商品を出品しました．'
         redirect_to products_path
     else
         flash.now.alert = '入力に誤りがあります。'
