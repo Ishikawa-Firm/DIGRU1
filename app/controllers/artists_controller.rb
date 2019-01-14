@@ -11,10 +11,14 @@ class ArtistsController < ApplicationController
 
   def edit
   # ビューあり
+  @artist = Artist.find(params[:id])
   end
 
   def update
   # ビューなし
+  @artist = Artist.find(params[:id])
+  @artist.update(artist_params)
+  redirect_to artist_path(@artist.id)
   end
 
   def destroy
@@ -27,5 +31,9 @@ class ArtistsController < ApplicationController
 
   def history
   # ビューあり
+  end
+
+  def artist_params
+  params.require(:artist).permit(:email)
   end
 end
