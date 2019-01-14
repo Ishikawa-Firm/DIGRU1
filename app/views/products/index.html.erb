@@ -1,3 +1,4 @@
+
 <h1>products#index</h1>
 <li>
     <%= link_to destroy_artist_session_path, class: "", method: :delete do %>
@@ -12,18 +13,18 @@
 <% end %>
 <!-- 検索フォーム -->
 
-<% flash.each do |key, value| %>
-     <%= content_tag(:div, value, class: "#{key}") %>
-<% end %>
-
+<!-- 商品一覧 -->
 <% @products.each do |product| %>
 
-    <%= link_to product_path(product.id), class: "" do %>
-      	<%= attachment_image_tag product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+	<%= link_to product_path(product.id), class: "" do %>
+   	 	<%= attachment_image_tag product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+    	<p><%= product.name %></p>
     <% end %>
 
-    <%= product.name %>
+    <!-- アーティスト名が登録できるようになったら，email を name に変更し，アーティスト名をクリックしたら artist#show へ飛べるようにする -->
+    <p><%= product.artist.email %></p>
 
-    <%= product.price %>
+    <p>価格 | ¥<%= product.price %></p>
 
 <% end %>
+<!-- 商品一覧 -->
