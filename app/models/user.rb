@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
     has_many :addresses
-    has_many :cart_items
+    has_many :orders
 
   def self.search(search)
     if search

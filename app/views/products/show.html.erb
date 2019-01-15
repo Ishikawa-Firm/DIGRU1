@@ -44,11 +44,6 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」（アーティストなら「商品編集ボタン」），「数量変更増減矢印」，「小計」
-			<%= form_tag(cart_items_path, method: :post) do %>
-                <%# hidden_field_tagによる商品IDの引継ぎ %>
-                <%= hidden_field_tag(:product_id, @product.id) %>
-                <%= submit_tag("カートに追加") %>
-            <% end %>
 		</div>
 	</div>
 </div>
