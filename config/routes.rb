@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'admins/show'
-  
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -39,13 +39,10 @@ Rails.application.routes.draw do
     resource :comments, only: [:create, :update, :destroy]
   end
 
-  post   '/cart_items',    to: 'cart_items#add_cart_item'
-  get    '/cart_items',    to: 'cart_items#cart_index'
-  patch  '/cart_items',    to: 'cart_items#update_volume'
-  delete '/cart_items',    to: 'cart_items#destroy_cart_item'
-
-  get    '/order_details/thanks',    to: 'order_details#thanks'
-  resources :order_details, only: [:create]
+  post   '/carts',    to: 'carts#add_item'
+  patch  '/carts',    to: 'carts#update_item'
+  delete '/carts',    to: 'carts#destroy_cart_item'
+  resources :carts, only: [:show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
