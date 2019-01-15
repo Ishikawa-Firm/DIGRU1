@@ -2,5 +2,10 @@
 
 	<%= form_for(@artist) do |f| %>
 		<p>Name<%= f.text_field :name, class: "" %></p>
+		<p>Name<%= f.text_field :name_kana, class: "" %></p>
+		<p>Member<%= f.text_field :member, class: "" %></p>
+		<p>郵便番号<%= f.text_field :postal_code, class: "" %></p>
+		<p>電話番号<%= f.text_field :phone_number, class: "" %></p>
+		<p>Mail<%= f.text_field :email, class: "" %></p>
 		<%= f.submit "Update Artist" %>
 	<% end %>
