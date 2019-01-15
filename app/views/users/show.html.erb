@@ -1,3 +1,26 @@
-<%= render 'layouts/header' %>
 <h1>Users#show</h1>
-<%= render 'layouts/footer' %>
+
+<ul class="users">
+	name : <%= current_user.name %>
+</ul>
+
+<ul class="users">
+	name_kana : <%= current_user.name_kana %>
+</ul>
+
+<ul class="users">
+	hundle_name : <%= current_user.hundle_name %>
+</ul>
+
+<ul class="users">
+	postal_code : <%= current_user.postal_code %>
+</ul>
+
+<ul class="users">
+	user_address : <%= current_user.user_address %>
+</ul>
+
+<ul class="users">
+	email : <%= current_user.email %>
+</ul>
+<p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
