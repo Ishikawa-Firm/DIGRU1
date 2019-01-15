@@ -1,6 +1,10 @@
 <h1>Users#show</h1>
 
 <ul class="users">
+    <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
+</ul>
+
+<ul class="users">
 	name : <%= current_user.name %>
 </ul>
 
