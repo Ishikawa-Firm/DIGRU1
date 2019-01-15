@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
-    t.string "profile_image_url"
+    t.string "profile_image_id"
     t.boolean "delete_at"
     t.boolean "admin"
     t.datetime "created_at", null: false
