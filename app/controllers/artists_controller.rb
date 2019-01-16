@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @products = @artist.products.reverse_order
   end
 
   def edit
@@ -26,8 +27,13 @@ class ArtistsController < ApplicationController
   def history
   end
 
-  def artist_params
-    params.require(:artist).permit(:email)
-  end
+  private
+    def artist_params
+      params.require(:artist).permit(:email, :name, :name_kana, :member, :postal_code, :user_address, :phone_number, :profile_image)
+    end
+
+    def product_params
+      params.require(:product).permit(:name, :price, :label, :genre, :stock, :image, :movie_url)
+    end
 
 end

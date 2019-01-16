@@ -1,1 +1,40 @@
 <h1>Users#edit</h1>
+
+<%= form_for(@user) do |f| %>
+
+    <div class="form-group has-icon">
+        <h3>Name</h3>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>image</h3>
+        <%= f.attachment_field :profile_image %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>Name_kana</h3>
+        <%= f.text_field :name_kana %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>hundle_name</h3>
+        <%= f.text_field :hundle_name %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>postal_code</h3>
+        <%= f.text_field :postal_code %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>user_address</h3>
+        <%= f.text_field :user_address %>
+    </div>
+
+    <div class="form-group has-icon">
+        <h3>email</h3>
+        <%= f.text_field :email %>
+    </div>
+    <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+<% end %>

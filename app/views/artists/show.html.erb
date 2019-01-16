@@ -1,5 +1,27 @@
 <h1>Artists#show</h1>
 
-<%= @artist.email %>
+<p><%= @artist.name %></p>
+<p><%= @artist.member %></p>
 
-<%= link_to "Edit", edit_artist_path(@artist.id) %>
+<% if @artist == current_artist %>
+	<p><%= link_to "New Product", new_product_path %>
+	 | <%= link_to "Artist Edit", edit_artist_path(@artist.id) %> | 
+<% end %>
+<%= link_to "Logout", destroy_artist_session_path, method: :delete %></p>
+
+<!-- 以下出品一覧 -->
+<% @products.each do |product| %>
+	<%= link_to product_path(product.id) do %>
+		<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg" %>
+			<p><%= product.name %></p>
+		<% end %>
+			<p><%= product.artist.name %></p>
+			<p>価格 | ¥<%= product.price %></p>
+<% end %>
+<!-- ここまで -->
+<!-- 退会機能 -->
+<% if @artist == current_artist %>
+	<%= link_to artist_registration_path, method: :delete do %>
+		<p>退会する</p>
+	<% end %>
+<% end %>
