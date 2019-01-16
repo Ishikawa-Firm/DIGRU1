@@ -3,5 +3,17 @@
 <p><%= @artist.name %></p>
 <p><%= @artist.member %></p>
 
-<%= link_to "Edit", edit_artist_path(@artist.id) %>
-<%= link_to "New Product", new_product_path %>
+<!-- 以下出品一覧 -->
+<% @products.each do |product| %>
+	<%= link_to product_path(product.id), class: "" do %>
+		<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+			<p><%= product.name %></p>
+		<% end %>
+			<p><%= product.artist.name %></p>
+			<p>価格 | ¥<%= product.price %></p>
+<% end %>
+<!-- ここまで -->
+
+<%= link_to "Edit", edit_artist_path(@artist.id) %><br>
+<%= link_to "New Product", new_product_path %><br>
+<%= link_to "Logout", destroy_artist_session_path, method: :delete %>
