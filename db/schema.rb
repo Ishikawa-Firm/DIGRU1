@@ -77,26 +77,6 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "price"
-    t.integer "volume"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sum_price"
-    t.string "other_name"
-    t.string "other_postal_code"
-    t.string "other_adress"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.integer "artist_id"
     t.string "name"
@@ -123,6 +103,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
+    t.string "profile_image_id"
     t.boolean "delete_at"
     t.boolean "admin"
     t.datetime "created_at", null: false

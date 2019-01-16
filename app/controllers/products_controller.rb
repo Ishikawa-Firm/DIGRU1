@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     else
         flash.now.alert = '入力に誤りがあります。'
         render action: 'new'
-     end
+    end
   end
 
   def index
