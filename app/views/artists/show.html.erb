@@ -19,5 +19,9 @@
 			<p>価格 | ¥<%= product.price %></p>
 <% end %>
 <!-- ここまで -->
-
-
+<!-- 退会機能 -->
+<% if @artist == current_artist %>
+	<%= link_to artist_registration_path, method: :delete do %>
+		<p>退会する</p>
+	<% end %>
+<% end %>
