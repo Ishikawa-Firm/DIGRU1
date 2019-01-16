@@ -7,7 +7,27 @@
 
 <% @users.each do |user| %>
 <ul class="users">
-	<%= user.email %>
+	email : <%= user.email %>
 </ul>
-
+<ul class="users">
+	name : <%= user.name %>
+</ul>
+<ul class="users">
+	name_kana : <%= user.name_kana %>
+</ul>
+<ul class="users">
+	hundle_name : <%= user.hundle_name %>
+</ul>
+<ul class="users">
+	postal_code : <%= user.postal_code %>
+</ul>
+<ul class="users">
+	user_address : <%= user.user_address %>
+</ul>
+<ul class="users">
+	phone_number : <%= user.phone_number %>
+</ul>
+<ul class="users">
+	created_at : <%= user.created_at %>
+</ul>
 <% end %>
