@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @cart_item = CartItem.new
   end
 
   def edit
@@ -31,10 +32,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.artist_id = current_artist.id
     if @product.update(product_params)
-        flash.notice = '商品情報を編集しました．'
         redirect_to product_path(@product)
     else
-        flash.now.alert = '入力に誤りがあります。'
         render action: :edit
     end
   end
@@ -42,7 +41,6 @@ class ProductsController < ApplicationController
   def destroy
     product = Product.find(params[:id])
     if  product.destroy
-        flash[:destroy] = 'Product was successfully destroyed.'
         redirect_to products_path
     else
         render action: :new

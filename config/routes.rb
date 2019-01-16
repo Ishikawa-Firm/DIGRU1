@@ -39,9 +39,10 @@ Rails.application.routes.draw do
     resource :comments, only: [:create, :update, :destroy]
   end
 
-  post   '/carts',    to: 'carts#add_item'
-  patch  '/carts',    to: 'carts#update_item'
-  delete '/carts',    to: 'carts#destroy_cart_item'
+  post   '/cart_items/',    to: 'cart_items#add_item'
+  patch  '/cart_items/:id',    to: 'cart_items#update_item'
+  delete '/cart_items/:id',    to: 'cart_items#destroy_item'
+
   resources :carts, only: [:show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

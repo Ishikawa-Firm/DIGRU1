@@ -1,13 +1,5 @@
 class CartsController < ApplicationController
-  def show
-  end
-
-  def add_item
-  end
-
-  def update_item
-  end
-
-  def destroy_item
-  end
+	def show
+		@cart_items = CartItem.where(cart_id: params[:id])
+	end
 end
