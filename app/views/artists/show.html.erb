@@ -5,8 +5,8 @@
 
 <!-- 以下出品一覧 -->
 <% @products.each do |product| %>
-	<%= link_to product_path(product.id), class: "" do %>
-		<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+	<%= link_to product_path(product.id) do %>
+		<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg" %>
 			<p><%= product.name %></p>
 		<% end %>
 			<p><%= product.artist.name %></p>
