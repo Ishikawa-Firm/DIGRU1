@@ -1,5 +1,7 @@
 <h1>Artists#show</h1>
 
-<%= @artist.email %>
+<p><%= @artist.name %></p>
+<p><%= @artist.member %></p>
 
 <%= link_to "Edit", edit_artist_path(@artist.id) %>
+<%= link_to "New Product", new_product_path %>
