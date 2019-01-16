@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.integer "product_id"
     t.integer "cart_id"
     t.integer "price"
-    t.integer "volume"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

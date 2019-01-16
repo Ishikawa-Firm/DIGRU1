@@ -15,8 +15,8 @@
 				</div>
 				<div class="product-informarion-text">
 					<p>商品情報：</p>
-					<p><%= @product.name%> </p> <!-- 本当はアーティスト名 -->
-					<p>/<%= @product.artist.email%></p>
+					<p><%= @product.name%> </p>
+					<p>/<%= @product.artist.name%></p>
 					<p>ジャンル：<%= @product.genre%></p>
 					<p>レーベル：<%= @product.label%></p>
 					<p>在庫数：<%= @product.stock%></p>
@@ -44,6 +44,20 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」（アーティストなら「商品編集ボタン」），「数量変更増減矢印」，「小計」
+
+				<% if @cart_item.errors %>
+					<% @cart_item.errors.full_messages.each do |e| %>
+						<%= e %>
+					<% end %>
+				<% end %>
+
+		    	<%= form_for @cart_item do |f| %>
+		    		<%= f.hidden_field :product_id, value: @product.id %>
+		    		<%= f.hidden_field :price, value: @product.price %>
+		    		<%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1 %>
+		    		<p><%= f.submit "Add to Cart", class: "btn btn-primary" %></p>
+		    	<% end %>
+		    </div>
 		</div>
 	</div>
 </div>
