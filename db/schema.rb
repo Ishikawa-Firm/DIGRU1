@@ -54,10 +54,22 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "product_id"
+    t.integer "cart_id"
     t.integer "price"
     t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sum_price"
+    t.string "other_name"
+    t.string "other_postal_code"
+    t.string "other_adress"
+    t.string "status"
+    t.datetime "added_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,11 +115,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
-<<<<<<< HEAD
-    t.string "profile_image_url"
-=======
     t.string "profile_image_id"
->>>>>>> 3356c12157e867e7957d4096c4c1805d7ca66049
     t.boolean "delete_at"
     t.boolean "admin"
     t.datetime "created_at", null: false

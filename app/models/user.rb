@@ -8,9 +8,10 @@ class User < ApplicationRecord
     has_many :orders
 
     attachment :profile_image
+    
   def self.search(search)
     if search
-        User.where(['email LIKE ?', "%#{search}%"])
+        User.where(['name LIKE ?', "%#{search}%"])
     else
         User.all
     end

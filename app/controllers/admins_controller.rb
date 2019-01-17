@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
   end
 
   def user_index
-    @users = User.search(params[:search])
+    @users = User.order("name").search(params[:search])
   end
 
   def user_search
