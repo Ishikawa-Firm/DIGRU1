@@ -1,5 +1,9 @@
 <h1>Users#show</h1>
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+
 <ul class="users">
     <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
 </ul>
@@ -27,4 +31,16 @@
 <ul class="users">
 	email : <%= current_user.email %>
 </ul>
-<p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
+
+<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
+
+<p> ここにいいねしたCD </p>
+
+		</div>
+<!-- ランキング -->
+		<div class="col-xs-4">
+			<div class="ranking">購入履歴</div>
+		</div>
+<!-- ランキング -->
+	</div>
+</div>
