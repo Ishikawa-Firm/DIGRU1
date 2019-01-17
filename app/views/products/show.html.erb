@@ -45,14 +45,12 @@
 			<!-- 商品へのコメント -->
 		</div>
 		<div class="col-xs-4">
-			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」（アーティストなら「商品編集ボタン」），「数量変更増減矢印」，「小計」
-
+			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」（アーティストなら「商品編集ボタン」），「数量変更増減矢印」，「小計」d
 				<% if @cart_item.errors %>
 					<% @cart_item.errors.full_messages.each do |e| %>
 						<%= e %>
 					<% end %>
 				<% end %>
-
 		    	<%= form_for @cart_item do |f| %>
 		    		<%= f.hidden_field :product_id, value: @product.id %>
 		    		<%= f.hidden_field :price, value: @product.price %>
