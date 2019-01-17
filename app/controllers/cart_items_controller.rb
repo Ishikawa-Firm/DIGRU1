@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
 	def add_item
-		# session[:cart_id] = nil  ← 1回カートを作った後に "$ db:migrate:reset" をした場合に，コメントアウトして使う．
-									# migrate:resetしても，カートに限ってはsessionには残ってしまう（session[:cart_id]を使って保存しているため．）ので，session[:cart_id]を1度nilにしてカートを消し，またコメントアウトして商品追加をする．
+		# session[:cart_id] = nil  ← 1回カートを作った後に "$ db:migrate:reset" をした場合に，コメントアウトして使ってください．
+									# migrate:resetしても，cart_idに限っては session に残ってしまう（session[:cart_id]を使って session に保存しているため．）ので，session[:cart_id]を1度nilにしてカートを消し，またコメントアウトして商品を追加すればエラーが消えます．．
 		if  session[:cart_id].nil?
 			@cart = Cart.new
 			@cart.user_id = current_user.id
