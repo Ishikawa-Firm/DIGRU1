@@ -1,7 +1,6 @@
-<div>
-<p>とりあえず改行 1行目</p>
-<p>とりあえず改行 2行目</p>
-<p>とりあえず改行 3行目</p>
+<br>
+<br>
+<br>
 
 <% @cart_items.each do |c| %>
   <% if c.errors %>
@@ -11,30 +10,45 @@
   <% end %>
 <% end %>
 
+<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+  <div class="row">
+    <div class="col-xs-8">
 
-<% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key}") %>
-<% end %>
-
-  <% if !@cart_item.blank? %>
-    <p>
-      There are no items in your shopping cart.  Please <%= link_to "go back", products_path %> and add some items to your cart.
-    </p>
-  <% else %>
-    <% @cart_items.each do |c| %>
-    <p>
-      <%= attachment_image_tag c.product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
-        <%= form_for c, :url => {:controller => :cart_items, :action => :update_item, :id => c.id}  do |f| %>
-          <%= f.number_field :quantity, value: c.quantity.to_i, min: 1 %>
-          <%= f.hidden_field :product_id, value: c.product_id %>
-          <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-          <%= link_to 'カートから削除する',({controller: 'cart_items', action: 'destroy_item', id: c.id }), method: :delete %>
-        <% end %>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
-  </p>
-  <% end %>
 
+
+      <% if @cart_items.blank? %>
+        <p>
+           カートに追加された商品はありません． <%= link_to "ホーム", products_path %> に戻って商品を追加しましょう.
+        </p>
+      <% else %>
+      <!--商品追加・更新・削除メッセージ-->
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+      <!--商品追加・更新・削除メッセージ-->
+        <% @cart_items.each do |c| %>
+        <p>
+          <%= link_to product_path(c.product_id) do %>
+            <%= attachment_image_tag c.product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+          <% end %>
+            <%= form_for c, :url => {:controller => :cart_items, :action => :update_item, :id => c.id}  do |f| %>
+              <%= f.number_field :quantity, value: c.quantity.to_i, min: 1 %>
+              <%= f.hidden_field :product_id, value: c.product_id %>
+              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
+              <%= link_to 'カートから削除する',({controller: 'cart_items', action: 'destroy_item', id: c.id }), method: :delete %>
+            <% end %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col-xs-4">
+      <div class="show-sidebar">
+        購入ボタン・送付先変更ボタン
+      </div>
+    </div>
+  </div>
 </div>
-
-
 

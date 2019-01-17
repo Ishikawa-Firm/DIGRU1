@@ -11,8 +11,7 @@ class CartItemsController < ApplicationController
 		@cart_item = CartItem.new(cart_item_params)
 		@cart_item.cart_id = @cart.id
 		if @cart_item.save
-			flash[:create] = '商品がカートに追加されました.'
-			redirect_to cart_path(@cart)
+			redirect_to cart_path(@cart), flash: {key: "#{@cart_item.product.name}をカートに追加しました．"}
 		else
 			#render先のアクションが持っているインスタンス変数を持っていく．持っていきたい値「product_id」は「cart_item」の中にあるので，2つ続けて書く．
 			@product = Product.find(params[:cart_item][:product_id])
@@ -23,8 +22,7 @@ class CartItemsController < ApplicationController
 	def update_item
 		@cart_item = CartItem.find(params[:id])
 		if @cart_item.update(cart_item_params)
-			flash[:update] = '数量が変更されました.'
-        	redirect_to cart_path(@cart_item.cart)
+        	redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
         else
         	@cart_items = CartItem.where(cart_id: @cart_item.cart.id)
         	render 'carts/show'
@@ -34,8 +32,7 @@ class CartItemsController < ApplicationController
 	def destroy_item
 		@cart_item = CartItem.find(params[:id])
 		if @cart_item.destroy
-			flash[:destroy] = 'カートから商品が削除されました.'
-        	redirect_to cart_path(@cart_item.cart)
+        	redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}をカートから削除しました．"}
     	else
         	render 'carts/show'
         end
