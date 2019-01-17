@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "sum_price"
+    t.integer "total_price"
     t.string "other_name"
     t.string "other_postal_code"
     t.string "other_adress"
