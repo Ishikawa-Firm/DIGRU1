@@ -12,15 +12,16 @@ class ProductsController < ApplicationController
     else
         flash.now.alert = '入力に誤りがあります。'
         render action: 'new'
-     end
+    end
   end
 
   def index
-    @products = Product.all
+    @products = Product.where(deleted_at: nil).page(params[:page]).reverse_order
   end
 
   def show
     @product = Product.find(params[:id])
+    @cart_item = CartItem.new
   end
 
   def edit
@@ -31,18 +32,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.artist_id = current_artist.id
     if @product.update(product_params)
-        flash.notice = '商品情報を編集しました．'
         redirect_to product_path(@product)
     else
-        flash.now.alert = '入力に誤りがあります。'
         render action: :edit
     end
   end
 
   def destroy
     product = Product.find(params[:id])
-    if  product.destroy
-        flash[:destroy] = 'Product was successfully destroyed.'
+    if  product.update(deleted_at: Time.now)
         redirect_to products_path
     else
         render action: :new
