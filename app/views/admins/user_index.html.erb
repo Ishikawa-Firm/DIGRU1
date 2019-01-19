@@ -5,9 +5,32 @@
 	<%= submit_tag 'Search', :name => nil  %>
 <% end %>
 
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>id</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<tbody>
 <% @users.each do |user| %>
-<ul class="users">
-	<%= user.email %>
-</ul>
-
+<tr>
+  <td>
+	<%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "sample-author1.jpg" %>
+  </td>
+  <td>
+	id : <%= user.id %>
+  </td>
+  <td>
+	id : <%= user.name %>
+  </td>
+  <td>
+<%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %>
+  </td>
 <% end %>
+</tbody>
+</table>
+
+<%= paginate @users, class: "paginate" %>

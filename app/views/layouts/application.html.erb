@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<header class="navbar navbar-default navbar-fixed-top">
+<header class="navbar navbar-default">
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
       <span class="title"><h3>DIGRU</h3></span>
@@ -33,7 +33,7 @@
         <%= link_to " help", "#{}", class: 'glyphicon glyphicon-question-sign help' %>
       </li>
       <li>
-        <%= link_to " logout", "#{}", method: :delete, class: 'glyphicon glyphicon-log-out logout' %>
+        <%= link_to " logout", destroy_artist_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %>
       </li>
     </ul>
     </nav>
@@ -41,7 +41,6 @@
 </div>
 </header>
   <body>
-    <br><br><br>
     <div class='container'>
       <%= yield %>
     </div>

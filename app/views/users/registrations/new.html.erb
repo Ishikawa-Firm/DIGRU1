@@ -14,6 +14,31 @@
   </div>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name_kana %><br />
+    <%= f.text_field :name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_address %><br />
+    <%= f.text_field :user_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -31,4 +56,9 @@
   </div>
 <% end %>
 
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 85b2d4195cc808efb8a7fbae20c52f2cd6a70f5a
 <%= render "users/shared/links" %>
