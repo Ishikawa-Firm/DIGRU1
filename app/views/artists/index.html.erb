@@ -8,6 +8,7 @@
 <br>
 <p>アーティスト一覧</p>
 <% @artists.each do|artist| %>
+	<%= attachment_image_tag artist, :profile_image, :fill, 40, 40, fallback: "sample-author1.jpg" %>
 	<p><%= link_to artist.name, artist_path(artist.id) %></p>
 <% end %>
 
