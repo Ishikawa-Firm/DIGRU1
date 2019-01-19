@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
 	has_many :cart_items
 	has_many :disc_numbers
+    has_many :comments, dependent: :destroy
+
 	belongs_to :artist
 
 	attachment :image

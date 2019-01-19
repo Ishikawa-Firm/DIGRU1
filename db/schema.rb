@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_063524) do
+ActiveRecord::Schema.define(version: 2019_01_19_105436) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
-    t.boolean "deleted_at"
+    t.boolean "delete_at"
     t.text "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,12 +64,20 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "total_price"
+    t.integer "sum_price"
     t.string "other_name"
     t.string "other_postal_code"
     t.string "other_adress"
     t.string "status"
     t.datetime "added_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.integer "stock"
     t.string "image_id"
     t.text "movie_url"
-    t.boolean "deleted_at"
+    t.boolean "delete_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,7 +124,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "user_address"
     t.string "phone_number"
     t.string "profile_image_id"
-    t.boolean "deleted_at"
+    t.boolean "delete_at"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
