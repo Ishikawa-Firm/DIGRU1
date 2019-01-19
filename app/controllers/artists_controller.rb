@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order
+    @artists = Artist.order("name").page(params[:page]).reverse_order.where(deleted_at: nil)
   end
 
   def show
@@ -20,7 +20,7 @@ class ArtistsController < ApplicationController
 
   def destroy
     artist = Artist.find(params[:id])
-    artist.update(deleted_at: Time.current)
+    artist.update(deleted_at: Time.now)
     redirect_to products_path
     # 上記記述で"deleted_at"にデータが入った
     # 一覧に表示されたままの状態になっているため、一覧や検索に表示されないようにしなければならない

@@ -21,7 +21,7 @@
 <!-- ここまで -->
 <!-- 退会機能 -->
 <% if @artist == current_artist %>
-	<%= link_to artist_registration_path, method: :delete do %>
+	<%= link_to artist_path, method: :delete do %>
 		<p>退会する</p>
 	<% end %>
 <% end %>
