@@ -1,8 +1,7 @@
 class Product < ApplicationRecord
 	has_many :cart_items
-	has_many :order_details
-	belongs_to :artist
 	has_many :disc_numbers
+	belongs_to :artist
 
 	attachment :image
 

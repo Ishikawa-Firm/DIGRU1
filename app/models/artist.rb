@@ -5,4 +5,14 @@ class Artist < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
+
+  attachment :profile_image
+
+  def self.search(search)
+    if search
+        Artist.where(['name LIKE ?', "%#{search}%"])
+    else
+        Artist.all
+    end
+  end
 end

@@ -54,10 +54,22 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "product_id"
+    t.integer "cart_id"
     t.integer "price"
-    t.integer "volume"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_price"
+    t.string "other_name"
+    t.string "other_postal_code"
+    t.string "other_adress"
+    t.string "status"
+    t.datetime "added_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,26 +85,6 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.integer "disc_number_id"
     t.text "name"
     t.integer "truck_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "price"
-    t.integer "volume"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sum_price"
-    t.string "other_name"
-    t.string "other_postal_code"
-    t.string "other_adress"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
+    t.string "profile_image_id"
     t.boolean "delete_at"
     t.boolean "admin"
     t.datetime "created_at", null: false
