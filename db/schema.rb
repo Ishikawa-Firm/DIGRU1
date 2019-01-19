@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.text "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.integer "stock"
     t.string "image_id"
     t.text "movie_url"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "user_address"
     t.string "phone_number"
     t.string "profile_image_id"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

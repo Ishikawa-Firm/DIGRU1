@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :user_address
       t.string :phone_number
       t.string :profile_image_id
-      t.boolean :delete_at
+      t.boolean :deleted_at
       t.boolean :admin
       t.timestamps null: false
     end
