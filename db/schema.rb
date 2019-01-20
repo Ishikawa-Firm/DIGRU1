@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 2019_01_19_121342) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_price"
+    t.string "other_name"
+    t.string "other_postal_code"
+    t.string "other_adress"
+    t.string "status"
+    t.datetime "added_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "comment_text"
     t.integer "user_id"
@@ -103,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_121342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  
   create_table "products", force: :cascade do |t|
     t.integer "artist_id"
     t.string "name"
