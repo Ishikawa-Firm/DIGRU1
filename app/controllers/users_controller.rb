@@ -21,8 +21,7 @@ class UsersController < ApplicationController
   def help
   end
 
-  def adress
-    @cart_items = 
+  def adres
   end
 
   def create_address
