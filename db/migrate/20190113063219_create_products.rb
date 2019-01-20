@@ -10,7 +10,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
 		t.integer  :stock
 		t.string   :image_id
 		t.text     :movie_url
-		t.boolean  :delete_at
+		t.boolean  :deleted_at
         t.timestamps
     end
   end

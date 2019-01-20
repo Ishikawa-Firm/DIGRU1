@@ -1,5 +1,15 @@
 <h1>Artists#index</h1>
 
-<% @artists.each do|artist| %>
+<p>アーティスト検索</p>
+<%= form_tag("/artists/index", :method => 'get' ) do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag 'Search', :name => nil  %>
+<% end %>
+<br>
+<p>アーティスト一覧</p>
+<% @artists.each do |artist| %>
+	<%= attachment_image_tag artist, :profile_image, :fill, 40, 40, fallback: "sample-author1.jpg" %>
 	<p><%= link_to artist.name, artist_path(artist.id) %></p>
 <% end %>
+
+<%= paginate @artists, class: "paginate" %>

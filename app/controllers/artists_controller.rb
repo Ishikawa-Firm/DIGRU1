@@ -1,11 +1,11 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
   end
 
   def show
     @artist = Artist.find(params[:id])
-    @products = @artist.products.reverse_order
+    @products = @artist.products.page(params[:page]).reverse_order
   end
 
   def edit
@@ -19,6 +19,11 @@ class ArtistsController < ApplicationController
   end
 
   def destroy
+    artist = Artist.find(params[:id])
+    artist.update(deleted_at: Time.now)
+    redirect_to products_path
+    # 購入履歴から消えないように注意（テーブルが違うので大丈夫だとは思うが・・・）
+    # このメソッドで商品の論理削除に横展可能？
   end
 
   def search

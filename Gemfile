@@ -73,4 +73,6 @@ gem 'faker'
 
 gem 'redis_object'
 
- gem 'pry-rails'
+gem 'pry-rails'
+
+gem 'nested_form_fields'

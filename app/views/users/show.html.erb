@@ -34,7 +34,9 @@
 <%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
 
 <p> ここにいいねしたCD </p>
-
+<% @user.products.each do |product| %>
+<%= product.name %>
+<% end %>
 		</div>
 <!-- ランキング -->
 		<div class="col-xs-4">

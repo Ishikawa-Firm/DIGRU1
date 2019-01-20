@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_063524) do
+ActiveRecord::Schema.define(version: 2019_01_19_121342) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "postal_code"
     t.string "user_address"
     t.string "phone_number"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.text "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,11 +72,30 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment_text"
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "disc_numbers", force: :cascade do |t|
     t.integer "product_id"
     t.text "disc_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index [nil], name: "index_favorites_on_product"
+    t.index [nil], name: "index_favorites_on_user"
   end
 
   create_table "musics", force: :cascade do |t|
@@ -96,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.integer "stock"
     t.string "image_id"
     t.text "movie_url"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,7 +133,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.string "user_address"
     t.string "phone_number"
     t.string "profile_image_id"
-    t.boolean "delete_at"
+    t.boolean "deleted_at"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

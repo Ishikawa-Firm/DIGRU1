@@ -38,7 +38,7 @@ class DeviseCreateArtists < ActiveRecord::Migration[5.2]
       t.string :postal_code
       t.string :user_address
       t.string :phone_number
-      t.boolean :delete_at
+      t.boolean :deleted_at
       t.text :profile_image_id
       t.timestamps null: false
     end
