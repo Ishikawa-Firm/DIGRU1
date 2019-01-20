@@ -22,8 +22,6 @@ class ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     artist.update(deleted_at: Time.now)
     redirect_to products_path
-    # 上記記述で"deleted_at"にデータが入った
-    # 一覧に表示されたままの状態になっているため、一覧や検索に表示されないようにしなければならない
     # 購入履歴から消えないように注意（テーブルが違うので大丈夫だとは思うが・・・）
     # このメソッドで商品の論理削除に横展可能？
   end

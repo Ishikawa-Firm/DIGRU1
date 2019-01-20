@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = Product.where(deleted_at: nil).page(params[:page]).reverse_order
   end
 
   def show
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
   def destroy
     product = Product.find(params[:id])
-    if  product.destroy
+    if  product.update(deleted_at: Time.now)
         redirect_to products_path
     else
         render action: :new
