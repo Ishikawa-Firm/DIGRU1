@@ -4,6 +4,7 @@ class Product < ApplicationRecord
     has_many :comments, dependent: :destroy
 
 	belongs_to :artist
+	belongs_to :user, optional: true
 
 	attachment :image
 

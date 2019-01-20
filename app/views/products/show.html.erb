@@ -44,7 +44,7 @@
 				    <% @product.comments.each do |comment| %>
 				    	名前：<%= comment.user.name %>
 				    	投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %>
-					    コメント：<%= comment.comment %>
+					    コメント：<%= comment.comment_text %>
 				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
