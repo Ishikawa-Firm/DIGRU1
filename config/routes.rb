@@ -24,9 +24,14 @@ Rails.application.routes.draw do
   resources :admins, only: [:show, :edit, :update]
 
   get    '/users/help',    to: 'users#help'
-  get    '/users/address',    to: 'users#address'
+  get    '/users/confirm_order',    to: 'users#confirm_order'
+  get    '/users/address/new',   to: 'users#new_address'
   post   '/users/address',   to: 'users#create_address'
+  get    '/users/address/:id/edit',   to: 'users#edit_address'
+  patch  '/users/address/:id',   to: 'users#update_address'
+  delete '/users/address/:id',   to: 'users#destroy_address'
   get    '/users/select',    to: 'users#select'
+  get    '/users/thanks',    to: 'users#thanks'
   resources :users, only: [:show, :edit, :update, :destroy]
 
   # get    '/artists/search/',    to: 'artists#search'
@@ -43,6 +48,7 @@ Rails.application.routes.draw do
   patch  '/cart_items/:id',    to: 'cart_items#update_item'
   delete '/cart_items/:id',    to: 'cart_items#destroy_item'
 
+  patch  '/carts/:id',    to: 'users#buy'
   resources :carts, only: [:show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
