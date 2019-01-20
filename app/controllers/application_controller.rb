@@ -10,6 +10,16 @@ class ApplicationController < ActionController::Base
     new_artist_session_path # ログアウト後に遷移するpathを設定
   end
 
+  # cart_items controller
+  def sum(obj)
+    sum = 0
+    obj.each do |o|
+      sum += o.sub_total
+    end
+    return sum
+  end
+  # cart_items controller
+
   protected
 
 	def configure_permitted_parameters

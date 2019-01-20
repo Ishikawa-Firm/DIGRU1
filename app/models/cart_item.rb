@@ -2,7 +2,7 @@ class CartItem < ApplicationRecord
 	belongs_to :cart
 	belongs_to :product
 
-	def total_price
+	def sub_total
 		product.price * quantity
 	end
 
