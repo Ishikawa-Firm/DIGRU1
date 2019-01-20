@@ -1,10 +1,12 @@
 class CreateFavorites < ActiveRecord::Migration[5.2]
   def change
     create_table :favorites do |t|
-      t.integer :user_id
-      t.integer :product_id
-
+      t.references :user, null:false #外部キー
+      t.references :product, null:false #外部キー
       t.timestamps
     end
+
+    add_index :favorites, :user #インデックス
+    add_index :favorites, :product #インデックス
   end
 end

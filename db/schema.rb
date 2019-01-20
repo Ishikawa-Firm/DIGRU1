@@ -90,10 +90,14 @@ ActiveRecord::Schema.define(version: 2019_01_19_121342) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index [nil], name: "index_favorites_on_product"
+    t.index [nil], name: "index_favorites_on_user"
   end
 
   create_table "musics", force: :cascade do |t|
