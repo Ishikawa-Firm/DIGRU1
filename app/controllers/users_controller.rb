@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def adress
+    @cart_items = 
   end
 
   def create_address

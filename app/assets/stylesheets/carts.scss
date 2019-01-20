@@ -1,3 +1,36 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after{
+	content: "";
+	display: inline-block;
+	clear: both;
+}
+
+.cart-item {
+	padding-bottom: 20px;
+}
+
+.cart-item-image {
+	float: left;
+}
+
+.cart-item-detail-info {
+	float: left;
+	padding-left: 30px;
+}
+
+.cart-item-name {
+	font-size: 25px;
+}
+
+.cart-item-sub-total{
+	font-size: 20px;
+	color: red;
+	line-height: 80px;
+}
+
+.cart-item-border {
+	border-bottom: solid 1px #D8D8D8;
+}
