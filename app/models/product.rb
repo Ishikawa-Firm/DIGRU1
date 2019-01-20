@@ -3,6 +3,7 @@ class Product < ApplicationRecord
 	has_many :disc_numbers
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
+    has_many :users, through: :favorites
 
 	belongs_to :artist
 	belongs_to :user, optional: true
