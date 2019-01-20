@@ -1,0 +1,63 @@
+<h2>お客様のカート</h2>
+
+<% @cart_items.each do |c| %>
+  <% if c.errors %>
+    <% c.errors.full_messages.each do |e| %>
+      <%= e %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+  <div class="row">
+    <div class="col-xs-8">
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+
+      <% if @cart_items.blank? %>
+        <p>
+           カートに追加された商品はありません． <%= link_to "ホーム", products_path %> に戻って商品を追加しましょう.
+        </p>
+      <% else %>
+      <!--商品追加・更新・削除メッセージ-->
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+      <!--商品追加・更新・削除メッセージ-->
+        <% @cart_items.each do |c| %>
+          <div class="cart-item clearfix">
+            <div class="cart-item-image">
+              <%= link_to product_path(c.product_id) do %>
+                <%= attachment_image_tag c.product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+              <% end %>
+            </div>
+            <div class="cart-item-detail-info">
+              <span class="cart-item-name"><%= c.product.name%></span>
+              /<%= c.product.artist.name%>
+              <%= form_for c, :url => {:controller => :cart_items, :action => :update_item, :id => c.id}  do |f| %>
+                <span class="cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円</span>
+                <p>数量：<%= f.number_field :quantity, value: c.quantity.to_i, min: 1 %></p>
+                <%= f.hidden_field :product_id, value: c.product_id %>
+                <%= f.submit "数量を更新", class: "btn btn-warning btn-xs" %>
+                <%= link_to 'カートから削除する',({controller: 'cart_items', action: 'destroy_item', id: c.id }), method: :delete %>
+              <% end %>
+            </div>
+          </div>
+          <div class="cart-item-border"></div>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-4">
+      <div class="show-sidebar">
+        <p>総計：<%= @sum %>円</p>
+        <p><%= link_to '購入手続きへ', users_address_path, class: "btn btn-primary" %><p>
+        <p>※ご注文内容確認画面（配送先指定等）へ遷移します．</p>
+      </div>
+    </div>
+  </div>
+</div>
+

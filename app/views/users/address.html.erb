@@ -1,1 +1,7 @@
 <h1>Users#Address</h1>
+
+購入内容確認
+
+<% current_cart.cart_items.each do |c|%>
+	<%= attachment_image_tag c.product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+<% end %>

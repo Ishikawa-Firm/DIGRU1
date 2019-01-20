@@ -9,4 +9,15 @@ class Artist < ApplicationRecord
 	def active_for_authentication?
 		! self.deleted_at?
 	end
+
+  attachment :profile_image
+
+  def self.search(search)
+    if search
+        Artist.where(['name LIKE ?', "%#{search}%"])
+    else
+        Artist.all
+    end
+  end
+
 end

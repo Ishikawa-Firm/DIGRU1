@@ -5,11 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
     has_many :addresses
-    has_many :cart_items
+    has_many :orders
+    has_many :carts
+    has_many :comments, dependent: :destroy
+
+    attachment :profile_image
 
   def self.search(search)
     if search
-        User.where(['email LIKE ?', "%#{search}%"])
+        User.where(['name LIKE ?', "%#{search}%"])
     else
         User.all
     end

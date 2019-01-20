@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_063524) do
+ActiveRecord::Schema.define(version: 2019_01_19_121342) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -74,9 +74,36 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_price"
+    t.string "other_name"
+    t.string "other_postal_code"
+    t.string "other_adress"
+    t.string "status"
+    t.datetime "added_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment_text"
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "disc_numbers", force: :cascade do |t|
     t.integer "product_id"
     t.text "disc_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,16 +115,7 @@ ActiveRecord::Schema.define(version: 2019_01_13_063524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "price"
-    t.integer "volume"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  
   create_table "products", force: :cascade do |t|
     t.integer "artist_id"
     t.string "name"

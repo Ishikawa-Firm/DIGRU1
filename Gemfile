@@ -72,3 +72,5 @@ gem 'kaminari'
 gem 'faker'
 
 gem 'redis_object'
+
+ gem 'pry-rails'

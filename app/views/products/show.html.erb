@@ -15,8 +15,10 @@
 				</div>
 				<div class="product-informarion-text">
 					<p>商品情報：</p>
-					<p><%= @product.name%> </p> <!-- 本当はアーティスト名 -->
-					<p><%= @product.artist.name%></p>
+
+					<p><%= @product.name%> </p>
+					<p>/<%= @product.artist.name%></p>
+
 					<p>ジャンル：<%= @product.genre%></p>
 					<p>レーベル：<%= @product.label%></p>
 					<p>在庫数：<%= @product.stock%></p>
@@ -39,11 +41,39 @@
 			<div class="border3"> コメント</div>
 			<div class="comment">
 				<p> コメント一覧</p>
+				    <% @product.comments.each do |comment| %>
+				    	名前：<%= comment.user.name %>
+				    	投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %>
+					    コメント：<%= comment.comment_text %>
+				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
+			<!-- コメント投稿用フォーム -->
+			<%= form_for [@product, @comment] do |f| %>
+            <%= f.text_area :comment_text, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
+    		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    		<% end %>
+			<!-- コメント投稿用フォーム -->
 		</div>
 		<div class="col-xs-4">
-			<div class="show-sidebar">「カートに入れるボタン」，「数量変更増減矢印」，「小計」</div>
+			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」「数量変更増減矢印」「小計」，アーティストなら「商品編集ボタン」
+				<% if @cart_item.errors %>
+					<% @cart_item.errors.full_messages.each do |e| %>
+						<%= e %>
+					<% end %>
+				<% end %>
+				<!-- 一般ユーザ用 -->
+		    	<%= form_for @cart_item do |f| %>
+		    		<%= f.hidden_field :product_id, value: @product.id %>
+		    		<%= f.hidden_field :price, value: @product.price %>
+		    		<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: 99%></p>
+		    		<p><%= f.submit "カートに入れる ※ for user", class: "btn btn-primary" %></p>
+		    	<% end %>
+		    	<!-- 一般ユーザ用 -->
+		    	<!-- アーティスト用 -->
+		    	<%= link_to "商品情報編集　※ for artist", edit_product_path(@product), class: "btn btn-primary" %>
+		    	<!-- アーティスト用 -->
+		    </div>
 		</div>
 	</div>
 </div>
