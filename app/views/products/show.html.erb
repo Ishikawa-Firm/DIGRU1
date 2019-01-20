@@ -41,8 +41,19 @@
 			<div class="border3"> コメント</div>
 			<div class="comment">
 				<p> コメント一覧</p>
+				    <% @product.comments.each do |comment| %>
+				    	名前：<%= comment.user.name %>
+				    	投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %>
+					    コメント：<%= comment.comment_text %>
+				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
+			<!-- コメント投稿用フォーム -->
+			<%= form_for [@product, @comment] do |f| %>
+            <%= f.text_area :comment_text, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
+    		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    		<% end %>
+			<!-- コメント投稿用フォーム -->
 		</div>
 		<div class="col-xs-4">
 			<div class="show-sidebar">ユーザーなら「カートに入れるボタン」「数量変更増減矢印」「小計」，アーティストなら「商品編集ボタン」
