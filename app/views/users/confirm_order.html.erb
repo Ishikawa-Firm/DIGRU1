@@ -1,0 +1,45 @@
+<h1>Users#Address</h1>
+
+購入内容確認
+
+<div class="container">
+	<div class="row">
+	    <div class="col-xs-8">
+	    	<div class="confirm-order">
+				<% @cart_items.each do |c| %>
+					<div class="order-cart-item clearfix">
+						<div class="cart-item-image">
+							<%= attachment_image_tag c.product, :image, size: "60x60" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+						</div>
+						<div class="cart-item-detail-info">
+							<span class="order-cart-item-name"><%= c.product.name%></span>
+							/<%= c.product.artist.name %>
+							<p class="order-cart-item-quantity">
+								数量：<%= c.quantity %>
+								<span class="order-cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円</span>
+							</p>
+						</div>
+					</div>
+					<div class="order-border"></div>
+				<% end %>
+			</div>
+			<div class="address-select">
+				配送先指定
+				<p> 総計：<%= @sum %>円 </p>
+				<%= form_for @cart, :url => {:controller => :users, :action => :buy, :id => @cart.id} do |f|%>
+					<%= f.collection_select :address_id, Address.all, :id, :other_address %>
+					<p> <%= f.hidden_field :total_price, value: @sum %> </p>
+					<p> <%= f.hidden_field :status, {value: '受付'} %></p>
+					<p> <%= f.hidden_field :added_at, value: Time.now %>
+				<p><%= link_to '送付先新規登録', users_address_new_path, class: "btn btn-success btn-xm" %></p>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="show-sidebar">
+		        <p><%= f.submit "購入を確定する", class: "btn btn-danger" %><p>
+		    </div>
+		    <% end %>
+		</div>
+	</div>
+</div>
+

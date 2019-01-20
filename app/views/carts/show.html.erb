@@ -53,8 +53,8 @@
     </div>
     <div class="col-xs-4">
       <div class="show-sidebar">
-        <p>総計：<%= @sum %>円</p>
-        <p><%= link_to '購入手続きへ', users_address_path, class: "btn btn-primary" %><p>
+        総計:<%= @sum %>
+        <p><%= link_to '購入手続きへ', users_confirm_order_path, class: "btn btn-primary" %><p>
         <p>※ご注文内容確認画面（配送先指定等）へ遷移します．</p>
       </div>
     </div>

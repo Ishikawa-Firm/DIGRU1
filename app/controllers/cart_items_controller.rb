@@ -24,7 +24,7 @@ class CartItemsController < ApplicationController
 			@cart_item.cart_id = current_cart.id
 		else
 			@cart_items = current_cart.cart_items
-			if  @cart_items.where(["product_id = ?", params[:cart_item][:product_id]]) #whereでproduct_idを探す
+			if  !@cart_items.where(["product_id = ?", params[:cart_item][:product_id]]).empty? #whereでproduct_idを探す
 				@cart_item = @cart_items.find_by(["product_id = ?", params[:cart_item][:product_id]]) #find_byで特定のidを指定
 				@cart_item.quantity += params[:cart_item][:quantity].to_i
 			else

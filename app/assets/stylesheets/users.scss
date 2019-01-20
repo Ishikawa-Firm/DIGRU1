@@ -1,3 +1,47 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.confirm-order{
+	width: 100%;
+	height: 100%;
+	background-color: yellow;
+}
+
+.order-cart-item {
+	padding: 10px 0px 5px 0px;
+}
+
+.cart-item-detail-info {
+	float: left;
+	padding-left: 30px;
+}
+
+.order-border {
+	border-bottom: solid 1px #D8D8D8;
+}
+
+.order-cart-item-name {
+	font-size: 15px;
+}
+
+.order-cart-item-quantity {
+	padding-top: 15px;
+}
+
+.order-cart-item-sub-total{
+	font-size: 15px;
+	color: red;
+}
+
+.confirm-order{
+	width: 100%;
+	height: 100%;
+	background-color: yellow;
+}
+
+.address-select {
+	width: 100%;
+	height: 100%;
+	background-color: orange;
+}
