@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 	has_many :cart_items
-	has_many :disc_numbers
+	has_many :disc_numbers, inverse_of: :product
+	accepts_nested_attributes_for :disc_numbers
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :users, through: :favorites
