@@ -47,7 +47,9 @@
 				<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>
 			</div>
 			<!-- 商品の基本情報 -->
-					<div><%= @product.movie_url.html_safe %></div>
+			<!-- 動画埋め込み -->
+				<%= @product.movie_url.html_safe %>
+			<!-- 動画埋め込み -->
 			<!-- 商品の詳細情報 -->
 			<div class="border2"> CD詳細情報</div>
 			<div class="product-detailed-information">

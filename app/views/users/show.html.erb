@@ -3,45 +3,46 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8">
+			<!-- ユーザー情報 -->
+			<ul class="users">
+    		<%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
+			</ul>
+			<ul class="users">name : <%= current_user.name %></ul>
+			<ul class="users">name_kana : <%= current_user.name_kana %></ul>
+			<ul class="users">hundle_name : <%= current_user.hundle_name %></ul>
+			<ul class="users">postal_code : <%= current_user.postal_code %></ul>
+			<ul class="users">user_address : <%= current_user.user_address %></ul>
+			<ul class="users">email : <%= current_user.email %></ul>
 
-<ul class="users">
-    <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
-</ul>
-<ul class="users">
-	name : <%= current_user.name %>
-</ul>
-
-<ul class="users">
-	name_kana : <%= current_user.name_kana %>
-</ul>
-
-<ul class="users">
-	hundle_name : <%= current_user.hundle_name %>
-</ul>
-
-<ul class="users">
-	postal_code : <%= current_user.postal_code %>
-</ul>
-
-<ul class="users">
-	user_address : <%= current_user.user_address %>
-</ul>
-
-<ul class="users">
-	email : <%= current_user.email %>
-</ul>
-
-<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
-
-<p> ここにいいねしたCD </p>
-<% @user.products.each do |product| %>
-<%= product.name %>
-<% end %>
+			<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
+				<br>
+				<h3> お気に入りに入れたCD </h3>
+				<table class='table table-hover table-inverse'>
+  					<thead>
+					    <tr>
+					      <th>image</th>
+					      <th>name</th>
+					      <th colspan="3"></th>
+					    </tr>
+					</thead>
+					<tbody>
+				<% @favorites.each do |favorite| %>
+				<tr>
+				  <td>
+					<%#= attachment_image_tag product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+				  </td>
+				  <td>
+					<%= favorite.product.name %>
+				  </td>
+				<% end %>
+					</tbody>
+				</table>
+				<%= paginate @favorites, class: "paginate" %>
 		</div>
-<!-- ランキング -->
+		<!-- ランキング -->
 		<div class="col-xs-4">
 			<div class="ranking">購入履歴</div>
 		</div>
-<!-- ランキング -->
+		<!-- ランキング -->
 	</div>
 </div>
