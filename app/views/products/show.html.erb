@@ -22,6 +22,7 @@
 					<p>ジャンル：<%= @product.genre%></p>
 					<p>レーベル：<%= @product.label%></p>
 					<p>在庫数：<%= @product.stock%></p>
+
 					<!-- いいね機能 -->
 					<% if user_signed_in? %>
 					<% if !@product.favorited_by?(current_user) %>
@@ -46,7 +47,7 @@
 				<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>
 			</div>
 			<!-- 商品の基本情報 -->
-
+					<div><%= @product.movie_url.html_safe %></div>
 			<!-- 商品の詳細情報 -->
 			<div class="border2"> CD詳細情報</div>
 			<div class="product-detailed-information">
@@ -62,6 +63,8 @@
 				    	名前：<%= comment.user.name %>
 				    	投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %>
 					    コメント：<%= comment.comment_text %>
+				         <%= link_to "編集", product_path(@product.id) %>
+				         <%= link_to "削除", product_comments_path(@product.id), method: :delete %>
 				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
