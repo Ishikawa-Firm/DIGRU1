@@ -29,7 +29,7 @@
 				<% @favorites.each do |favorite| %>
 				<tr>
 				  <td>
-					<%#= attachment_image_tag product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+					<%= attachment_image_tag favorite.product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
 				  </td>
 				  <td>
 					<%= favorite.product.name %>
