@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def new
     @product = Product.new
+    disknumber = @product.disk_numbers.build
+    
   end
 
   def create
@@ -24,6 +26,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
     @comment = Comment.new
+    @artist = current_artist
   end
 
   def edit

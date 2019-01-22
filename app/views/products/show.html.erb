@@ -43,8 +43,10 @@
 				</div>
 
 				<p><%= link_to "トップへ", products_path, class: "" %></p>
-				<p><%= link_to "Edit", edit_product_path(@product), class: "" %></p>
-				<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>
+				<% if @artist == current_artist %>
+					<p><%= link_to "Edit", edit_product_path(@product), class: "" %></p>
+					<p><%= link_to "Destroy", product_path(@product), class: "", method: :delete, "data-confirm" => "Are you sure?" %></p>
+				<% end %>
 			</div>
 			<!-- 商品の基本情報 -->
 			<!-- 動画埋め込み -->
