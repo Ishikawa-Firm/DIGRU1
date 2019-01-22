@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   def new
     @product = Product.new
+    # 入力欄表示に必要
+    @product.disc_numbers.build
+    # 子モデルの入力欄が表示されなかったため追記（コントローラ側で作成してあげる必要あり、ちなみに"build"と"New"は同じ）
+    @product.disc_numbers[0].musics.build
+    # 孫モデルの入力欄を表示するために記述、配列のため先ほどの子モデルを[0]と指定した後に、孫モデルを"build"する
   end
 
   def create
@@ -52,7 +57,12 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:name, :price, :label, :genre, :stock, :image, :movie_url)
+      params.require(:product).permit(
+        :name, :price, :label, :genre, :stock, :image, :movie_url,
+          disc_numbers_attributes:[:product_id, :disc_name, :_destroy,
+            musics_attributes:[:disc_number_id, :name, :truck_number, :_destroy]
+          ]
+        )
     end
 
 end
