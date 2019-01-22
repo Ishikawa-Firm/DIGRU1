@@ -38,7 +38,7 @@
               <span class="cart-item-name"><%= c.product.name%></span>
               /<%= c.product.artist.name%>
               <%= form_for c, :url => {:controller => :cart_items, :action => :update_item, :id => c.id}  do |f| %>
-                <span class="cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円</span>
+                <span class="cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円（税込）</span>
                 <p>数量：<%= f.number_field :quantity, value: c.quantity.to_i, min: 1 %></p>
                 <%= f.hidden_field :product_id, value: c.product_id %>
                 <%= f.submit "数量を更新", class: "btn btn-warning btn-xs" %>
@@ -53,7 +53,7 @@
     </div>
     <div class="col-xs-4">
       <div class="show-sidebar">
-        総計:<%= @sum %>
+        総計:<%= @sum %>円（税込）
         <p><%= link_to '購入手続きへ', users_confirm_order_path, class: "btn btn-primary" %><p>
         <p>※ご注文内容確認画面（配送先指定等）へ遷移します．</p>
       </div>

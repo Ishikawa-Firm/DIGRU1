@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
     #特定のユーザーが登録したお気に入りを全て取得する
@@ -51,11 +52,21 @@ class UsersController < ApplicationController
   end
 
   def buy
-    current_user.carts.all.last.update(buy_params)
-    redirect_to users_thanks_path
+      if !params[:cart][:address_id].nil?
+      current_user.carts.all.last.update(buy_params)
+      redirect_to users_thanks_path
+    else
+      @cart_items = current_user.carts.all.last.cart_items
+      @cart = current_user.carts.all.last
+      @sum = sum(@cart_items)
+      render 'users/confirm_order'
+    end
   end
 
-  def select
+  def session_select
+  end
+
+  def registraion_select
   end
 
   private

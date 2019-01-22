@@ -2,6 +2,78 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* select */
+
+.select-text {
+	text-align: center;
+}
+
+.select-box {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+}
+
+.select_user_login {
+	float: left;
+	width: 48%;
+	height: 500px;
+	margin-right:10px;
+	background-image: url("user.jpg");
+	background-size: cover;
+}
+
+.user-white-image {
+	display: inline-block;
+	margin: 200px auto;
+	width: 100%;
+	height: 100px;
+	background-color: rgba(176,196,222,0.5);
+}
+
+.user-white-image li{
+	list-style: none;
+	font-size: 30px;
+	line-height: 100px;
+	font-family: "Hiragino Sans";
+	font-weight: bold;
+	color: #FFF;
+	width: 100%;
+	text-align: center;
+}
+
+.select_artist_login {
+	float: left;
+	width: 48%;
+	height: 500px;
+	margin-left:10px;
+	background-image: url("artist.jpg");
+	background-size: cover;
+}
+
+.artist-white-image {
+	display: inline-block;
+	margin: 200px auto;
+	width: 100%;
+	height: 100px;
+	background-color: rgba(136,181,211,0.5);
+}
+
+.artist-white-image li{
+	list-style: none;
+	font-size: 30px;
+	line-height: 100px;
+	font-family: "Hiragino Sans";
+	font-weight: bold;
+	color: #FFF;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+/* confirm_order */
+
 .confirm-order{
 	width: 100%;
 	height: 100%;
