@@ -4,7 +4,7 @@
 
 <!--後でemailをname(ログインしているアーティスト名に変更)-->
 <h4> アーティスト名</h4>
-<%= current_artist.email%>
+<%= current_artist.name%>
 
 <%= form_for(@product) do |f| %>
 
@@ -21,6 +21,21 @@
 
   <h4> シングル/アルバム名</h4>
   <%= f.text_field :name, class: "" %>
+
+  <%= f.fields_for :disc_numbers do |discnumber| %>
+    
+    <h4> 枚数</h4>
+    <%= discnumber.text_field :disc_name, class: "" %>
+
+      <%= discnumber.fields_for :musics do |music| %>
+
+        <h4>曲名</h4>
+        <%= music.text_field :name %>
+        <h4>順番</h4>
+        <%= music.text_field :truck_number %>
+
+      <% end %>
+  <% end %>
 
   <h4> 値段</h4>
   <%= f.text_field :price, class: "" %>
