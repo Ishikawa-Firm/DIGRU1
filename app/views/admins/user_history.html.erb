@@ -13,13 +13,13 @@
     </tr>
   </thead>
 <tbody>
-<% @history.each do |history| %>
+<% @histories.each do |history| %>
 <tr>
   <td>
 	<%= history.cart.user.name %>
   </td>
   <td>
-	<%= history.product.created_at %>
+	<%= history.cart.created_at %>
   </td>
   <td>
 	<%= history.product.name %>
