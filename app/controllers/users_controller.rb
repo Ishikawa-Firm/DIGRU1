@@ -59,6 +59,11 @@ puts @test
 
   def buy
       if !params[:cart][:address_id].nil?
+      @cart_items = current_user.carts.all.last.cart_items
+       @cart_items.each do |c|
+         c.product.stock -= c.quantity
+         c.product.update(stock: c.product.stock)
+       end
       current_user.carts.all.last.update(buy_params)
       redirect_to users_thanks_path
     else
@@ -86,5 +91,9 @@ puts @test
 
   def buy_params
     params.require(:cart).permit(:address_id, :total_price, :status, :added_at)
+  end
+
+  def product_params
+    params.require(:product).permit(:stock)
   end
 end

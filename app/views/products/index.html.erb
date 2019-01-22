@@ -26,6 +26,9 @@
 <!-- ランキング -->
 		<div class="col-xs-4">
 			<div class="ranking">ランキング</div>
+			<% @cart_items.each do |r| %>
+				<%= r.product.name %>
+			<% end %>
 		</div>
 <!-- ランキング -->
     </div>

@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.where(deleted_at: nil).page(params[:page]).reverse_order
     @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
+    @cart_items = CartItem.all
   end
 
   def show
