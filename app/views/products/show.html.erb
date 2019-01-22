@@ -21,7 +21,11 @@
 
 					<p>ジャンル：<%= @product.genre%></p>
 					<p>レーベル：<%= @product.label%></p>
-					<p>在庫数：<%= @product.stock%></p>
+					<% if @product.stock > 1 %>
+						<p>在庫数：<%= @product.stock%></p>
+					<% else %>
+						<p> ❌売り切れ </p>
+					<% end %>
 
 					<!-- いいね機能 -->
 					<% if user_signed_in? %>
@@ -91,7 +95,11 @@
 		    		<%= f.hidden_field :product_id, value: @product.id %>
 		    		<%= f.hidden_field :price, value: @product.price %>
 		    		<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: 99%></p>
-		    		<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
+		    		<% if @product.stock > 1 %>
+		    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
+		    		<% else %>
+		    			<p> ❌現在品切れ中です </p>
+		    		<% end %>
 		    	<% end %>
 		    	<% else %>
 		    	<%= link_to "商品情報編集", edit_product_path(@product), class: "btn btn-primary" %>

@@ -16,7 +16,11 @@
 					    <!-- アーティスト名が登録できるようになったら，email を name に変更し，アーティスト名をクリックしたら artist#show へ飛べるようにする -->
 					    <p><%= product.artist.name %></p>
 					    <p>価格 | ¥<%= product.price %></p>
-					    <p>在庫数：<%= product.stock %></p>
+					    <% if product.stock > 1 %>
+						<p>在庫数：<%= product.stock%></p>
+						<% else %>
+							<p> ❌売り切れ </p>
+						<% end %>
 					</div>
 				<% end %>
 			</div>
@@ -25,7 +29,17 @@
 
 <!-- ランキング -->
 		<div class="col-xs-4">
-			<div class="ranking">ランキング</div>
+			<div class="ranking">
+				<h4>CD売り上げランキング（過去10日間）</h3>
+				<% @test.each_key do |key| %>
+				    <% products = Product.find_by(id: key) %>
+				    <p>
+				    <%= attachment_image_tag products, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+				    <%= products.name %>
+				   	/<%= products.artist.name %>
+				   	</p>
+			    <% end %>
+			</div>
 		</div>
 <!-- ランキング -->
     </div>
