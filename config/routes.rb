@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   get    '/users/address/:id/edit',   to: 'users#edit_address'
   patch  '/users/address/:id',   to: 'users#update_address'
   delete '/users/address/:id',   to: 'users#destroy_address'
-  get    '/users/select',    to: 'users#select'
+  get    '/users/session_select',    to: 'users#session_select'
+  get    '/users/registration_select',    to: 'users#registration_select'
   get    '/users/thanks',    to: 'users#thanks'
   resources :users, only: [:show, :edit, :update, :destroy]
 

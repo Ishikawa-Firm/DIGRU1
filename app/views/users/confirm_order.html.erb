@@ -1,5 +1,13 @@
 <h1>Users#Address</h1>
 
+<% @cart.each do |c| %>
+  <% if @cart.errors %>
+    <% c.errors.full_messages.each do |e| %>
+      <%= e %>
+    <% end %>
+  <% end %>
+<% end %>
+
 購入内容確認
 
 <div class="container">
@@ -27,9 +35,9 @@
 				配送先指定
 				<p> 総計：<%= @sum %>円 </p>
 				<%= form_for @cart, :url => {:controller => :users, :action => :buy, :id => @cart.id} do |f|%>
-					<%= f.collection_select :address_id, Address.all, :id, :other_address %>
+					<%= f.collection_select :address_id, current_user.addresses.all, :id, :other_address %>
 					<p> <%= f.hidden_field :total_price, value: @sum %> </p>
-					<p> <%= f.hidden_field :status, {value: '受付'} %></p>
+					<p> <%= f.hidden_field :status, value: '受付' %></p>
 					<p> <%= f.hidden_field :added_at, value: Time.now %>
 				<p><%= link_to '送付先新規登録', users_address_new_path, class: "btn btn-success btn-xm" %></p>
 			</div>

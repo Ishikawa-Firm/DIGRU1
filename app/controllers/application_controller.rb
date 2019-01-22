@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    products_path # ログイン後に遷移するpathを設定
+    case resource
+    when User
+      products_path
+    when Artist
+      artist_path(current_artist.id)
+    end
   end
 
   def after_sign_out_path_for(resource)
-    new_artist_session_path # ログアウト後に遷移するpathを設定
+    products_path
   end
 
   # cart_items controller
@@ -19,6 +24,10 @@ class ApplicationController < ActionController::Base
     return sum
   end
   # cart_items controller
+
+  def cart_empty
+    cart_empty = current_user.carts.all.last.id
+  end
 
   protected
 
