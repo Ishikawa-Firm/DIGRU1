@@ -1,0 +1,38 @@
+<h1>Admins#history!</h1>
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>購入者名</th>
+      <th>購入日時</th>
+      <th>購入内容</th>
+      <th>購入価格総計</th>
+      <th>送付先</th>
+      <th>ステータス</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+<tbody>
+<% @history.each do |history| %>
+<tr>
+  <td>
+	<%= history.cart.user.name %>
+  </td>
+  <td>
+	<%= history.product.created_at %>
+  </td>
+  <td>
+	<%= history.product.name %>
+  </td>
+  <td>
+  	<%= history.price %>
+  </td>
+  <td>
+  	送付先
+  </td>
+  <td>
+  	ステータス
+  </td>
+<% end %>
+</tbody>
+</table>

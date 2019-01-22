@@ -1,0 +1,28 @@
+<% if @address.errors.any? %>
+    <div id="error_explanation" class="alert-danger">
+      <h2><%= @address.errors.count %> errors prohibited this obj from being saved:</h2>
+      <ul>
+        <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h2>新規配送先登録フォーム</h2>
+
+<%= form_for @address, :url => {:controller => :users, :action => :create_address, :id => @address.id} do |f|%>
+
+	ユーザ名：<%= current_user.name %>
+
+	<p>配送先ご氏名：<%= f.text_field :other_name, class: "", autofocus: true %></p>
+
+	<p>配送先郵便番号：<%= f.text_field :other_postal_code, class: "" %></p>
+
+	<p>配送先ご住所：<%= f.text_field :other_address, class: "" %></p>
+
+	<p><%= f.submit "配送先登録", class: "btn btn-primary btn-xm" %></p>
+
+	<p><%= link_to 'カート内容確認画面へ戻る', users_confirm_order_path, class: "" %></p>
+
+<% end %>

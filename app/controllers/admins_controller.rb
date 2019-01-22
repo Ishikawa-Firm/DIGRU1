@@ -9,6 +9,10 @@ class AdminsController < ApplicationController
   end
 
   def user_history
+    @products = Product.all
+    @users = User.all
+    @carts = Cart.where(user_id: @users)
+    @history = CartItem.where(product_id: @products, cart_id: @carts)
   end
 
   def user_index

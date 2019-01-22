@@ -1,0 +1,22 @@
+<h1 class="select-text">どちらか選択してください</h1>
+<h4 class="select-text">ログイン画面へ遷移します</h4><br>
+<h5 class="select-text">※会員登録される方は<%= link_to new_user_session_path do %>こちら<% end %>から</h5>
+<div class="select-box">
+	<%= link_to new_user_session_path, class: "" do %>
+		<div class= "select_user_login">
+			<div class="user-white-image">
+				<li>一般の方はこちら</li>
+			</div>
+		</div>
+	<% end %>
+
+	<%= link_to new_artist_session_path, class: "" do %>
+		<div class= "select_artist_login">
+			<div class="bg-artist-image">
+				<div class="artist-white-image">
+					<li>アーティストの方はこちら</li>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
