@@ -1,8 +1,6 @@
 class ProductsController < ApplicationController
   def new
     @product = Product.new
-    disknumber = @product.disk_numbers.build
-    
   end
 
   def create
