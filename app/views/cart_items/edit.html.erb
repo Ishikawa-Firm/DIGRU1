@@ -1,1 +1,49 @@
-cart_items#edit
+<h2>商品ステータス編集</h2>
+
+<table>
+	<tr>
+		<th>購入ユーザ名</th>
+		<td><%= @cart_item.cart.user.name %></td>
+	</tr>
+
+	<tr>
+		<th>シングル/アルバム名</th>
+		<td style="padding-left: 30px;"><%= @cart_item.product.name %></td>
+	</tr>
+	<tr>
+		<th>価格</th>
+		<td><%= @cart_item.product.price %>円（税込）</td>
+	</tr>
+	<tr>
+		<th>購入枚数</th>
+		<td><%= @cart_item.quantity %>枚</td>
+	</tr>
+	<tr>
+		<th>送付先氏名</th>
+		<td><%= @user.other_name %></td>
+	</tr>
+	<tr>
+		<th>送付先郵便番号</th>
+		<td><%= @user.other_postal_code %></td>
+	</tr>
+	<tr>
+		<th>送付先住所</th>
+		<td><%= @user.other_address %></td>
+	</tr>
+	
+</table>
+
+
+
+<br>
+<br>
+<br>
+<div>
+	t.integer "product_id"
+    t.integer "cart_id"
+    t.integer "price"
+    t.integer "quantity"
+    t.integer "status", limit: 1, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+</div>

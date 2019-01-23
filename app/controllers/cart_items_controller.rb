@@ -62,7 +62,8 @@ class CartItemsController < ApplicationController
 	end
 
 	def edit
-		@cart_item = Cart_item.find(params[:id])
+		@cart_item = CartItem.find(params[:id])
+		@user = @cart_item.cart.user.addresses.find_by(["id = ?", @cart_item.cart.address_id])
 	end
 
 	private

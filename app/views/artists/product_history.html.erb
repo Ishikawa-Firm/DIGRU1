@@ -46,14 +46,17 @@
 
   <!--送付先-->
   <td>
+    <% @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id]) %>
+  	<%= @user.other_name %>
   </td>
 
   <!--ステータス-->
   <td>
-  	<%= link_to @edit_cart_item_path(h.id) do %>
+  	<%= link_to edit_cart_item_path(h.id) do %>
   		<%= h.status %>
   	<% end %>
   </td>
+
 <% end %>
 </tbody>
 </table>
