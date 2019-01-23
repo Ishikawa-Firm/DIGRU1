@@ -74,6 +74,7 @@ class UsersController < ApplicationController
         @cart = current_user.carts.all.last
         @sum = sum(@cart_items)
         render 'users/confirm_order'
+      end
   end
 
   def session_select

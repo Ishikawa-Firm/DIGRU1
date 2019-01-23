@@ -11,8 +11,8 @@ class AdminsController < ApplicationController
   def user_history
     @users = User.all
     @products = Product.all
-    @carts = Cart.where(user_id: @users)
-    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+    @carts = Cart.where(user_id: @users).order("created_at")
+    @histories = CartItem.where(product_id: @products, cart_id: @carts).order("cart_id DESC")
   end
 
   def user_index
