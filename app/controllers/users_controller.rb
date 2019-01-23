@@ -4,9 +4,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #特定のユーザーが登録したお気に入りを全て取得する
     # @favorites = Favorite.where("user_id = ?", @user)
-@test = Favorite.where(user_id: @user.id)
-# puts @favorites
-puts @test
+    @test = Favorite.where(user_id: @user.id)
+    # puts @favorites
+    puts @test
     # @page = Kaminari.paginate_array(@favorites).page(params[:page])
     # puts @page
     @favorites = @test.page(params[:page])
@@ -74,7 +74,6 @@ puts @test
         @cart = current_user.carts.all.last
         @sum = sum(@cart_items)
         render 'users/confirm_order'
-    end
   end
 
   def session_select

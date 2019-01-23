@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get    '/admins/user_history',    to: 'admins#user_history'
   get    '/admins/user_index',    to: 'admins#user_index'
   get    '/admins/user_search',    to: 'admins#user_search'
-  get    '/admins/user_history',    to: 'admins#user_history'
   resources :admins, only: [:show, :edit, :update]
 
   get    '/users/help',    to: 'users#help'

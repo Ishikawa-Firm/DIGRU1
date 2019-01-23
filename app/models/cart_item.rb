@@ -5,5 +5,4 @@ class CartItem < ApplicationRecord
 	def sub_total
 		product.price * quantity
 	end
-
 end
