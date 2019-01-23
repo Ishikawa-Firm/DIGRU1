@@ -1,48 +1,56 @@
 <h2>商品ステータス編集</h2>
 
-<table class="table">
-	<tr>
-		<th>購入ユーザ名</th>
-		<td><%= @cart_item.cart.user.name %></td>
-	</tr>
+<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+	<div class="row">
+		<div class="col-xs-8">
+			<table class="table">
+				<tr>
+					<th>購入ユーザ名</th>
+					<td><%= @cart_item.cart.user.name %></td>
+				</tr>
 
-	<tr>
-		<th>シングル/アルバム名</th>
-		<td><%= @cart_item.product.name %></td>
-	</tr>
-	<tr>
-		<th>価格</th>
-		<td><%= @cart_item.product.price %>円（税込）</td>
-	</tr>
-	<tr>
-		<th>購入枚数</th>
-		<td><%= @cart_item.quantity %>枚</td>
-	</tr>
-	<tr>
-		<th>送付先氏名</th>
-		<td><%= @user.other_name %></td>
-	</tr>
-	<tr>
-		<th>送付先郵便番号</th>
-		<td><%= @user.other_postal_code %></td>
-	</tr>
-	<tr>
-		<th>送付先住所</th>
-		<td><%= @user.other_address %></td>
-	</tr>
-	<tr>
-		<th>購入日時</th>
-		<td><%= @cart_item.cart.added_at %></td>
-	</tr>
-	<tr>
-		<th>商品ステータス</th>
-		<td>
-		<%= form_for @cart_item, :url => {:controller => :cart_items, :action => :update_item, :id => @cart_item.id}  do |f| %>
-		    <%= f.hidden_field :quantity, value: @cart_item.quantity %>
-		    <%= f.hidden_field :product_id, value: @cart_item.product_id %>
-		    <%= f.select :status, CartItem.statuses.keys.to_a, {} %>
-		    <%= f.submit "ステータスを更新", class: "btn col-lg-12 btn-primary" %>
-		<% end %>
-		</td>
-	</tr>
-</table>
+				<tr>
+					<th>シングル/アルバム名</th>
+					<td><%= @cart_item.product.name %></td>
+				</tr>
+				<tr>
+					<th>単価</th>
+					<td><%= @cart_item.product.price %>円（税込）</td>
+				</tr>
+				<tr>
+					<th>受注数量</th>
+					<td><%= @cart_item.quantity %>枚</td>
+				</tr>
+				<tr>
+					<th>小計（= 単価 × 受注数量）</th>
+					<td><%= @cart_item.product.price %>円（税込）× <%= @cart_item.quantity %>枚 = <span class="product_history_total_price"><%= @cart_item.product.price * @cart_item.quantity %>円（税込）</span> </td>
+				</tr>
+				<tr>
+					<th>送付先氏名</th>
+					<td><%= @user.other_name %></td>
+				</tr>
+				<tr>
+					<th>送付先郵便番号</th>
+					<td><%= @user.other_postal_code %></td>
+				</tr>
+				<tr>
+					<th>送付先住所</th>
+					<td><%= @user.other_address %></td>
+				</tr>
+				<tr>
+					<th>購入日時</th>
+					<td><%= @cart_item.cart.added_at %></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-xs-4">
+			<%= form_for @cart_item, :url => {:controller => :cart_items, :action => :update_item, :id => @cart_item.id}  do |f| %>
+			    <%= f.hidden_field :quantity, value: @cart_item.quantity %>
+			    <%= f.hidden_field :product_id, value: @cart_item.product_id %>
+			    <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
+			    <%= f.select :status, CartItem.restrict_status.keys.to_a, {} %>
+			    <%= f.submit "ステータスを更新", class: "btn col-lg-12 btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+</div>

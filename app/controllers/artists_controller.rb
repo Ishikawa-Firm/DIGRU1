@@ -33,7 +33,9 @@ class ArtistsController < ApplicationController
     @products = current_artist.products.all
     @carts = Cart.where(user_id: User.all)
     @histories = CartItem.where(product_id: @products, cart_id: @carts)
-
+    @histories.each do |h|
+      @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
+    end
   end
 
   private
