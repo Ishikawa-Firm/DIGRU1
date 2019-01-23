@@ -57,5 +57,7 @@ Rails.application.routes.draw do
   patch  '/carts/:id',    to: 'users#buy'
   resources :carts, only: [:show]
 
+  get '/addresses/:id' => 'addresses#show'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
