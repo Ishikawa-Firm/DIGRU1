@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get    '/artists/index',    to: 'artists#index'
   resources :artists, only: [:index, :show, :edit, :update, :destroy]
 
+  get    '/products/index',    to: 'products#index'
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resource :comments, only: [:create, :update, :destroy]

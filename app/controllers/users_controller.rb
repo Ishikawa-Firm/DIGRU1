@@ -58,15 +58,22 @@ class UsersController < ApplicationController
   end
 
   def buy
+      # 送付先選択済み
       if !params[:cart][:address_id].nil?
+        @cart_items = current_user.carts.all.last.cart_items
+        # カートに入っている商品の数量分の在庫数を減らす
+        @cart_items.each do |c|
+          c.product.stock -= c.quantity
+          c.product.update(stock: c.product.stock)
+        end
       current_user.carts.all.last.update(buy_params)
       redirect_to users_thanks_path
-    else
-      @cart_items = current_user.carts.all.last.cart_items
-      @cart = current_user.carts.all.last
-      @sum = sum(@cart_items)
-      render 'users/confirm_order'
-    end
+      # 送付先未選択
+      else
+        @cart_items = current_user.carts.all.last.cart_items
+        @cart = current_user.carts.all.last
+        @sum = sum(@cart_items)
+        render 'users/confirm_order'
   end
 
   def session_select

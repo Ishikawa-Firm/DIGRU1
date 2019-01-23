@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 	has_many :cart_items
 	has_many :disc_numbers
+	accepts_nested_attributes_for :disc_numbers
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :users, through: :favorites
@@ -13,6 +14,14 @@ class Product < ApplicationRecord
     def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
     end
+
+	def self.search(search)
+    	if search
+       		Product.where(['name LIKE ?', "%#{search}%"])
+	    else
+    	    Product.all
+	    end
+	  end
 
 	# validates :name, presence: true
 	# validates :price, presence: true
