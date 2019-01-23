@@ -60,13 +60,11 @@
 			<!-- 商品へのコメント -->
 			<div class="border3"> コメント</div>
 			<div class="comment">
-				<p> コメント一覧</p>
 				    <% @product.comments.each do |comment| %>
-				    	名前：<%= comment.user.name %>
-				    	投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %>
-					    コメント：<%= comment.comment_text %>
-				         <%= link_to "編集", product_path(@product.id) %>
-				         <%= link_to "削除", product_comments_path(@product.id), method: :delete %>
+				    	<p>名前：<%= comment.user.name %>
+				    	 / 投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %><p>
+					    <p>コメント：<%= comment.comment_text %>
+				         <%= link_to "削除", product_comments_path(@product.id), method: :delete %><p>
 				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
