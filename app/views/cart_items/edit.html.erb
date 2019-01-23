@@ -1,48 +1,93 @@
-<h2>商品ステータス編集</h2>
+<h2>商品ステータス管理</h2>
+<br>
 
-<table class="table">
-	<tr>
-		<th>購入ユーザ名</th>
-		<td><%= @cart_item.cart.user.name %></td>
-	</tr>
+ステータス変更方法<span class= "only-customer"> * お客様のみ表示されます.</span>
+<div class= "status-description">
+	<table class= "">
+		<tr>
+			<th>「受付」</th>
+			<td>デフォルトの商品の状態です．</td>
+		</tr>
+		<tr>
+			<th>「商品準備中」</th>
+			<td>受注を確認した後に変更します．</td>
+		</tr>
+		<tr>
+			<th>「配送済み」</th>
+			<td>商品配送後に変更します．</td>
+		</tr>
+		<tr>
+			<th>*「商品到着」</th>
+			<td>商品到着を確認したら，お客様が変更します．</td>
+		</tr>
+	</table>
+</div>
 
-	<tr>
-		<th>シングル/アルバム名</th>
-		<td><%= @cart_item.product.name %></td>
-	</tr>
-	<tr>
-		<th>価格</th>
-		<td><%= @cart_item.product.price %>円（税込）</td>
-	</tr>
-	<tr>
-		<th>購入枚数</th>
-		<td><%= @cart_item.quantity %>枚</td>
-	</tr>
-	<tr>
-		<th>送付先氏名</th>
-		<td><%= @user.other_name %></td>
-	</tr>
-	<tr>
-		<th>送付先郵便番号</th>
-		<td><%= @user.other_postal_code %></td>
-	</tr>
-	<tr>
-		<th>送付先住所</th>
-		<td><%= @user.other_address %></td>
-	</tr>
-	<tr>
-		<th>購入日時</th>
-		<td><%= @cart_item.cart.added_at %></td>
-	</tr>
-	<tr>
-		<th>商品ステータス</th>
-		<td>
-		<%= form_for @cart_item, :url => {:controller => :cart_items, :action => :update_item, :id => @cart_item.id}  do |f| %>
-		    <%= f.hidden_field :quantity, value: @cart_item.quantity %>
-		    <%= f.hidden_field :product_id, value: @cart_item.product_id %>
-		    <%= f.select :status, CartItem.statuses.keys.to_a, {} %>
-		    <%= f.submit "ステータスを更新", class: "btn col-lg-12 btn-primary" %>
-		<% end %>
-		</td>
-	</tr>
-</table>
+
+<%= form_for @cart_item, :url => {:controller => :cart_items, :action => :update_item, :id => @cart_item.id}  do |f| %>
+	<%= f.hidden_field :quantity, value: @cart_item.quantity %>
+    <%= f.hidden_field :product_id, value: @cart_item.product_id %>
+    <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
+    <p><%= f.select :status, CartItem.restrict_status.keys.to_a, {}, class:"select-status" %></p>
+    <p><%= f.submit "更新", class: "btn btn-primary update-status-button" %></p>
+<% end %>
+
+<div class="clearfix"></div>
+
+    <div class="container product-history-box"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+		<div class="row">
+			<div class="col-xs-3">
+				<%= attachment_image_tag @cart_item.product, :image, format: 'jpeg', fallback: "no_image.jpg", class:"product-history-image" %>
+			</div>
+			<div class="col-xs-8">
+				<table class="table">
+					<tr>
+						<!--何故かCSSが効かなかったのでこちらに表記しました．-->
+						<th style="border: none;">≫受注内容</th>
+						<td style="border: none;"></td>
+					</tr>
+					<tr>
+						<th>購入ユーザ名</th>
+						<td><%= @cart_item.cart.user.name %>様</td>
+					</tr>
+
+					<tr>
+						<th>シングル/アルバム名</th>
+						<td style="font-size: 20px; font-weight: bold;"><%= @cart_item.product.name %></td>
+					</tr>
+					<tr>
+						<th>単価</th>
+						<td><%= @cart_item.product.price %>円（税込）</td>
+					</tr>
+					<tr>
+						<th>受注数量</th>
+						<td><%= @cart_item.quantity %>枚</td>
+					</tr>
+					<tr>
+						<th>小計（= 単価 × 受注数量）</th>
+						<td><%= @cart_item.product.price %>円（税込）× <%= @cart_item.quantity %>枚 = <span class="product-history-total-price"><%= @cart_item.product.price * @cart_item.quantity %>円（税込）</span> </td>
+					</tr>
+					<tr>
+						<th>購入日時</th>
+						<td><%= @cart_item.cart.added_at %></td>
+					</tr>
+					<tr>
+						<th><br>≫商品送付先</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>ご氏名</th>
+						<td><%= @user.other_name %></td>
+					</tr>
+					<tr>
+						<th>ご住所</th>
+						<td><%= @user.other_postal_code %><br><%= @user.other_address %></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-1">
+			</div>
+		</div>
+	</div>
+
+

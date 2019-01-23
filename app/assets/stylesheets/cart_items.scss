@@ -2,5 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.update-status-button {
+.status-description {
+	width: 50%;
+	border: solid 0.5px #A4A4A4;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+
+.only-customer {
+	font-size: 8px;
+	padding-left: 20px;
+}
+
+.product-history-image {
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;
+}
+
+.change-status-text {
+	border: none;
+}
+
+.product-history-total-price {
+	color: #DF0202;
+}
+
+.select-status{
+	color: #DF0202;
+	font-weight: bold;
+	font-size: 20px;
+	border: solid 2px #DF0202;
+	margin-right: 10px;
+	width: 39%;
+	height: 35px;
+	float: left;
+}
+
+.update-status-button{
+	width: 10%;
+	float: left;
+}
+
+.product-history-box{
+	padding-top: 30px;
+	padding-left: 30px
 }
