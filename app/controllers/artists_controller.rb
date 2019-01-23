@@ -33,7 +33,7 @@ class ArtistsController < ApplicationController
     @products = Product.all
     @carts = Cart.where(user_id: User.all)
     # @histories = CartItem.where(product_id: @products, cart_id: @carts)
-    @tests = CartItem.group(:cart_id).where(product_id: @products, cart_id: @carts)
+    @histories = CartItem.where(product_id: @products, cart_id: @carts)
     # @tests.wherecart_id
   end
 
