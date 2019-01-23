@@ -30,11 +30,10 @@ class ArtistsController < ApplicationController
   end
 
   def product_history
-    @products = Product.all
+    @products = current_artist.products.all
     @carts = Cart.where(user_id: User.all)
-    # @histories = CartItem.where(product_id: @products, cart_id: @carts)
     @histories = CartItem.where(product_id: @products, cart_id: @carts)
-    # @tests.wherecart_id
+
   end
 
   private

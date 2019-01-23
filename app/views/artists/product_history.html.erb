@@ -1,27 +1,35 @@
 <h3>Artists#history</h3>
 
-<h1> アーティスト受注履歴 </h1>
-
+<h1> <%= current_artist.name %>の受注履歴 </h1>
 
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
+      <th>アーティスト名</th>
       <th>購入者名</th>
-      <th>購入日時</th>
-      <th>購入内容</th>
-      <th>購入価格小計</th>
-      <th>購入枚数</th>
-      <th>送付先</th>
+      <th>カートID</th>
+      <th>受注日時</th>
+      <th>受注商品名</th>
+      <th>商品価格小計（税込）</th>
+      <th>受注枚数</th>
+      <th>送付先氏名|住所</th>
       <th>ステータス</th>
-      <th colspan="6"></th>
     </tr>
   </thead>
 <tbody>
 <% @histories.each do |h| %>
 <tr>
+  <td>
+  <%= h.product.artist.name %>
+  </td>
   <!--購入者名前-->
   <td>
 	<%= h.cart.user.name %>
+  </td>
+
+  <!--カートID-->
+  <td>
+  <%= h.cart_id %>
   </td>
 
   <!--購入日時-->
@@ -36,7 +44,7 @@
 
   <!--小計-->
   <td>
-  	<%= h.price %>
+  	<%= h.price.to_s(:delimited) %>円
   </td>
 
   <!--購入枚数-->
@@ -47,7 +55,9 @@
   <!--送付先-->
   <td>
     <% @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id]) %>
-  	<%= @user.other_name %>
+  	<%= @user.other_name %>|
+    <%= @user.other_postal_code %>
+    <%= @user.other_address %>
   </td>
 
   <!--ステータス-->

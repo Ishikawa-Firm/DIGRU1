@@ -45,7 +45,11 @@ class CartItemsController < ApplicationController
 	def update_item
 		@cart_item = CartItem.find(params[:id])
 		if @cart_item.update(cart_item_params)
-        	redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
+			if @cart_item.product.artist_id == current_artist.id
+				redirect_to artists_product_history_path
+			else
+				redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
+        	end
         else
         	@cart_items = CartItem.where(cart_id: @cart_item.cart.id)
         	render 'carts/show'
