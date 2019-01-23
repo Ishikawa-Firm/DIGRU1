@@ -19,7 +19,7 @@
 					    <% if product.stock > 1 %>
 						<p>在庫数：<%= product.stock%></p>
 						<% else %>
-							<p> ❌売り切れ </p>
+							<p> ❌ Sold out </p>
 						<% end %>
 					</div>
 				<% end %>
@@ -30,15 +30,34 @@
 <!-- ランキング -->
 		<div class="col-xs-4">
 			<div class="ranking">
-				<h4>CD売り上げランキング（過去10日間）</h3>
-				<% @test.each_key do |key| %>
-				    <% products = Product.find_by(id: key) %>
-				    <p>
-				    <%= attachment_image_tag products, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-				    <%= products.name %>
-				   	/<%= products.artist.name %>
-				   	</p>
-			    <% end %>
+				<h4> 売れ筋ランキング（過去10日間）</h4>
+				<div class="ranking_rank">
+					<li>1</li>
+					<%= image_tag 'rank1.png', class:"rank1" %>
+					<li>2</li>
+					<%= image_tag 'rank2.png', class:"rank2" %>
+					<li>3</li>
+					<%= image_tag 'rank3.png', class:"rank3" %>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+				</div>
+				<div class="ranking_box">
+					<% @test.each_key do |key| %>
+					    <% products = Product.find_by(id: key) %>
+					    <div class="ranking_item">
+						    <%= link_to product_path(products) do %>
+						    	<%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
+							    <%= products.name %>
+							   	/<%= products.artist.name %>
+							<% end %>
+						</div>
+				    <% end %>
+				</div>
 			</div>
 		</div>
 <!-- ランキング -->
