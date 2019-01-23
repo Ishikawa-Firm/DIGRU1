@@ -61,6 +61,10 @@ class CartItemsController < ApplicationController
         end
 	end
 
+	def edit
+		@cart_item = Cart_item.find(params[:id])
+	end
+
 	private
 		def cart_item_params
 			params.require(:cart_item).permit(:product_id, :price, :quantity, :status)
