@@ -5,5 +5,4 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     get addresses_show_url
     assert_response :success
   end
-
 end

@@ -1,0 +1,50 @@
+<h3>Artists#history</h3>
+
+<h1> アーティスト受注履歴 </h1>
+
+
+<table class='table table-hover table-inverse'>
+	<thead>
+	    <tr>
+		    <th>購入者名</th>
+		    <th>購入日時</th>
+		    <th>購入内容</th>
+		    <th>購入価格小計</th>
+		    <th>購入価格総計</th>
+		    <th>送付先</th>
+		    <th>ステータス</th>
+		    <th colspan="6"></th>
+	    </tr>
+	  </thead>
+	<tbody>
+		<% @tests.each do |test| %>
+		<tr>
+			<td>
+				<%= test.cart.user.name %>
+			</td>
+
+			<td>
+				<%= test.cart.added_at %>
+			</td>
+
+			<!--購入内容-->
+			<td>
+		  	</td>
+
+			<!--小計一覧-->
+		  	<td>
+			</td>
+			<!--総計-->
+			<td>
+				<%= test.cart.total_price %>
+			</td>
+			<!--送付先-->
+			<td>
+			</td>
+			<!--ステータス-->
+			<td>
+				<%= test.cart.status %>
+			</td>
+		</tr>
+		<% end %>
+

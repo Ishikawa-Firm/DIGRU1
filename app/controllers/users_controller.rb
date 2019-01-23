@@ -96,6 +96,6 @@ class UsersController < ApplicationController
   end
 
   def buy_params
-    params.require(:cart).permit(:address_id, :total_price, :status, :added_at)
+    params.require(:cart).permit(:address_id, :total_price, :added_at)
   end
 end
