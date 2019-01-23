@@ -4,7 +4,6 @@ class CreateCarts < ActiveRecord::Migration[5.2]
     t.integer  :user_id
     t.integer  :address_id
 		t.integer  :total_price
-		t.integer  :status, default: 0, null: false, limit: 1
 		t.datetime :added_at
         t.timestamps
     end
