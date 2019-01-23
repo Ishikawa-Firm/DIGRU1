@@ -1,2 +1,8 @@
-<h1>Admins#show!</h1>
-<p>Find me in app/views/admins/show.html.erb</p>
+
+		<h1>管理者用マイページ</h1>
+			<%= link_to "トップページ", products_path, class: 'btn btn-info col-xs-7' %>
+   		 <%= link_to "ユーザー一覧", admins_user_index_path, class: 'btn btn-info col-xs-7' %>
+		    <%= link_to "アーティスト一覧", artists_index_path, class: 'btn btn-info col-xs-7' %>
+		    <%= link_to "購入履歴", admins_user_history_path, class: 'btn btn-info col-xs-7' %>
+		    <%= link_to "管理者情報編集", edit_admin_path, class: 'btn btn-info col-xs-7' %>
+
