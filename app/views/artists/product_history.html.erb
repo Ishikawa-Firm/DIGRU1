@@ -1,0 +1,59 @@
+<h3>Artists#history</h3>
+
+<h1> アーティスト受注履歴 </h1>
+
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>購入者名</th>
+      <th>購入日時</th>
+      <th>購入内容</th>
+      <th>購入価格小計</th>
+      <th>購入枚数</th>
+      <th>送付先</th>
+      <th>ステータス</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+<tbody>
+<% @histories.each do |h| %>
+<tr>
+  <!--購入者名前-->
+  <td>
+	<%= h.cart.user.name %>
+  </td>
+
+  <!--購入日時-->
+  <td>
+	<%= h.cart.added_at %>
+  </td>
+
+  <!--購入内容-->
+  <td>
+  	<%= h.product.name %>
+  </td>
+
+  <!--小計-->
+  <td>
+  	<%= h.price %>
+  </td>
+
+  <!--購入枚数-->
+  <td>
+  	<%= h.quantity %>
+　</td>
+
+  <!--送付先-->
+  <td>
+  </td>
+
+  <!--ステータス-->
+  <td>
+  	<%= link_to @edit_cart_item_path(h.id) do %>
+  		<%= h.status %>
+  	<% end %>
+  </td>
+<% end %>
+</tbody>
+</table>

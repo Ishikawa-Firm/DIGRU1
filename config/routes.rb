@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
 
   # get    '/artists/search/',    to: 'artists#search'
-  get    '/artists/history',    to: 'artists#product_history'
+  get    '/artists/product_history',    to: 'artists#product_history'
   patch  '/artists/history',    to: 'artists#update_history'
   get    '/artists/index',    to: 'artists#index'
   resources :artists, only: [:index, :show, :edit, :update, :destroy]
@@ -52,9 +52,12 @@ Rails.application.routes.draw do
   post   '/cart_items/',    to: 'cart_items#add_item'
   patch  '/cart_items/:id',    to: 'cart_items#update_item'
   delete '/cart_items/:id',    to: 'cart_items#destroy_item'
+  resources :cart_items, only: [:edit]
 
   patch  '/carts/:id',    to: 'users#buy'
   resources :carts, only: [:show]
+
+  get '/addresses/:id' => 'addresses#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

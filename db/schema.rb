@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_121342) do
     t.integer "cart_id"
     t.integer "price"
     t.integer "quantity"
+    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_01_19_121342) do
     t.integer "user_id"
     t.integer "address_id"
     t.integer "total_price"
-    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "added_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

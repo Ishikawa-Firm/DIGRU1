@@ -1,3 +1,4 @@
+
 <h1>ユーザー購入履歴一覧</h1>
 
 <table class='table table-hover table-inverse'>
@@ -19,7 +20,7 @@
 	<%= history.cart.user.name %>
   </td>
   <td>
-	<%= history.cart.added_at %>
+	<%= history.cart.created_at %>
   </td>
   <td>
 	<%= history.product.name %>
@@ -28,9 +29,6 @@
   <%= history.price %>
   </td>
   <td>
-  <%= history.cart.address.other_postal_code %><br>
-  <%= history.cart.address.other_address %><br>
-  <%= history.cart.address.other_name %>
   </td>
   <td>
   	<%= history.cart.status %>
