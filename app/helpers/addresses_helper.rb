@@ -1,3 +1,2 @@
 module AddressesHelper
 end
-

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'addresses/show'
   root to: 'products#index'
 
   get 'admins/show'
