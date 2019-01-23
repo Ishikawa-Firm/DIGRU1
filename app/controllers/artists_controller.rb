@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @products = @artist.products.page(params[:page]).reverse_order
+    @products = @artist.products.page(params[:page]).reverse_order.where(deleted_at: nil)
   end
 
   def edit
