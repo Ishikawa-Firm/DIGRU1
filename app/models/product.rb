@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 	has_many :cart_items
 	has_many :disc_numbers
-	accepts_nested_attributes_for :disc_numbers
+	accepts_nested_attributes_for :disc_numbers, allow_destroy: true
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :users, through: :favorites
