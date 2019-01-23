@@ -12,12 +12,16 @@
 							<%= attachment_image_tag c.product, :image, size: "60x60" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
 						</div>
 						<div class="cart-item-detail-info">
-							<span class="order-cart-item-name"><%= c.product.name%></span>
-							/<%= c.product.artist.name %>
-							<p class="order-cart-item-quantity">
+							<div class="">
+								<span class="order-cart-item-name"><%= c.product.name%></span>
+								/<%= c.product.artist.name %>
+							</div>
+							<div class="order-cart-item-sub-total">
+								<%= (c.sub_total).to_s(:delimited) %>円 (税込)
+							</div>
+							<div class="order-cart-item-quantity">
 								数量：<%= c.quantity %>
-								<span class="order-cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円</span>
-							</p>
+							</div>
 						</div>
 					</div>
 					<div class="order-border"></div>
@@ -25,18 +29,26 @@
 			</div>
 			<div class="address-select">
 				配送先指定
-				<p> 総計：<%= @sum %>円 </p>
 				<%= form_for @cart, :url => {:controller => :users, :action => :buy, :id => @cart.id} do |f|%>
 					<%= f.collection_select :address_id, current_user.addresses.all, :id, :other_address %>
 					<p> <%= f.hidden_field :total_price, value: @sum %> </p>
-					<p> <%= f.hidden_field :status, value: '受付' %></p>
 					<p> <%= f.hidden_field :added_at, value: Time.now %>
 				<p><%= link_to '送付先新規登録', users_address_new_path, class: "btn btn-success btn-xm" %></p>
 			</div>
 		</div>
 		<div class="col-xs-4">
 			<div class="show-sidebar">
-		        <p><%= f.submit "購入を確定する", class: "btn btn-danger" %><p>
+				<div class="select-buy">
+					<!-- 配送先が指定されている場合 -->
+					<% if !current_user.addresses.empty? %>
+			        	<p class= "clearfix"><%= f.submit "購入を確定する", class: "col-xs-8 btn btn-lg btn-danger" %></p>
+			        <!-- 配送先が指定されていない場合（新規ユーザ） -->
+			        <% else %>
+			        	<p class= "please-add-address"> ※ 配送先を指定してください </p>
+			        <% end %>
+			        <p class= "total-price-text"> 総合計</p>
+			        <p class= "total-price"><%= @sum.to_s(:delimited) %>円<span>(税込)</span></p>
+		    	</div>
 		    </div>
 		    <% end %>
 		</div>

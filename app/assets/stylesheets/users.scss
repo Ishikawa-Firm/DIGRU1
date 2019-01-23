@@ -77,7 +77,6 @@
 .confirm-order{
 	width: 100%;
 	height: 100%;
-	background-color: yellow;
 }
 
 .order-cart-item {
@@ -97,19 +96,15 @@
 	font-size: 15px;
 }
 
-.order-cart-item-quantity {
-	padding-top: 15px;
-}
-
 .order-cart-item-sub-total{
-	font-size: 15px;
-	color: red;
+	padding-top: 15px;
+	color: #DF0202;
+	float: left;
 }
 
-.confirm-order{
-	width: 100%;
-	height: 100%;
-	background-color: yellow;
+.order-cart-item-quantity {
+	padding: 15px 0 8px 30px;
+	float: left;
 }
 
 .address-select {
@@ -117,3 +112,35 @@
 	height: 100%;
 	background-color: orange;
 }
+
+.select-buy{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.please-add-address{
+	font-size: 20px;
+	font-weight: bold;
+	color: #DF0202;
+}
+
+.total-price-text{
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 6px;
+	float: left;
+}
+
+.total-price {
+	font-size: 25px;
+	font-weight: bold;
+	color: #BC0303;
+	padding-left: 30px;
+	float: left;
+
+	span {
+	font-weight: normal;
+	font-size: 15px;
+	}
+}
+
