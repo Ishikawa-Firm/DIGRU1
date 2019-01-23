@@ -35,6 +35,7 @@ class ArtistsController < ApplicationController
     # @histories = CartItem.where(product_id: @products, cart_id: @carts)
     @histories = CartItem.where(product_id: @products, cart_id: @carts)
     # @tests.wherecart_id
+    @
   end
 
   private
