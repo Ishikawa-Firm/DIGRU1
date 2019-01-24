@@ -252,7 +252,7 @@ RESPONSIVE
 	logo
 \*----------------------------*/
 .nav-logo {
-     width: 30%;
+     width: 20%;
      float: left;
 }
 
@@ -264,6 +264,7 @@ RESPONSIVE
 	menu
 \*----------------------------*/
 
+
 .navbar-nav {
      text-align: center;
 }
@@ -273,7 +274,6 @@ RESPONSIVE
 }
  .nav-menu li {
      position: relative;
-
      text-transform: capitalize;
      -webkit-box-shadow: -1px 0px 0px 0px #eceef2 inset;
      box-shadow: -1px 0px 0px 0px #eceef2 inset;
@@ -294,19 +294,19 @@ RESPONSIVE
      -webkit-transition: 0.2s width;
      transition: 0.2s width;
 }
- .cat-1:after {
+ .navbar-nav li .cat-1:after {
      background-color: #4BB92F;
 }
  .navbar-nav li .cat-2:after {
      background-color: #ff8700;
 }
- .nav-menu li .cat-3:after {
+ .navbar-nav li .cat-3:after {
      background-color: #0078ff;
 }
- .nav-menu li .cat-4:after {
+ .navbar-nav li .cat-4:after {
      background-color: #8d00ff;
 }
- .nav-menu li :hover, .nav-menu li :focus {
+ .navbar-nav li :hover, .nav-menu li :focus {
      background-color: transparent;
      text-decoration: none;
 }
