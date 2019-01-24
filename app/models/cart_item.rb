@@ -8,6 +8,10 @@ class CartItem < ApplicationRecord
 	    statuses.except(:商品到着)
 	end
 
+	def self.restrict_status_user
+		statuses.except(:受付, :商品準備中)
+	end
+
 	def sub_total
 		product.price * quantity
 	end

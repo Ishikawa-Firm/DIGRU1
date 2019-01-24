@@ -29,9 +29,12 @@
   <%= history.price %>
   </td>
   <td>
+    <%= @user.other_name %>|
+    <%= @user.other_postal_code %>
+    <%= @user.other_address %>
   </td>
   <td>
-  	<%= history.cart.status %>
+  	<%= history.status %>
   </td>
 <% end %>
 </tbody>

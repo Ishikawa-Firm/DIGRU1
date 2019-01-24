@@ -10,10 +10,14 @@ class UsersController < ApplicationController
     # @page = Kaminari.paginate_array(@favorites).page(params[:page])
     # puts @page
     @favorites = @test.page(params[:page])
+
     @products = Product.all
-    @carts = Cart.where(user_id: @user).order("created_at")
-    @histories = CartItem.where(product_id: @products, cart_id: @carts).order("cart_id DESC")
-  end
+    @carts = Cart.where(user_id: @user)
+    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+    @histories.each do |h|
+      @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
+        end
+    end
 
   def edit
     @user = User.find(params[:id])
