@@ -42,26 +42,25 @@
 		<!-- 購入履歴 -->
 		<div class="col-xs-4">
 			<div class="history">購入履歴</div>
-<% @histories.each do |h| %>
-<div class="well">
-	<%= h.cart.added_at %><br>
-	<%= h.product.name %><br>
-	<%= h.price %><br>
-  	<%= @user.other_name %>
-  	<%= @user.other_address %><br>
- 	<%= @user.other_name %><br>
-  	<%= h.status %><br>
-  <!-- 到着ボタン -->
-<%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
-	<%= f.hidden_field :quantity, value: h.quantity %>
-    <%= f.hidden_field :product_id, value: h.product_id %>
-    <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
-    <p><%= f.select :status, CartItem.restrict_status_user.keys.to_a, {}, class:"select-status" %></p>
-    <p><%= f.submit "到着しました", class: "btn btn-primary update-status-button" %></p>
-<% end %>
-  <!-- 到着ボタン -->
-  </div>
-<% end %>
+		<% @histories.each do |h| %>
+			<div class="well">
+			<%= h.cart.added_at %><br>
+			<%= h.product.name %><br>
+			<%= h.price %><br>
+  			<%= @user.other_name %>
+  			<%= @user.other_address %><br>
+		 	<%= @user.other_name %><br>
+  			<%= h.status %><br>
+		<!-- 到着ボタン -->
+			<%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
+			<%= f.hidden_field :quantity, value: h.quantity %>
+    		<%= f.hidden_field :product_id, value: h.product_id %>
+    		<!-- CartItem modelにrestrict_status_userメソッドを定義し，特定の選択肢を除外 -->
+    		<%= f.hidden_field :status, value: CartItem.restrict_status_user.keys.to_a, status:'商品到着', class: "select-status" %>
+		    <%= f.submit "到着しました", class: "btn btn-primary update-status-button" %>
+			<% end %>
+		<!-- 到着ボタン -->
+		</div>
+	<% end %>
 		<!-- 購入履歴 -->
-	</div>
 </div>
