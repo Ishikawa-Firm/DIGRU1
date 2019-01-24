@@ -14,9 +14,9 @@ class UsersController < ApplicationController
     @products = Product.all
     @carts = Cart.where(user_id: @user)
     @histories = CartItem.where(product_id: @products, cart_id: @carts)
-    @histories.each do |h|
+      @histories.each do |h|
       @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
-        end
+      end
     end
 
   def edit
