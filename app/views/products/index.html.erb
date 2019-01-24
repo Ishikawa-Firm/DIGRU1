@@ -25,8 +25,8 @@
 					    <!-- アーティスト名が登録できるようになったら，email を name に変更し，アーティスト名をクリックしたら artist#show へ飛べるようにする -->
 					    <p><%= product.artist.name %></p>
 					    <p>価格 | ¥<%= product.price %></p>
-					    <% if product.stock > 1 %>
-						<p>在庫数：<%= product.stock%></p>
+					    <% if !product.stock.nil? || product.stock > 1 %>
+							<p>在庫数：<%= product.stock%></p>
 						<% else %>
 							<p> ❌ Sold out </p>
 						<% end %>
