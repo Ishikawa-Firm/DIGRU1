@@ -32,7 +32,7 @@
       <th>単価<br>(税込)</th>
       <th>受注枚数</th>
       <th>小計<br>(税込)</th>
-      <th>送付先氏名|住所</th>
+      <th>送付先ご氏名/ご住所</th>
       <th>ステータス</th>
       <th>変更</th>
       <th></th>
@@ -58,7 +58,9 @@
 
       <!--購入内容-->
       <td>
-      	<%= h.product.name %>
+        <%= link_to product_path(h.product) do %>
+      	  <%= h.product.name %>
+        <% end %>
       </td>
 
       <!--単価-->
@@ -78,7 +80,7 @@
 
       <!--送付先-->
       <td>
-      	<%= @user.other_name %>|
+      	<%= @user.other_name %>様/
         <%= @user.other_postal_code %>
         <%= @user.other_address %>
       </td>
