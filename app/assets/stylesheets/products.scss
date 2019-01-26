@@ -4,20 +4,64 @@
 
 /* index */
 
+
+
 .slider {
-	width: 100%;
-	height: 200px;
-	background-color: orange;
+	display:none;
+	padding: 20px;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.slider-image {
+	margin-top: 20px;
+}
+
+.slider-product-item-name {
+	text-align: center;
+	list-style: none;
+}
+
+.product-index-search {
+	width: 70%;
+	padding-top: 30px;
+	margin: 0 auto;
+}
+
+.product-index-search-form {
+	width: 40%;
 }
 
 .product-index {
-	margin-top: 30px;
+}
+
+.product-item-box {
+	margin-top: 10px;
 }
 
 .product-item {
 	float: left;
-	margin: 10px 30px 10px 0px;
+	padding: 20px 30px 10px 0px;
+	border-bottom: solid 0.3px lightgray;
 }
+
+.product-item-image {
+	display: inline-block;
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+.product-item-info {
+	background-color: #EFFBFB;
+	padding: 30px 0px 2px 10px;
+	margin-top: -30px;
+	border-radius: 20px;
+}
+
+.product-item-name {
+	padding-top: 10px;
+}
+
 
 /* ranking */
 
@@ -31,7 +75,7 @@
 		padding: 20px 0px;
 		margin-top: 0px;
 		border-bottom: solid 0.8px lightgray;
-		background-color: #DDF7FC;
+		background-color: #EFFBFB;
 	}
 }
 
@@ -67,6 +111,11 @@
 	/* 5位以降 */
 	li:nth-child(n+8) {
 		padding-top: 74px;
+	}
+
+	/* 10位 */
+	li:last-child {
+		padding-bottom: 60px;
 	}
 
 }
@@ -118,34 +167,45 @@
 
 /* show */
 
-.border1 {
+.border {
 	width: 100%;
-	height: 30px;
+	line-height: 30px;
+	font-size: 10px;
 	color: white;
+	margin: 0 20px 40px 0px;
+	padding-left: 20px;
 	background-color: black;
+	border-radius: 20px;
+	span {
+		font-size: 15px;
+		font-weight: bold;
+	}
+}
+
+.product-item-image {
+	display: inline-block;
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 
 .product-information {
 	width: 100%;
-	height: 300px;
-	background-color: yellow;
-	padding:20px 0px 0px 20px;
+	height: 250px;
+	padding: 0px 0px 0px 20px;
 }
 
 .product-image {
 	float: left;
 }
 
-.product-informarion-text {
+.product-information-text {
 	float: left;
 	padding-left: 30px;
 }
 
-.border2 {
-	width: 100%;
-	height: 30px;
-	color: white;
-	background-color: black;
+.product-show-movie {
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 30px;
 }
 
 .product-detailed-information {
@@ -157,14 +217,6 @@
 .show-sidebar {
 	width: 100%;
 	height: 1024px;
-	background-color: pink;
-}
-
-.border3 {
-	width: 100%;
-	height: 30px;
-	color: white;
-	background-color: black;
 }
 
 .comment{

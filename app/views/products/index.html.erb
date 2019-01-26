@@ -1,75 +1,92 @@
 
-<!-- 検索機能 -->
-<p>商品検索</p>
-<%= form_tag("/products/index", :method => 'get' ) do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag 'Search', :name => nil  %>
-<% end %>
-<!-- 検索機能 -->
+<!-- スライダー ランダム表示-->
+<div class="slider">
+	<% @ps.each do |product| %>
+	   	<div class="slick-slide">
+	    	<%= link_to product_path(product.id) do %>
+	    		<%= attachment_image_tag product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "slider-image" %>
+	    		<li class= "slider-product-item-name"><%= product.name %></li>
+	    		<li class= "slider-product-item-name">/<%= product.artist.name %></li>
+	   		<% end %>
+	   	</div>
+	<% end %>
+</div>
+<!-- スライダー -->
 
-<!-- スライダー -->
-<div class="slider">スライダー挿入</div>
-<!-- スライダー -->
+<!-- 検索機能 -->
+<div class= "product-index-search">
+	<p>
+		<%= form_tag("/products/index", :method => 'get' ) do %>
+			<%= text_field_tag :search, params[:search], class:"product-index-search-form", placeholder:"キーワードを入力してください" %>
+			<%= submit_tag 'Search', :name => nil  %>
+		<% end %>
+	</p>
+</div>
+<!-- 検索機能 -->
 
 <!-- 商品一覧 -->
-<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
-	<div class="row">
-		<div class="col-xs-8">
-			<div class="product-index">
-				<% @products.each do |product| %>
-					<div class="product-item">
-						<%= link_to product_path(product.id), class: "" do %>
-					   	 	<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
-					    	<p><%= product.name %></p>
-					    <% end %>
-					    <!-- アーティスト名が登録できるようになったら，email を name に変更し，アーティスト名をクリックしたら artist#show へ飛べるようにする -->
-					    <p><%= product.artist.name %></p>
-					    <p>価格 | ¥<%= product.price %></p>
-					    <% if !product.stock.nil? || product.stock > 1 %>
-							<p>在庫数：<%= product.stock%></p>
-						<% else %>
-							<p> ❌ Sold out </p>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
-		</div>
-<!-- 商品一覧 -->
+<div class= "product-index">
+	<div class="container"> <!-- デフォルトで,class="container"にmarginが設定されているので，両サイドに空白ができている-->
+		<div class="row">
+			<div class="col-xs-8">
+				<div class="product-item-box">
+					<% @products.each do |product| %>
+						<div class="product-item">
+							<%= link_to product_path(product.id) do %>
+						   	 	<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg", class: "product-item-image" %>
 
-<!-- ランキング -->
-		<div class="col-xs-4">
-			<div class="ranking">
-				<h4> 累計売り上げランキング TOP10</h4>
-				<div class="ranking-rank">
-					<li>1</li>
-					<%= image_tag 'rank1.png', class:"rank1" %>
-					<li>2</li>
-					<%= image_tag 'rank2.png', class:"rank2" %>
-					<li>3</li>
-					<%= image_tag 'rank3.png', class:"rank3" %>
-					<li>4</li>
-					<li>5</li>
-					<li>6</li>
-					<li>7</li>
-					<li>8</li>
-					<li>9</li>
-					<li>10</li>
-				</div>
-				<div class= "ranking-box">
-					<% @test.each_key do |key| %>
-					    <% products = Product.find_by(id: key) %>
-					    <div class= "ranking-item">
-						    <%= link_to product_path(products) do %>
-						    	<p class= "ranking-product-image"><%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></p>
-							    <p class= "ranking-artist-name"><%= products.name %><br><br>
-							   	/<%= products.artist.name %></p>
-							<% end %>
+						   	 	<div class= "product-item-info">
+						    		<p class= "product-item-name"><%= product.name %></p>
+						    <% end %>
+								    <p>/<%= product.artist.name %></p>
+								    <p>価格 | ¥<%= product.price %></p>
+								    <% if !product.stock.nil? || product.stock > 1 %>
+										<p>在庫数：<%= product.stock%></p>
+									<% else %>
+										<p> ❌ Sold out </p>
+									<% end %>
+							</div>
 						</div>
-						<div class= "margin clearfix"></div>
-				    <% end %>
+					<% end %>
 				</div>
 			</div>
-		</div>
-<!-- ランキング -->
-    </div>
+	<!-- 商品一覧 -->
+
+	<!-- ランキング -->
+			<div class="col-xs-4">
+				<div class="ranking">
+					<h4> 累計売り上げランキング TOP10</h4>
+					<div class="ranking-rank">
+						<li>1</li>
+						<%= image_tag 'rank1.png', class:"rank1" %>
+						<li>2</li>
+						<%= image_tag 'rank2.png', class:"rank2" %>
+						<li>3</li>
+						<%= image_tag 'rank3.png', class:"rank3" %>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+						<li>8</li>
+						<li>9</li>
+						<li>10</li>
+					</div>
+					<div class= "ranking-box">
+						<% @test.each_key do |key| %>
+						    <% products = Product.find_by(id: key) %>
+						    <div class= "ranking-item">
+							    <%= link_to product_path(products) do %>
+							    	<p class= "ranking-product-image"><%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></p>
+								    <p class= "ranking-artist-name"><%= products.name %><br><br>
+								   	/<%= products.artist.name %></p>
+								<% end %>
+							</div>
+							<div class= "margin clearfix"></div>
+					    <% end %>
+					</div>
+				</div>
+			</div>
+	<!-- ランキング -->
+	    </div>
+	</div>
 </div>
