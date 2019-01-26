@@ -36,22 +36,18 @@
 				<p><%= link_to '送付先新規登録', users_address_new_path, class: "btn btn-success btn-xm" %></p>
 			</div>
 		</div>
-		<div class="col-xs-4">
-			<div class="show-sidebar">
-				<div class="select-buy">
-					<!-- 配送先が指定されている場合 -->
-					<% if !current_user.addresses.empty? %>
-			        	<p class= "clearfix"><%= f.submit "購入を確定する", class: "col-xs-8 btn btn-lg btn-danger" %></p>
-			        <!-- 配送先が指定されていない場合（新規ユーザ） -->
-			        <% else %>
-			        	<p class= "please-add-address"> ※ 配送先を指定してください </p>
-			        <% end %>
-			        <p class= "total-price-text"> 総合計</p>
-			        <p class= "total-price"><%= @sum.to_s(:delimited) %>円<span>(税込)</span></p>
-		    	</div>
-		    </div>
-		    <% end %>
-		</div>
+		<div class="select-buy">
+			<!-- 配送先が指定されている場合 -->
+			<p class= "total-price-text"> 総合計</p>
+			<p class= "total-price"><%= @sum.to_s(:delimited) %>円<span>(税込)</span></p>
+			<% if !current_user.addresses.empty? %>
+	        	<p class= "clearfix"><%= f.submit "購入を確定する", class: "col-xs-8 btn btn-lg btn-danger" %></p>
+		    <!-- 配送先が指定されていない場合（新規ユーザ） -->
+		    <% else %>
+		       	<p class= "please-add-address"> ※ 配送先を指定してください </p>
+	        <% end %>
+		        <% end %>
+	    </div>
 	</div>
 </div>
 

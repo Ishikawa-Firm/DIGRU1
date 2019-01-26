@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   # cart_items controller
 
   def cart_empty
-    cart_empty = current_user.carts.all.last.id
+    @cart_empty = current_user.carts.all.last.id
   end
 
   protected
