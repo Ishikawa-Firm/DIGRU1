@@ -144,8 +144,16 @@
 	}
 }
 
-/* help */n
+/* help */
 
+.faq-title {
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	color: #42a5f5;
+	list-style: none;
+	padding-bottom: 20px;
+}
 
 .cp_qa *, .cp_qa *:after, .cp_qa *:before {
 	font-family: sans-serif;
@@ -208,4 +216,23 @@
 	content: 'A';
 	border-radius: 0.2em;
 	background: #00bcd4;
+}
+
+
+.mail-title {
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #42a5f5;
+	list-style: none;
+	border-bottom: solid 0.5px #e1f5fe;
+}
+
+.mail {
+	list-style: none;
+	padding: 20px 0;
+	text-align: center;
 }
