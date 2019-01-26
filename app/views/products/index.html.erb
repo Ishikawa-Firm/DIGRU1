@@ -72,7 +72,7 @@
 						<li>10</li>
 					</div>
 					<div class= "ranking-box">
-						<% @test.each_key do |key| %>
+						<% @ranking.first(10).each_with_index do |key| %>
 						    <% products = Product.find_by(id: key) %>
 						    <div class= "ranking-item">
 							    <%= link_to product_path(products) do %>

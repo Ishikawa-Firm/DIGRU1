@@ -49,7 +49,38 @@
 			<div class= "clearfix"></div>
 		</div>
 		<div class="col-xs-4">
-
+			<div class="ranking">
+					<h4> このアーティストの<br>CD売り上げランキング TOP10</h4>
+					<div class="ranking-rank">
+						<li>1</li>
+						<%= image_tag 'rank1.png', class:"rank1" %>
+						<li>2</li>
+						<%= image_tag 'rank2.png', class:"rank2" %>
+						<li>3</li>
+						<%= image_tag 'rank3.png', class:"rank3" %>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+						<li>8</li>
+						<li>9</li>
+						<li>10</li>
+					</div>
+					<div class= "ranking-box">
+						<% @ranking.first(10).each_with_index do |key| %>
+						    <% products = Product.find_by(id: key) %>
+						    <div class= "ranking-item">
+							    <%= link_to product_path(products) do %>
+							    	<p class= "ranking-product-image"><%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></p>
+								    <p class= "ranking-artist-name"><%= products.name %><br><br>
+								   	/<%= products.artist.name %></p>
+								<% end %>
+							</div>
+							<div class= "margin clearfix"></div>
+					    <% end %>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
