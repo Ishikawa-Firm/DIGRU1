@@ -18,7 +18,7 @@
 	<p>
 		<%= form_tag("/products/index", :method => 'get' ) do %>
 			<%= text_field_tag :search, params[:search], class:"product-index-search-form", placeholder:"キーワードを入力してください" %>
-			<%= submit_tag 'Search', :name => nil  %>
+			<%= submit_tag 'CDを検索する', :name => nil  %>
 		<% end %>
 	</p>
 </div>
@@ -41,7 +41,7 @@
 								    <p>/<%= product.artist.name %></p>
 								    <p>価格 | ¥<%= product.price %></p>
 								    <% if !product.stock.nil? || product.stock > 1 %>
-										<p>在庫数：<%= product.stock%></p>
+										<p><span class= "y-stock"> ●</span> 在庫あり：<%= product.stock%></p>
 									<% else %>
 										<p> ❌ Sold out </p>
 									<% end %>

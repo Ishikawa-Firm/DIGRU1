@@ -1,27 +1,57 @@
-<h1>Artists#show</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<!-- アーティスト基本情報 -->
+			<div class="border" aria-hidden="true"">
+				<span class="glyphicon glyphicon-user"> アーティスト基本情報</span>
+			</div>
 
-<p><%= @artist.name %></p>
-<p><%= @artist.member %></p>
+			<div class="artist-show-info">
+				<div class="artist-show-image-box">
+					<div class="artist-show-image">
+						<%= attachment_image_tag @artist, :profile_image, format: 'jpeg', fallback: "no_image.jpg", class:"artist-show-image" %>
+					</div>
+					<% if @artist == current_artist %>
+						<div class="artist-show-link-button">
+							<p><%= link_to "アーティスト情報編集", edit_artist_path(@artist.id), class:"btn btn-sm btn-default artist-show-link-button-edit"%></p>
+							<p><%= link_to "退会する", destroy_artist_session_path, method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-sm btn-default artist-show-link-button-destroy clearfix" %></p>
+						</div>
+					<% else %>
+						<div class="artist-show-link-button"></div>
+					<% end %>
+				</div>
+				<div class="artist-information-text">
+					<p class="artist-show-name">
+						<span class= "artist-show-span-name">【<%= @artist.name %></span>
+						<span class= "artist-show-span-name-kana">/<%= @artist.name_kana %></span>
+						<span class= "artist-show-span-name">】</span>
+					</p>
+					<p class="artist-show-member"><span class="glyphicon glyphicon-headphones artist-show-music-icon" aria-hidden="true"></span><span class= "bold">  Member</span><br><%= @artist.member %>メンバーメンバー・・・ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+					<p class="artist-show-introducton"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class= "bold">  アーティスト紹介</span><br>フレームワークでは，この位置が「アーティスト紹介」となっていますが，Artistsモデルにintroductionカラムはありません．紹介を書くtext_area作りますか？ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+				</div>
+			</div>
 
-<% if @artist == current_artist %>
-	<p><%= link_to "New Product", new_product_path %>
-	 | <%= link_to "Artist Edit", edit_artist_path(@artist.id) %> | 
-<% end %>
-<%= link_to "Logout", destroy_artist_session_path, method: :delete %></p>
+			<div class="clearfix"></div>
 
-<!-- 以下出品一覧 -->
-<% @products.each do |product| %>
-	<%= link_to product_path(product.id) do %>
-		<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg" %>
-			<p><%= product.name %></p>
-		<% end %>
-			<p><%= product.artist.name %></p>
-			<p>価格 | ¥<%= product.price %></p>
-<% end %>
-<!-- ここまで -->
-<!-- 退会機能 -->
-<% if @artist == current_artist %>
-	<%= link_to artist_path, method: :delete do %>
-		<p>退会する</p>
-	<% end %>
-<% end %>
+			<!-- 出品一覧 -->
+			<div class="border" aria-hidden="true"> <span class="glyphicon glyphicon-headphones"> このアーティストが出品しているCD一覧</span></div>
+			<div class="product-item-box">
+				<% @products.each do |product| %>
+					<div class="product-item">
+						<%= link_to product_path(product.id) do %>
+							<%= attachment_image_tag product, :image, size: "150x150" , format: 'jpeg', fallback: "no_image.jpg" %>
+								<p><%= product.name %></p>
+							<p>価格 | ¥<%= product.price %></p>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class= "clearfix"></div>
+		</div>
+		<div class="col-xs-4">
+
+		</div>
+	</div>
+</div>
+
+
