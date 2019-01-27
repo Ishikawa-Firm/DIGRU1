@@ -1,0 +1,41 @@
+
+<h1>ユーザー購入履歴一覧</h1>
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>購入者名</th>
+      <th>購入日時</th>
+      <th>購入内容</th>
+      <th>購入価格総計</th>
+      <th>送付先</th>
+      <th>ステータス</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+<tbody>
+<% @histories.each do |history| %>
+<tr>
+  <td>
+	<%= history.cart.user.name %>
+  </td>
+  <td>
+	<%= history.cart.created_at %>
+  </td>
+  <td>
+	<%= history.product.name %>
+  </td>
+  <td>
+  <%= history.price %>
+  </td>
+  <td>
+    <%= @user.other_name %>|
+    <%= @user.other_postal_code %>
+    <%= @user.other_address %>
+  </td>
+  <td>
+  	<%= history.status %>
+  </td>
+<% end %>
+</tbody>
+</table>

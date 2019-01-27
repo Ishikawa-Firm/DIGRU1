@@ -4,13 +4,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #特定のユーザーが登録したお気に入りを全て取得する
     # @favorites = Favorite.where("user_id = ?", @user)
-@test = Favorite.where(user_id: @user.id)
-# puts @favorites
-puts @test
+    @test = Favorite.where(user_id: @user.id)
+    # puts @favorites
+    puts @test
     # @page = Kaminari.paginate_array(@favorites).page(params[:page])
     # puts @page
     @favorites = @test.page(params[:page])
-  end
+
+    @products = Product.all
+    @carts = Cart.where(user_id: @user)
+    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+      @histories.each do |h|
+        @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
+      end
+    end
 
   def edit
     @user = User.find(params[:id])
@@ -58,15 +65,23 @@ puts @test
   end
 
   def buy
+      # 送付先選択済み
       if !params[:cart][:address_id].nil?
+        @cart_items = current_user.carts.all.last.cart_items
+        # カートに入っている商品の数量分の在庫数を減らす
+        @cart_items.each do |c|
+          c.product.stock -= c.quantity
+          c.product.update(stock: c.product.stock)
+        end
       current_user.carts.all.last.update(buy_params)
       redirect_to users_thanks_path
-    else
-      @cart_items = current_user.carts.all.last.cart_items
-      @cart = current_user.carts.all.last
-      @sum = sum(@cart_items)
-      render 'users/confirm_order'
-    end
+      # 送付先未選択
+      else
+        @cart_items = current_user.carts.all.last.cart_items
+        @cart = current_user.carts.all.last
+        @sum = sum(@cart_items)
+        render 'users/confirm_order'
+      end
   end
 
   def session_select
@@ -85,6 +100,6 @@ puts @test
   end
 
   def buy_params
-    params.require(:cart).permit(:address_id, :total_price, :status, :added_at)
+    params.require(:cart).permit(:address_id, :total_price, :added_at)
   end
 end

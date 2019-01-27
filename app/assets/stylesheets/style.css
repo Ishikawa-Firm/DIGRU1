@@ -1,0 +1,247 @@
+/*
+Template Name: WebMag Html Template
+
+Author: yaminncco
+
+Colors:
+	Body : #3d455c
+	Headers : #212631
+	Primary : #212631 #4BB92F #ff8700 #0078ff #8d00ff
+	Dark : #212631
+	Grey : #eceef2 #a7b3c6 #fbfbfd
+
+Fonts: Nunito & Nunito-Sans
+
+Table OF Contents
+------------------------------------
+GENERAL
+NAVIGATION
+HEADER
+POST
+POST PAGE
+ASIDE
+FOOTER
+RESPONSIVE
+------------------------------------*/
+/*=========================================================
+	GENERAL
+===========================================================*/
+/*----------------------------*\
+	typography
+\*----------------------------*/
+ body {
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: 300;
+     color: #3d455c;
+     margin: 0;
+     padding: 150px 0 0 0;
+     overflow-x: hidden;
+}
+ ul,ol{
+     margin: 0;
+     padding: 0;
+     list-style: none;
+}
+ ul.list-style, ol.list-style {
+     padding-left: 15px;
+     margin-bottom: 10px;
+}
+ ul.list-style {
+     list-style-type: disc;
+}
+ ol.list-style {
+     list-style-type: decimal;
+}
+
+/*=========================================================
+	NAVIGATION
+===========================================================*/
+ #nav {
+     height: 70px;
+}
+ #nav:after {
+     content: "";
+     position: fixed;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     top: 0;
+     background-color: rgba(33, 38, 49, 0.5);
+     z-index: 90;
+     opacity: 0;
+     visibility: hidden;
+     -webkit-transition: 0.2s all;
+     transition: 0.2s all;
+}
+ #nav.shadow-active:after {
+     opacity: 1;
+     visibility: visible;
+}
+ #nav-fixed {
+     position: fixed;
+     left: 0;
+     right: 0;
+     top: 0;
+     z-index: 90;
+     background-color: #FFF;
+     -webkit-box-shadow: 0px -1px 0px 0px #eceef2 inset;
+     box-shadow: 0px -1px 0px 0px #eceef2 inset;
+}
+ #nav-fixed.slide-down {
+     -webkit-animation: slide-down 0.3s;
+     animation: slide-down 0.3s;
+}
+ #nav-fixed.slide-up {
+     -webkit-animation: slide-up 0.3s;
+     animation: slide-up 0.3s;
+     -webkit-animation-fill-mode: forwards;
+     animation-fill-mode: forwards;
+}
+ @-webkit-keyframes slide-down {
+     from {
+         -webkit-transform:translateY(-100%);
+         transform:translateY(-100%);
+    }
+     to {
+         -webkit-transform:translateY(0%);
+         transform:translateY(0%);
+    }
+}
+ @keyframes slide-down {
+     from {
+         -webkit-transform:translateY(-100%);
+         transform:translateY(-100%);
+    }
+     to {
+         -webkit-transform:translateY(0%);
+         transform:translateY(0%);
+    }
+}
+ @-webkit-keyframes slide-up {
+     from {
+         -webkit-transform:translateY(0%);
+         transform:translateY(0%);
+    }
+     to {
+         -webkit-transform:translateY(-100%);
+         transform:translateY(-100%);
+    }
+}
+ @keyframes slide-up {
+     from {
+         -webkit-transform:translateY(0%);
+         transform:translateY(0%);
+    }
+     to {
+         -webkit-transform:translateY(-100%);
+         transform:translateY(-100%);
+    }
+}
+ #nav .container {
+     position: relative;
+}
+/*----------------------------*\
+	logo
+\*----------------------------*/
+.nav-logo {
+     width: 100%;
+     margin: 0 auto;
+     padding: 20px 0;
+}
+
+.nav-logo li {
+     text-align: center;
+     list-style: none;
+     font-size: 40px;
+}
+/*----------------------------*\
+	menu
+\*----------------------------*/
+
+
+.navbar-nav {
+     text-align: center;
+     width: 100%;
+}
+
+.navbar-nav li {
+     width: 16.5%;
+}
+
+.user li {
+     width: 20%;
+}
+
+.artist li {
+     width: 16.5%;
+}
+
+.not li {
+     width: 25%;
+}
+
+ .nav-menu {
+     margin-left: 20px;
+}
+
+ .nav-menu li :after {
+     content: '';
+     position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0px;
+     width: 100%;
+     height: 4px;
+     -webkit-transition: 0.2s width;
+     transition: 0.2s width;
+}
+ .navbar-nav li .cat-1:after {
+     background-color: #4BB92F; /* 黄緑　マイページ */
+}
+ .navbar-nav li .cat-2:after {
+     background-color: #ff8700; /* オレンジ　アーティスト一覧 */
+}
+ .navbar-nav li .cat-3:after {
+     background-color: #0078ff; /* 青　FAQ */
+}
+ .navbar-nav li .cat-4:after {
+     background-color: #8d00ff; /* 紫　ログアウト */
+}
+ .navbar-nav li .cat-5:after {
+     background-color: #58ACFA; /* 黄 */
+}
+ .navbar-nav li .cat-6:after {
+     background-color: #F7D358; /* 水色 */
+}
+
+ .navbar-nav li :hover, .nav-menu li :focus {
+     background-color: transparent;
+     text-decoration: none;
+}
+ .nav-menu li .cat-1:hover, .nav-menu li .cat-1:focus {
+     color: #4BB92F;
+}
+ .nav-menu li .cat-2:hover, .nav-menu li .cat-2:focus {
+     color: #ff8700;
+}
+ .nav-menu li .cat-3:hover, .nav-menu li .cat-3:focus {
+     color: #0078ff;
+}
+ .nav-menu li .cat-4:hover, .nav-menu li .cat-4:focus {
+     color: #8d00ff;
+}
+ .nav-menu li .cat-5:hover, .nav-menu li .cat-5:focus {
+     color: #58ACFA;
+}
+ .nav-menu li .cat-6:hover, .nav-menu li .cat-6:focus {
+     color: #F7D358;
+}
+/*=========================================================
+	RESPONSIVE
+===========================================================*/
+ @media only screen and (max-width: 991px) {
+     #nav .nav-menu {
+         display: none;
+    }
+}

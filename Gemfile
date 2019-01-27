@@ -76,3 +76,4 @@ gem 'redis_object'
 gem 'pry-rails'
 
 gem 'cocoon'
+

@@ -15,6 +15,14 @@ class Product < ApplicationRecord
     	favorites.where(user_id: user.id).exists?
     end
 
+	def self.search(search)
+    	if search
+       		Product.where(['name LIKE ?', "%#{search}%"])
+	    else
+    	    Product.all
+	    end
+	  end
+
 	# validates :name, presence: true
 	# validates :price, presence: true
 	# validates :label, presence: true

@@ -1,0 +1,108 @@
+<h2> <%= current_artist.name %>様の受注履歴 </h2>
+
+ステータス変更方法<span class= "only-customer"> * お客様のみ表示されます.</span>
+<div class= "status-description">
+  <table class= "">
+    <tr>
+      <th>「受付」</th>
+      <td>デフォルトの商品の状態です．</td>
+    </tr>
+    <tr>
+      <th>「商品準備中」</th>
+      <td>受注を確認した後に変更します．</td>
+    </tr>
+    <tr>
+      <th>「配送済み」</th>
+      <td>商品配送後に変更します．</td>
+    </tr>
+    <tr>
+      <th>*「商品到着」</th>
+      <td>商品到着を確認したら，お客様が変更します．</td>
+    </tr>
+  </table>
+</div>
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>購入者名</th>
+      <th>カートID</th>
+      <th>受注日時</th>
+      <th>受注商品名</th>
+      <th>単価<br>(税込)</th>
+      <th>受注枚数</th>
+      <th>小計<br>(税込)</th>
+      <th>送付先ご氏名/ご住所</th>
+      <th>ステータス</th>
+      <th>変更</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @histories.each do |h| %>
+    <tr>
+      <!--購入者名前-->
+      <td>
+    	<%= h.cart.user.name %>
+      </td>
+
+      <!--カートID-->
+      <td>
+      <%= h.cart_id %>
+      </td>
+
+      <!--購入日時-->
+      <td>
+    	<%= simple_time(h.cart.added_at) %>
+      </td>
+
+      <!--購入内容-->
+      <td>
+        <%= link_to product_path(h.product) do %>
+      	  <%= h.product.name %>
+        <% end %>
+      </td>
+
+      <!--単価-->
+      <td>
+      	<%= h.price.to_s(:delimited) %>円
+      </td>
+
+      <!--購入枚数-->
+      <td>
+      	<%= h.quantity %>
+    　</td>
+
+      <!--小計-->
+      <td style="color: #DF0202">
+        <%= (h.price * h.quantity).to_s(:delimited) %>円
+    　</td>
+
+      <!--送付先-->
+      <td>
+      	<%= @user.other_name %>様/
+        <%= @user.other_postal_code %>
+        <%= @user.other_address %>
+      </td>
+
+      <!--小計-->
+      <td>
+        <%= h.status %>
+    　</td>
+
+      <!--ステータス-->
+      <td>
+        <%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
+          <%= f.hidden_field :quantity, value: h.quantity %>
+            <%= f.hidden_field :product_id, value: h.product_id %>
+            <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
+            <%= f.select :status, CartItem.restrict_status_artist.keys.to_a, {}, class:"select-status" %>
+      </td>
+      <td>
+          <%= f.submit "更新", class: "btn btn-sm btn-primary update-status-button" %>
+        <% end %>
+      </td>
+
+    <% end %>
+  </tbody>
+</table>

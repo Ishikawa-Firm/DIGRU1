@@ -9,6 +9,13 @@ class AdminsController < ApplicationController
   end
 
   def user_history
+    @users = User.all
+    @products = Product.all
+    @carts = Cart.where(user_id: @users).order("created_at")
+    @histories = CartItem.where(product_id: @products, cart_id: @carts).order("cart_id DESC")
+    @histories.each do |h|
+      @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
+    end
   end
 
   def user_index
