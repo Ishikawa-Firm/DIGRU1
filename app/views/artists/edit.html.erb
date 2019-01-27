@@ -1,13 +1,52 @@
-<h1>アーティスト情報編集</h1>
+<div class="edit">
+  <h1 class="edit-title">アーティスト情報編集</h1>
 
-	<%= form_for(@artist) do |f| %>
-		<p>Name<%= f.text_field :name, class: "aaa" %></p>
-		<p>Name<%= f.text_field :name_kana, class: "" %></p>
-    	<p>image<%= f.attachment_field :profile_image %>
-		<p>Member<%= f.text_field :member, class: "" %></p>
-		<p>Postal code<%= f.text_field :postal_code, class: "" %></p>
-		<p>Phone number<%= f.text_field :phone_number, class: "" %></p>
-		<p>Mail<%= f.text_field :email, class: "" %></p>
-		<p>Introduction<%= f.text_area :introduction, class: "" %></p>
-		<%= f.submit "Update Artist" %>
-	<% end %>
+  <%= form_for(@artist) do |f| %>
+  	<div class="edit-box">
+	    <div class="field">
+	      <%= f.label :アーティスト名 %><br />
+	      <%= f.text_field :name, autocomplete: "アーティスト名", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティスト名ふりがな %><br />
+	      <%= f.text_field :name_kana, autocomplete: "アーティスト名ふりがな", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :電話番号 %><br />
+	      <%= f.text_field :phone_number, autocomplete: "電話番号", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :郵便番号 %><br />
+	      <%= f.text_field :postal_code, autocomplete: "郵便番号", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :ご住所 %><br />
+	      <%= f.text_field :user_address, autocomplete: "住所", class:"edit-input" %>
+	    </div>
+	</div>
+	<div class="edit-box">
+	    <div class="field">
+	      <%= f.label :メンバー %><br />
+	      <%= f.text_area :member, autofocus: true, autocomplete: "メンバー", class:"edit-input-member" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティスト紹介 %><br />
+	      <%= f.text_area :introduction, autocomplete: "アーティスト紹介", class:"edit-input-introduction" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティストプロフィール画像 %><br />
+	      <%= f.attachment_field :profile_image, autocomplete: "アーティストプロフィール画像", class:"" %>
+	    </div>
+	</div>
+
+    <div class="actions">
+      <%= f.submit "更新", class:"edit-button" %>
+    </div>
+  <% end %>
+</div>
