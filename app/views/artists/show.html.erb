@@ -14,7 +14,7 @@
 					<% if @artist == current_artist %>
 						<div class="artist-show-link-button">
 							<p><%= link_to "アーティスト情報編集", edit_artist_path(@artist.id), class:"btn btn-sm btn-default artist-show-link-button-edit"%></p>
-							<p><%= link_to "退会する", destroy_artist_session_path, method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-sm btn-default artist-show-link-button-destroy clearfix" %></p>
+							<p><%= link_to "退会する", artist_path, method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-sm btn-default artist-show-link-button-destroy clearfix" %></p>
 						</div>
 					<% else %>
 						<div class="artist-show-link-button"></div>

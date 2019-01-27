@@ -1,4 +1,4 @@
-s<h1>Users#show</h1>
+<h1>Users#show</h1>
 
 <div class="container">
 	<div class="row">
@@ -14,8 +14,8 @@ s<h1>Users#show</h1>
 			<ul class="users">user_address : <%= current_user.user_address %></ul>
 			<ul class="users">email : <%= current_user.email %></ul>
 
-			<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
-				<br>
+			<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %><br>
+			<%= link_to " 退会する", user_path, method: :delete, class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
 				<h3> お気に入りに入れたCD </h3>
 				<table class='table table-hover table-inverse'>
   					<thead>

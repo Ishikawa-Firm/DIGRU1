@@ -9,6 +9,7 @@ class Artist < ApplicationRecord
 	def active_for_authentication?
 		! self.deleted_at?
 	end
+  # "deleted_at"がtrueの場合はログインできなくなる記述
 
   attachment :profile_image
 
