@@ -16,7 +16,11 @@
     @import "bootstrap-sprockets";
     @import "bootstrap";
 
-.glyphicon {
+.bold {
+	font-weight: bold;
+}
+
+.header-icon {
 	font-size: 25px;
 }
 
