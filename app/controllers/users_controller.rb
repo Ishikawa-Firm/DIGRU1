@@ -90,6 +90,10 @@ class UsersController < ApplicationController
   def registraion_select
   end
 
+  def thanks
+    @user = User.find(current_user.id)
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :hundle_name, :name_kana, :postal_code, :user_address, :phone_number, :profile_image)

@@ -1,3 +1,8 @@
-users#thanks
-
-<p><%= link_to 'トップへ戻る', products_path %></p>
+<div class= "background">
+	<li class= "thanks-text1">お買い上げありがとうございました．</li>
+	<li class= "thanks-text2"> 購入済みの商品詳細は，マイページから確認できます．</li>
+	<div class= "thanks-button-box">
+		<p><%= link_to 'マイページ', user_path(@user), class: "btn btn-default thanks-link-button" %></p>
+		<p><%= link_to 'トップへ戻る', products_path, class: "btn btn-default thanks-link-button" %></p>
+	</div>
+</div>

@@ -238,3 +238,45 @@
 
 
 /* thanks */
+
+.background {
+	width: 100%;
+	margin: 0 auto;
+	background-image: image-url('thanks.jpg');
+  	background-size:cover;
+  	box-shadow:
+	inset 0 0 20px #fff /* 背景色と同じ色 */,
+	inset 0 0 20px #fff,
+	inset 0 0 20px #fff,
+	inset 0 0 20px #fff;
+}
+
+.thanks-text1, .thanks-text2 {
+	list-style: none;
+	text-align: center;
+}
+
+.thanks-text1 {
+	color: red;
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: -30px;
+	padding-top: 240px;
+}
+
+.thanks-text2 {
+	font-size: 20px;
+	margin: 30px 0 50px 0;
+}
+
+.thanks-button-box {
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 120px;
+}
+
+.thanks-link-button {
+	font-size: 100%;
+	margin: 0 40%;
+	width: 20%;
+}
