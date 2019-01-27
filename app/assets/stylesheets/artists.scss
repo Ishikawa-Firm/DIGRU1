@@ -33,6 +33,22 @@
 	margin: 0 auto;
 }
 
+.artist-index-item {
+	float: left;
+	padding: 10px 30px;
+	li {
+		font-size: 18px;
+		list-style: none;
+		text-align: center;
+		padding-top: 20px;
+	}
+}
+
+.artist-index-item-image {
+	display: inline-block;
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
 /* show */
 
 .artist-show-info {
@@ -122,20 +138,4 @@
 
 .update-status-button{
 	float: left;
-}
-
-.artist-index-item {
-	float: left;
-	padding: 10px 30px;
-	li {
-		font-size: 20px;
-		list-style: none;
-		text-align: center;
-		padding-top: 30px;
-	}
-}
-
-.artist-index-item-image {
-	display: inline-block;
-	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }

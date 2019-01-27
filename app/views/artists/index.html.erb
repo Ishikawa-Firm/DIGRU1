@@ -13,7 +13,7 @@
 		<div class="artist-index-item">
 			<%= link_to artist_path(artist.id) do%>
 				<%= attachment_image_tag artist, :profile_image, size: "150x150", fallback: "sample-author1.jpg", class: "artist-index-item-image" %>
-				<li><%= artist.name %></li>
+				<li class=""><%= artist.name %></li>
 			<% end %>
 		</div>
 	<% end %>
