@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:edit]
 
   patch  '/carts/:id',    to: 'users#buy'
+  get   '/carts/empty',    to: 'carts#cart_empty'
   resources :carts, only: [:show]
 
   get '/addresses/:id' => 'addresses#show'
