@@ -21,14 +21,17 @@
   <h4> シングル/アルバム名</h4>
   <%= f.text_field :name, class: "" %>
 
-  <%= f.fields_for :disc_numbers do |df| %>
+  <div id="disc" style="border: 2px solid #00F;">
+    <%= f.fields_for :disc_numbers do |df| %>
     
     <h4> 枚数</h4>
     <%= render partial: "disc_number_fields", locals: {f: df } %>
     <!-- 動的リスト実装のためにrender扱い、localsでdfをfに置き換え(rendar元はf) -->
-    <%= link_to_add_association "枚数を追加", f, :disc_numbers, class: "btn btn-primary" %>
-    <!--  -->
   <% end %>
+  </div>
+  <%= link_to_add_association "枚数を追加", f, :disc_numbers, class: "btn btn-primary", 
+  'data-association-insertion-node' => '#disc', 
+  'data-association-insertion-method' => 'append' %>
 
   <h4> 値段</h4>
   <%= f.text_field :price, class: "" %>
