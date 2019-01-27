@@ -16,11 +16,14 @@
 
 .slider-image {
 	margin-top: 20px;
+	display: inline-block;
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 
 .slider-product-item-name {
 	text-align: center;
 	list-style: none;
+	padding-left: 20px;
 }
 
 .product-index-search {
