@@ -75,4 +75,5 @@ gem 'redis_object'
 
 gem 'pry-rails'
 
-gem 'nested_form_fields'
+gem 'cocoon'
+

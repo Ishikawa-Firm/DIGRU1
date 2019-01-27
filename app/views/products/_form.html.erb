@@ -1,0 +1,56 @@
+<h1>products#new</h1>
+
+<h2> 出品フォーム </h2>
+
+<h4> アーティスト名</h4>
+<%= current_artist.name %>
+
+<%= form_for(@product) do |f| %>
+
+  <% if @product.errors.any? %>  <!-- form forの@bookに合わせる -->
+      <div id="error_explanation" class="alert-danger">
+        <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <h4> シングル/アルバム名</h4>
+  <%= f.text_field :name, class: "" %>
+
+  <div id="disc" style="border: 2px solid #00F;">
+    <%= f.fields_for :disc_numbers do |df| %>
+    
+    <h4> 枚数</h4>
+    <%= render partial: "disc_number_fields", locals: {f: df } %>
+    <!-- 動的リスト実装のためにrender扱い、localsでdfをfに置き換え(rendar元はf) -->
+  <% end %>
+  </div>
+  <%= link_to_add_association "枚数を追加", f, :disc_numbers, class: "btn btn-primary", 
+  'data-association-insertion-node' => '#disc', 
+  'data-association-insertion-method' => 'append' %>
+
+  <h4> 値段</h4>
+  <%= f.text_field :price, class: "" %>
+
+  <h4> レーベル名</h4>
+  <%= f.text_field :label, class: "" %>
+
+  <h4> ジャンル</h4>
+  <%= f.text_field :genre, class: "" %>
+
+  <h4> 在庫数</h4>
+  <%= f.text_field :stock, class: "" %>
+
+  <h4> ジャケット写真</h4>
+  <%= f.attachment_field :image, class: "" %>
+
+  <h4> 動画URL</h4>
+  <%= f.text_area :movie_url, class: "" %>
+
+  <p><%= f.submit '商品を出品する' %></p>
+
+<% end %>
