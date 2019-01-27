@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @ps = Product.order("name").search(params[:search]).where(deleted_at: nil).page(params[:page]).shuffle
+    @product_slider = Product.order("name").search(params[:search]).where(deleted_at: nil).page(params[:page]).shuffle
     @products = Product.order("name").search(params[:search]).where(deleted_at: nil).page(params[:page]).reverse_order
     @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
 
