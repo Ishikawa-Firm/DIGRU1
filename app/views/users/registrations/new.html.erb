@@ -1,64 +1,67 @@
-<h2>Sign up</h2>
+<div class="sign-up">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <h1 class="sign-up-title">ユーザー会員登録</h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :hundle_name %><br />
-    <%= f.text_field :hundle_name %>
-  </div>
+    <div class="sign-up-box">
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+      <div class="field">
+        <%= f.label :お名前 %><br />
+        <%= f.text_field :name, class:"sign-up-input" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name_kana %><br />
-    <%= f.text_field :name_kana %>
-  </div>
+      <div class="field">
+        <%= f.label :お名前ふりがな %><br />
+        <%= f.text_field :name_kana, class:"sign-up-input" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </div>
+      <div class="field">
+        <%= f.label :Email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"sign-up-input" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :user_address %><br />
-    <%= f.text_field :user_address %>
-  </div>
+      <div class="field">
+        <%= f.label :電話番号 %><br />
+        <%= f.text_field :phone_number, class:"sign-up-input" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="sign-up-box">
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :郵便番号 %><br />
+        <%= f.text_field :postal_code, class:"sign-up-input" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.label :ご住所 %><br />
+        <%= f.text_field :user_address, class:"sign-up-input" %>
+      </div>
 
+      <div class="field">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"sign-up-input" %>
+      </div>
 
-<<<<<<< HEAD
+      <div class="field">
+        <%= f.label :パスワード確認 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"sign-up-input" %>
+      </div>
 
-=======
->>>>>>> 85b2d4195cc808efb8a7fbae20c52f2cd6a70f5a
+    </div>
+
+      <div class="actions">
+        <%= f.submit "会員登録する", class:"sign-up-button" %>
+      </div>
+
+  <% end %>
+
+</div>
+
 <%= render "users/shared/links" %>

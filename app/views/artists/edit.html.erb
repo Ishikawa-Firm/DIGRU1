@@ -1,4 +1,4 @@
-<h1>Artists#edit</h1>
+<h1>アーティスト情報編集</h1>
 
 	<%= form_for(@artist) do |f| %>
 		<p>Name<%= f.text_field :name, class: "aaa" %></p>
@@ -8,5 +8,6 @@
 		<p>Postal code<%= f.text_field :postal_code, class: "" %></p>
 		<p>Phone number<%= f.text_field :phone_number, class: "" %></p>
 		<p>Mail<%= f.text_field :email, class: "" %></p>
+		<p>Introduction<%= f.text_area :introduction, class: "" %></p>
 		<%= f.submit "Update Artist" %>
 	<% end %>
