@@ -42,7 +42,7 @@
 						    <% end %>
 								    <p>/<%= product.artist.name %></p>
 								    <p>価格 | ¥<%= product.price %></p>
-								    <% if !product.stock.nil? || product.stock > 1 %>
+								    <% if !product.stock.nil? || product.stock > 0 %>
 										<p><span class= "y-stock"> ●</span> 在庫あり：<%= product.stock%></p>
 									<% else %>
 										<p> ❌ Sold out </p>

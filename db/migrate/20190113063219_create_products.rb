@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
 		t.string   :name
 		t.integer  :price
 		t.string   :label
-		t.integer  :genre
+		t.integer  :genre, default: 0, null: false, limit: 1
 		t.integer  :stock
 		t.string   :image_id
 		t.text     :movie_url
