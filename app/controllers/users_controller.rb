@@ -30,6 +30,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.update(deleted_at: Time.now)
+    redirect_to products_path
   end
 
   def help

@@ -8,7 +8,6 @@
 			<ul class="users">postal_code : <%= current_user.postal_code %></ul>
 			<ul class="users">user_address : <%= current_user.user_address %></ul>
 			<ul class="users">email : <%= current_user.email %></ul>
-
 			<%= link_to " 登録情報編集", edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
 			<br>
 			<h3> お気に入りに入れたCD </h3>
