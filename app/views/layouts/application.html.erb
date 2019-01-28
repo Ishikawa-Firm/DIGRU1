@@ -50,9 +50,9 @@
             <% if user_signed_in? %>
 
               <ul class="nav-menu nav navbar-nav user">
-                <% if current_user.carts.count > 0 %>
+                <% if current_user.carts.all.last && current_user.carts.all.last.added_at == nil %>
                   <li><%= link_to cart_path(current_user.carts.all.last), class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p><p>カート</p><% end %></li>
-                <% else %>
+                <% else%>
                   <li><%= link_to carts_empty_path, class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p><p>カート</p><% end %></li>
                 <% end %>
                 <li><%= link_to user_path(current_user.id), class:"cat-1" do %><p class="glyphicon glyphicon-home header-icon"></p><p>マイページ</p><% end %></li>

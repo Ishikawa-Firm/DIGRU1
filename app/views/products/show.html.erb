@@ -23,7 +23,7 @@
 
 					<p>ジャンル：<%= @product.genre%></p>
 					<p>レーベル：<%= @product.label%></p>
-					<% if @product.stock > 1 %>
+					<% if @product.stock > 0 %>
 						<p>在庫数：<%= @product.stock%></p>
 					<% else %>
 						<p> ❌ Sold out </p>
