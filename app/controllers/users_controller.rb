@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   def history
     @carts = Cart.where(user_id: current_user)
     @products = Product.all
-    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+    @histories = CartItem.where(product_id: @products, cart_id: @carts).order(created_at: :desc)
       @histories.each do |h|
         @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
       end
