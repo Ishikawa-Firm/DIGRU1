@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'addresses/show'
   root to: 'products#index'
 
   get 'admins/show'
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
     registrations: 'artists/registrations'
   }
 
+  get    '/addresses/show',   to: 'addresses#show'
+
   get    '/admins/user_history',    to: 'admins#user_history'
   get    '/admins/user_index',    to: 'admins#user_index'
   get    '/admins/user_search',    to: 'admins#user_search'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   get    '/users/session_select',    to: 'users#session_select'
   get    '/users/registration_select',    to: 'users#registration_select'
   get    '/users/thanks',    to: 'users#thanks'
+  get    '/users/history',    to: 'users#history'
   resources :users, only: [:show, :edit, :update, :destroy]
 
   # get    '/artists/search/',    to: 'artists#search'

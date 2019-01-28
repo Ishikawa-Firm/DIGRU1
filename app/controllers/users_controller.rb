@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @histories.each do |h|
         @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
       end
-    end
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -81,6 +81,15 @@ class UsersController < ApplicationController
         @cart = current_user.carts.all.last
         @sum = sum(@cart_items)
         render 'users/confirm_order'
+      end
+  end
+
+  def history
+    @carts = Cart.where(user_id: current_user)
+    @products = Product.all
+    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+      @histories.each do |h|
+        @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
       end
   end
 

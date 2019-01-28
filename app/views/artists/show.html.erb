@@ -50,7 +50,7 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="ranking">
-					<h4> このアーティストの<br>CD売り上げランキング TOP10</h4>
+					<h4> CD売り上げランキング<br><span class="ranking-title">TOP10</span></h4>
 					<div class="ranking-rank">
 						<li>1</li>
 						<%= image_tag 'rank1.png', class:"rank1" %>
@@ -72,7 +72,7 @@
 						    <div class= "ranking-item">
 							    <%= link_to product_path(products) do %>
 							    	<p class= "ranking-product-image"><%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></p>
-								    <p class= "ranking-artist-name"><%= products.name %><br><br>
+								    <p class= "ranking-artist-name"><%= products.name %><br>
 								   	/<%= products.artist.name %></p>
 								<% end %>
 							</div>

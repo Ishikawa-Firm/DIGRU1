@@ -1,4 +1,3 @@
-
 <!-- スライダー ランダム表示-->
 <% if @products.count > 5  %>
 	<div class="slider">
@@ -42,7 +41,7 @@
 						    <% end %>
 								    <p>/<%= product.artist.name %></p>
 								    <p>価格 | ¥<%= product.price %></p>
-								    <% if !product.stock.nil? || product.stock > 1 %>
+								    <% if product.stock > 0 %>
 										<p><span class= "y-stock"> ●</span> 在庫あり：<%= product.stock%></p>
 									<% else %>
 										<p> ❌ Sold out </p>
@@ -79,7 +78,7 @@
 						    <div class= "ranking-item">
 							    <%= link_to product_path(products) do %>
 							    	<p class= "ranking-product-image"><%= attachment_image_tag products, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></p>
-								    <p class= "ranking-artist-name"><%= products.name %><br><br>
+								    <p class= "ranking-artist-name"><%= products.name %><br>
 								   	/<%= products.artist.name %></p>
 								<% end %>
 							</div>
