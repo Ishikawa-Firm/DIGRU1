@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @carts = Cart.where(user_id: @user)
     @histories = CartItem.where(product_id: @products, cart_id: @carts)
       @histories.each do |h|
-      @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
+        @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
       end
     end
 
@@ -30,6 +30,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.update(deleted_at: Time.now)
+    redirect_to products_path
   end
 
   def help
@@ -88,6 +91,10 @@ class UsersController < ApplicationController
   end
 
   def registraion_select
+  end
+
+  def thanks
+    @user = User.find(current_user.id)
   end
 
   private

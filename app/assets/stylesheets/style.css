@@ -1,4 +1,4 @@
-/* 
+/*
 Template Name: WebMag Html Template
 
 Author: yaminncco
@@ -197,17 +197,24 @@ RESPONSIVE
      transition: 0.2s width;
 }
  .navbar-nav li .cat-1:after {
-     background-color: #4BB92F;
+     background-color: #4BB92F; /* 黄緑　マイページ */
 }
  .navbar-nav li .cat-2:after {
-     background-color: #ff8700;
+     background-color: #ff8700; /* オレンジ　アーティスト一覧 */
 }
  .navbar-nav li .cat-3:after {
-     background-color: #0078ff;
+     background-color: #0078ff; /* 青　FAQ */
 }
  .navbar-nav li .cat-4:after {
-     background-color: #8d00ff;
+     background-color: #8d00ff; /* 紫　ログアウト */
 }
+ .navbar-nav li .cat-5:after {
+     background-color: #58ACFA; /* 黄 */
+}
+ .navbar-nav li .cat-6:after {
+     background-color: #F7D358; /* 水色 */
+}
+
  .navbar-nav li :hover, .nav-menu li :focus {
      background-color: transparent;
      text-decoration: none;
@@ -223,6 +230,12 @@ RESPONSIVE
 }
  .nav-menu li .cat-4:hover, .nav-menu li .cat-4:focus {
      color: #8d00ff;
+}
+ .nav-menu li .cat-5:hover, .nav-menu li .cat-5:focus {
+     color: #58ACFA;
+}
+ .nav-menu li .cat-6:hover, .nav-menu li .cat-6:focus {
+     color: #F7D358;
 }
 /*=========================================================
 	RESPONSIVE

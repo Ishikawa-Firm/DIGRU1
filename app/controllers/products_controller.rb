@@ -21,11 +21,12 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @product_slider = Product.order("name").search(params[:search]).where(deleted_at: nil).page(params[:page]).shuffle
     @products = Product.order("name").search(params[:search]).where(deleted_at: nil).page(params[:page]).reverse_order
     @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
 
-    test = CartItem.group(:product_id).sum(:quantity)
-    @test = Hash[test.sort_by{ |_, v| -v } ]
+    ranking = CartItem.group(:product_id).sum(:quantity)
+    @ranking = Hash[ranking.sort_by{ |_, v| -v } ]
     # @test.each_key do |key|
     #   products = Product.find_by(id: key).order(quantity: :desc)
     #   puts products.name

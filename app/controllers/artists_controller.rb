@@ -6,6 +6,9 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     @products = @artist.products.page(params[:page]).reverse_order.where(deleted_at: nil)
+
+    ranking = CartItem.group(:product_id).sum(:quantity)
+    @ranking = Hash[ranking.sort_by{ |_, v| -v } ]
   end
 
   def edit
@@ -40,7 +43,7 @@ class ArtistsController < ApplicationController
 
   private
     def artist_params
-      params.require(:artist).permit(:email, :name, :name_kana, :member, :postal_code, :user_address, :phone_number, :profile_image)
+      params.require(:artist).permit(:email, :name, :name_kana, :member, :postal_code, :user_address, :phone_number, :profile_image, :introduction)
     end
 
     def product_params

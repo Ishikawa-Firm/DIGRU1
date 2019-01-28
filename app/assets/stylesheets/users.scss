@@ -110,11 +110,11 @@
 .address-select {
 	width: 100%;
 	height: 100%;
-	background-color: orange;
 }
 
 .select-buy{
-	width: 90%;
+	width: 30%;
+	float: left;
 	margin: 0 auto;
 }
 
@@ -144,3 +144,139 @@
 	}
 }
 
+/* help */
+
+.faq-title {
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	color: #42a5f5;
+	list-style: none;
+	padding-bottom: 20px;
+}
+
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+	font-family: sans-serif;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_qa {
+	margin: 0 0 2em 10px;
+	padding: 1em 1em 0.5em 1em;
+	background: #e1f5fe;
+}
+.cp_qa h1 {
+	font-size: 1.2em;
+	position: relative;
+	margin-right: 1em;
+	margin-left: -26px;
+	padding: 0.3em;
+	color: #ffffff;
+	background-color: #42a5f5;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+.cp_qa h1::after {
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	content: '';
+	border-width: 0 10px 10px 0;
+	border-style: solid;
+	border-color: transparent #1976d2 transparent transparent;
+}
+.cp_qa dl {
+	margin: 0;
+}
+.cp_qa dt {
+	margin-bottom: 0.5em;
+	padding: 0.2em 0.5em 0.5em 2em;
+	border-radius: 0.2em;
+	background: #ffb74d;
+}
+.cp_qa dd {
+	margin-bottom: 1em;
+	margin-left: 0;
+	padding: 0.5em 1em 1.5em 3em;
+}
+/* QAアイコン */
+.cp_qa dt::before,.cp_qa dd::before{
+	font-size: 1.5em;
+	color: #ffffff;
+}
+.cp_qa dt::before {
+	margin: 0.3em 0.3em 0 -1em;
+	content: 'Q';
+}
+.cp_qa dd::before {
+	margin: 0 0.5em 0 -2em;
+	padding: 0.2em 0.4em;
+	content: 'A';
+	border-radius: 0.2em;
+	background: #00bcd4;
+}
+
+.mail-title {
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #42a5f5;
+	list-style: none;
+	border-bottom: solid 0.5px #e1f5fe;
+}
+
+.mail {
+	list-style: none;
+	padding: 20px 0;
+	text-align: center;
+}
+
+
+/* thanks */
+
+.background {
+	width: 100%;
+	margin: 0 auto;
+	background-image: image-url('thanks.jpg');
+  	background-size:cover;
+  	box-shadow:
+	inset 0 0 20px #fff /* 背景色と同じ色 */,
+	inset 0 0 20px #fff,
+	inset 0 0 20px #fff,
+	inset 0 0 20px #fff;
+}
+
+.thanks-text1, .thanks-text2 {
+	list-style: none;
+	text-align: center;
+}
+
+.thanks-text1 {
+	color: red;
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: -30px;
+	padding-top: 240px;
+}
+
+.thanks-text2 {
+	font-size: 20px;
+	margin: 30px 0 50px 0;
+}
+
+.thanks-button-box {
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 120px;
+}
+
+.thanks-link-button {
+	font-size: 100%;
+	margin: 0 40%;
+	width: 20%;
+}

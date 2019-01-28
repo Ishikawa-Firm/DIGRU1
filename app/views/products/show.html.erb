@@ -8,12 +8,14 @@
 	<div class="row">
 		<div class="col-xs-8">
 			<!-- 商品の基本情報 -->
-			<div class="border1"> 基本情報</div>
+			<div class="border" aria-hidden="true"">
+				<span class="glyphicon glyphicon-headphones"> CD基本情報</span>
+			</div>
 			<div class="product-information">
 				<div class="product-image">
-				<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+					<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "product-item-image" %>
 				</div>
-				<div class="product-informarion-text">
+				<div class="product-information-text">
 					<p>商品情報：</p>
 
 					<p><%= @product.name%> </p>
@@ -47,18 +49,26 @@
 				</div>
 			</div>
 			<!-- 商品の基本情報 -->
+
 			<!-- 動画埋め込み -->
-				<%= @product.movie_url.html_safe %>
+			<div class="border" aria-hidden="true">
+				<span class="glyphicon glyphicon-facetime-video"> ミュージックビデオ</span>
+			</div>
+
+			<div class= "product-show-movie">
+				<div class= ""> <%= @product.movie_url.html_safe %></div>
+			</div>
 			<!-- 動画埋め込み -->
+
 			<!-- 商品の詳細情報 -->
-			<div class="border2"> CD詳細情報</div>
+			<div class="border" aria-hidden="true""> <span class="glyphicon glyphicon-headphones"> CD詳細情報</span></div>
 			<div class="product-detailed-information">
 				<p>「CD構成」，「曲名」</p>
 			</div>
 			<!-- 商品の詳細情報 -->
 
 			<!-- 商品へのコメント -->
-			<div class="border3"> コメント</div>
+			<div class="border"><span class="glyphicon glyphicon-comment"> コメント</span></div>
 			<div class="comment">
 				    <% @product.comments.each do |comment| %>
 				    	<p>名前：<%= comment.user.hundle_name %>

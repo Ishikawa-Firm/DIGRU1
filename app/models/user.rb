@@ -13,6 +13,11 @@ class User < ApplicationRecord
 
     attachment :profile_image
 
+  def active_for_authentication?
+    ! self.deleted_at?
+  end
+  # "deleted_at"がtrueの場合はログインできなくなる記述
+
     def self.search(search)
       if search
           User.where(['name LIKE ?', "%#{search}%"])

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get    '/admins/user_history',    to: 'admins#user_history'
   get    '/admins/user_index',    to: 'admins#user_index'
   get    '/admins/user_search',    to: 'admins#user_search'
-  resources :admins, only: [:show, :edit, :update]
+  resources :admins, only: [:show]
 
   get    '/users/help',    to: 'users#help'
   get    '/users/confirm_order',    to: 'users#confirm_order'
@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:edit]
 
   patch  '/carts/:id',    to: 'users#buy'
+  get   '/carts/empty',    to: 'carts#cart_empty'
   resources :carts, only: [:show]
 
   get '/addresses/:id' => 'addresses#show'
