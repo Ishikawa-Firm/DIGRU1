@@ -4,5 +4,5 @@
    		 <%= link_to "ユーザー一覧", admins_user_index_path, class: 'btn btn-info col-xs-7' %>
 		    <%= link_to "アーティスト一覧", artists_index_path, class: 'btn btn-info col-xs-7' %>
 		    <%= link_to "購入履歴", admins_user_history_path, class: 'btn btn-info col-xs-7' %>
-		    <%= link_to "管理者情報編集", edit_admin_path, class: 'btn btn-info col-xs-7' %>
-
+		    <%= link_to "管理者情報編集", edit_admin_registration_path, class: 'btn btn-info col-xs-7' %>
+		    <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-info col-xs-7', method: :delete %>
