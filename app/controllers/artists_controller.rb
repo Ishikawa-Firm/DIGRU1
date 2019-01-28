@@ -7,8 +7,11 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @products = @artist.products.page(params[:page]).reverse_order.where(deleted_at: nil)
 
-    ranking = CartItem.group(:product_id).sum(:quantity)
+    artist_products = Artist.find(params[:id]).products
+    ranking = CartItem.where(product_id: artist_products).group(:product_id).sum(:quantity)
     @ranking = Hash[ranking.sort_by{ |_, v| -v } ]
+
+    # ranking = CartItem.group(:product_id).sum(:quantity)
   end
 
   def edit

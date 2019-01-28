@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   def show
-    @address = Address.find(params[:id])
+    @addresses = current_user.addresses.all
   end
 end
 
