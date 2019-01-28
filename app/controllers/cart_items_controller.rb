@@ -48,9 +48,9 @@ class CartItemsController < ApplicationController
 			if !current_artist.nil?
 				redirect_to user_path(current_user.id)
 					if @cart_item.product.artist_id == current_artist.id
-						redirect_to artists_product_history_path
+						redirect_to artists_product_history_path, flash: {key: "ＯＫ！"}
 					else
-				redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
+						redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
         			end
         	end
         else

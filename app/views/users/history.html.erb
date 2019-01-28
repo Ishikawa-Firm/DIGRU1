@@ -1,38 +1,19 @@
 <h2> <%= current_user.name %>様のご注文履歴 </h2>
 
-ステータス変更方法<span class= "only-customer"> * お客様のみ表示されます.</span>
-<div class= "status-description">
-  <table class= "">
-    <tr>
-      <th>「受付」</th>
-      <td>デフォルトの商品の状態です．</td>
-    </tr>
-    <tr>
-      <th>「商品準備中」</th>
-      <td>受注を確認した後に変更します．</td>
-    </tr>
-    <tr>
-      <th>「配送済み」</th>
-      <td>商品配送後に変更します．</td>
-    </tr>
-    <tr>
-      <th>*「商品到着」</th>
-      <td>商品到着を確認しましたら，お客様ご自身で「商品到着を確認」ボタンをクリックしてください．</td>
-    </tr>
-  </table>
-</div>
+<li class= "users-history-text">商品が到着しましたら，お客様ご自身で「商品到着を確認」ボタンをクリックしてください．</li>
+
 
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th>ご注文日時</th>
       <th>ご注文内容</th>
-      <th></th>
-      <th>小計<br>(税込)</th>
+      <th>枚数</th>
+      <th>小計(税込)</th>
       <th>送付先情報</th>
       <th><th>
       <th>商品の状況</th>
-      <th></th>
+      <th><th>
     </tr>
   </thead>
   <tbody>
@@ -62,36 +43,43 @@
     　</td>
 
       <!--送付先情報-->
-      <td style="color: #DF0202">
+      <td>
         <%= @user.other_name %>様
     　</td>
 
-	  <td style="color: #DF0202">
+	  <td>
 	    <%= @user.other_postal_code %>
     　</td>
 
-      <td style="color: #DF0202">
+      <td>
         <%= @user.other_address %>
     　</td>
 
       <!--商品の状況-->
       <td>
-        <%= h.status %>
-    　</td>
-
-      <!--ステータス-->
-      <td>
-        <%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
-			<%= f.hidden_field :quantity, value: h.quantity %>
-			<%= f.hidden_field :product_id, value: h.product_id %>
-			<!-- CartItem modelにrestrict_status_userメソッドを定義し，特定の選択肢を除外 -->
-			<%= f.hidden_field :status, value: CartItem.restrict_status_user.keys.to_a, status:'商品到着', class: "select-status" %>
+      	<% if h.status != '商品到着' %>
+        	<span style="color: red;"><%= h.status %></span>
+        <% else %>
+        	<%= h.status %>
+        <% end %>
       </td>
+
       <td>
-          	<%= f.submit "到着しました", class: "btn btn-primary update-status-button" %>
+      	<% flash.each do |key, value| %>
+	       <%= content_tag(:div, value, class: "#{key}") %>
+	    <% end %>
+      	<% if h.status != '商品到着' %>
+	        <%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
+				<%= f.hidden_field :quantity, value: h.quantity %>
+				<%= f.hidden_field :product_id, value: h.product_id %>
+				<!-- CartItem modelにrestrict_status_userメソッドを定義し，特定の選択肢を除外 -->
+				<%= f.hidden_field :status, value: CartItem.restrict_status_user.keys.to_a, status:'商品到着', class: "select-status" %>
+	            <div class="text-button"><%= f.submit "この商品の到着を確認しました", class:"btn btn-primary" %></div>
+			<% end %>
+		<% else %>
+			✅ 到着確認済み
 		<% end %>
       </td>
-
     <% end %>
   </tbody>
 </table>
