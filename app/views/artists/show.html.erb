@@ -15,13 +15,15 @@
 						<div class="artist-show-link-button">
 							<p><%= link_to "アーティスト情報編集", edit_artist_path(@artist.id), class:"btn btn-sm btn-default artist-show-link-button-edit"%></p>
 							<p><%= link_to "退会する", artist_path, method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-sm btn-default artist-show-link-button-destroy clearfix" %></p>
+						</div>
 						<!-- 管理者専用 -->
 						<% elsif admin_signed_in? %>
+						<div class="artist-show-link-button">
 							<p><%= link_to "アーティスト情報編集", edit_artist_path(@artist.id), class:"btn btn-sm btn-default artist-show-link-button-edit"%></p>
 							<p><%= link_to "このユーザーを退会させる", artist_path, method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-sm btn-default artist-show-link-button-destroy clearfix" %></p>
+						</div>
 						<!--管理者専用 -->
 					<% else %>
-						</div>
 						<div class="artist-show-link-button"></div>
 					<% end %>
 				</div>
