@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="col-xs-8">
 			<!-- ユーザー情報 -->
+			<% if user_signed_in? %>
 			<ul class="users">
     		<%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
 			</ul>
@@ -40,29 +41,6 @@
 		<!-- 購入履歴 -->
 		<div class="col-xs-4">
 			<div class="history">購入履歴</div>
-<<<<<<< HEAD
-		<% @histories.each do |h| %>
-			<div class="well">
-			<%= h.cart.added_at %><br>
-			<%= h.product.name %><br>
-			<%= h.price %><br>
-  			<%= @user.other_name %><br>
-  			<%= @user.other_address %><br>
-		 	<%= @user.other_name %><br>
-  			<%= h.status %><br>
-		<!-- 到着ボタン -->
-			<%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id} do |f| %>
-			<%= f.hidden_field :quantity, value: h.quantity %>
-    		<%= f.hidden_field :product_id, value: h.product_id %>
-    		<!-- CartItem modelにrestrict_status_userメソッドを定義し，特定の選択肢を除外 -->
-    		<%= f.hidden_field :status, value: CartItem.restrict_status_user.keys.to_a, status:'商品到着', class: "select-status" %>
-		    <%= f.submit "到着しました", class: "btn btn-primary update-status-button" %>
-			<% end %>
-			<br>
-		<!-- 到着ボタン -->
-		</div>
-	<% end %>
-=======
 			<% if current_user.carts.count > 0 %>
 				<% @histories.each do |h| %>
 					<div class="gray-box">
@@ -109,8 +87,44 @@
 					</div>
 				<% end %>
 			<% end %>
->>>>>>> 418424fd13025b815d9de65876fe758667e3df80
 		<!-- 購入履歴 -->
+            <% elsif admin_signed_in? %>
+            <h1>管理者用情報</h1>
+    		<%= attachment_image_tag @user_admin, :profile_image, :fill, 100, 100, fallback: "sample-author1.jpg" %>
+			</ul>
+			<ul class="users">name : <%= @user_admin.name %></ul>
+			<ul class="users">name_kana : <%= @user_admin.name_kana %></ul>
+			<ul class="users">hundle_name : <%= @user_admin.hundle_name %></ul>
+			<ul class="users">postal_code : <%= @user_admin.postal_code %></ul>
+			<ul class="users">user_address : <%= @user_admin.user_address %></ul>
+			<ul class="users">email : <%= @user_admin.email %></ul>
+
+			<%= link_to " 登録情報編集", edit_user_path(@user_admin.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %><br>
+			<%= link_to " 退会する", user_path, method: :delete, class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+				<h3> お気に入りに入れたCD </h3>
+				<table class='table table-hover table-inverse'>
+  					<thead>
+					    <tr>
+					      <th>image</th>
+					      <th>name</th>
+					      <th colspan="3"></th>
+					    </tr>
+					</thead>
+					<tbody>
+				<% @favorites.each do |favorite| %>
+				<tr>
+				  <td>
+					<%= attachment_image_tag favorite.product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+				  </td>
+				  <td>
+					<%= favorite.product.name %>
+				  </td>
+				<% end %>
+					</tbody>
+				</table>
+				<%= paginate @favorites, class: "paginate" %>
+		</div>
+            <% end %>
 		</div>
 	</div>
 </div>
