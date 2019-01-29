@@ -9,9 +9,18 @@
 input[type="email"] {
         width: 250px;
         height: 35px;
-    }
+}
 
 input[type="password"] {
         width: 250px;
         height: 35px;
-    }
+}
+
+h1 {
+  background: linear-gradient(transparent 70%, #f8b862 70%);
+}
+
+h3 {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  font-size: 20px;
+}

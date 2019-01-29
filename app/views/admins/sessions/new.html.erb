@@ -1,6 +1,6 @@
 <body class="text-center">
     <span class="glyphicon glyphicon-wrench admin-icon"></span>
-      <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+      <h2 class="h3 mb-3 font-weight-normal">Log in</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
           <p class="px-4 py-5"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email" %></p>
