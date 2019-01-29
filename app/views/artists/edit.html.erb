@@ -50,3 +50,7 @@
     </div>
   <% end %>
 </div>
+
+<li class="delete">
+    <%= link_to " 退会する", artist_path, method: :delete, class: "edit_artist_#{current_artist.id}" %>
+</li>
