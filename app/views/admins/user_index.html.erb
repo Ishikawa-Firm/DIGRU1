@@ -1,10 +1,17 @@
-<h1 class="admin">ユーザー一覧</h1>
-
-<%= form_tag("user_index", :method => 'get' ) do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag 'Search', :name => nil  %>
-<% end %>
-
+<div class="text-center">
+  <h1 class="admin">ユーザー一覧</h1>
+    <div class= "user-index-search">
+      <p>
+        <!-- サーチ機能 -->
+        <%= form_tag("user_index", :method => 'get' ) do %>
+        <%= text_field_tag :search, params[:search], placeholder:"ユーザー名" %>
+        <%= submit_tag 'Search', :name => nil  %>
+        <% end %>
+        <!-- サーチ機能 -->
+      </p>
+    </div>
+</div>
+<!-- ユーザー情報 -->
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -44,5 +51,5 @@
 <% end %>
 </tbody>
 </table>
-
+<!-- ユーザー情報 -->
 <%= paginate @users, class: "paginate" %>
