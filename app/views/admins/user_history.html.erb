@@ -5,37 +5,79 @@
   <thead>
     <tr>
       <th>購入者名</th>
-      <th>購入日時</th>
-      <th>購入内容</th>
-      <th>購入価格総計</th>
-      <th>送付先</th>
+      <th>出品アーティスト</th>
+      <th>カートID</th>
+      <th>受注日時</th>
+      <th>受注商品名</th>
+      <th>単価<br>(税込)</th>
+      <th>受注枚数</th>
+      <th>小計<br>(税込)</th>
+      <th>送付先ご氏名/ご住所</th>
       <th>ステータス</th>
-      <th colspan="6"></th>
+      <th></th>
     </tr>
   </thead>
-<tbody>
-<% @histories.each do |history| %>
-<tr>
-  <td>
-	<%= history.cart.user.name %>
-  </td>
-  <td>
-	<%= history.cart.created_at %>
-  </td>
-  <td>
-	<%= history.product.name %>
-  </td>
-  <td>
-  <%= history.price %>
-  </td>
-  <td>
-    <%= @user.other_name %>|
-    <%= @user.other_postal_code %>
-    <%= @user.other_address %>
-  </td>
-  <td>
-  	<%= history.status %>
-  </td>
-<% end %>
-</tbody>
+  <tbody>
+  <% @histories.each do |h| %>
+    <tr>
+      <!--購入者名前-->
+      <td>
+        <%= link_to user_path(h.cart.user) do %>
+          <%= h.cart.user.name %>
+        <% end %>
+      </td>
+
+      <!--アーティスト名-->
+      <td>
+        <%= link_to artist_path(h.product.artist) do %>
+          <%= h.product.artist.name %>
+        <% end %>
+      </td>
+
+      <!--カートID-->
+      <td>
+      <%= h.cart_id %>
+      </td>
+
+      <!--購入日時-->
+      <td>
+      <%= simple_time(h.cart.added_at) %>
+      </td>
+
+      <!--購入内容-->
+      <td>
+        <%= link_to product_path(h.product) do %>
+          <%= h.product.name %>
+        <% end %>
+      </td>
+
+      <!--単価-->
+      <td>
+        <%= h.price.to_s(:delimited) %>円
+      </td>
+
+      <!--購入枚数-->
+      <td>
+        <%= h.quantity %>
+    　</td>
+
+      <!--小計-->
+      <td style="color: #DF0202">
+        <%= (h.price * h.quantity).to_s(:delimited) %>円
+    　</td>
+
+      <!--送付先-->
+      <td>
+        <%= @user.other_name %>様/
+        <%= @user.other_postal_code %>
+        <%= @user.other_address %>
+      </td>
+
+      <!--ステータス-->
+      <td>
+        <%= h.status %>
+      </td>
+
+    <% end %>
+  </tbody>
 </table>
