@@ -65,9 +65,6 @@
       </td>
 
       <td>
-      	<% flash.each do |key, value| %>
-	       <%= content_tag(:div, value, class: "#{key}") %>
-	    <% end %>
       	<% if h.status != '商品到着' %>
 	        <%= form_for h, :url => {:controller => :users, :action => :update_status, :id => h.id}  do |f| %>
 				<%= f.hidden_field :quantity, value: h.quantity %>

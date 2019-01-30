@@ -49,12 +49,13 @@
             <!-- nav -->
             <% if user_signed_in? %>
 
-              <ul class="nav-menu nav navbar-nav user">
+              <ul class="nav-menu nav navbar-nav artist">
                 <% if current_user.carts.all.last && current_user.carts.all.last.added_at == nil %>
                   <li><%= link_to cart_path(current_user.carts.all.last), class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p><p>カート</p><% end %></li>
                 <% else%>
                   <li><%= link_to carts_empty_path, class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p><p>カート</p><% end %></li>
                 <% end %>
+                <li><%= link_to users_history_path(current_user), class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p><p>商品注文履歴</p><% end %></li>
                 <li><%= link_to user_path(current_user.id), class:"cat-1" do %><p class="glyphicon glyphicon-home header-icon"></p><p>マイページ</p><% end %></li>
                 <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p><p>アーティスト一覧</p><% end %></li>
                 <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p><p>FAQ</p><% end %></li>
