@@ -1,4 +1,7 @@
 class ArtistsController < ApplicationController
+  before_action :authenticate_aritsts!,
+ only: [:edit, :create, :update, :edit, :destroy, :update, :product_history]
+
   def index
     @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
   end
