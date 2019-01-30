@@ -1,3 +1,17 @@
 // Place all the styles related to the admins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-aicon {
+  color: #666;
+}
+
+h1.admin {
+  background: linear-gradient(transparent 70%, #f8b862 70%);
+  margin : 10px 5px 20px 5px;
+}
+
+h3.admin {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+  font-size: 20px;
+}

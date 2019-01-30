@@ -1,8 +1,27 @@
-
-		<h1>管理者用マイページ</h1>
-			<%= link_to "トップページ", products_path, class: 'btn btn-info col-xs-7' %>
-   		 <%= link_to "ユーザー一覧", admins_user_index_path, class: 'btn btn-info col-xs-7' %>
-		    <%= link_to "アーティスト一覧", artists_index_path, class: 'btn btn-info col-xs-7' %>
-		    <%= link_to "購入履歴", admins_user_history_path, class: 'btn btn-info col-xs-7' %>
-		    <%= link_to "管理者情報編集", edit_admin_registration_path, class: 'btn btn-info col-xs-7' %>
-		    <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-info col-xs-7', method: :delete %>
+<div class="text-center">
+	<div class="container">
+		<div class="row">
+   			<div class="col-md-4"></div>
+    		<div class="col-md-4">
+ 				<h1 class="admin">Hello, admin!</h1>
+		 	</div>
+    		<div class="col-md-4"></div>
+	 	</div>
+    </div>
+        <div class="col-md-3">
+          <h3 class="admin"><%= link_to "ユーザー一覧", admins_user_index_path %></h3>
+          <p>ユーザー一覧ページです。ユーザー情報の確認や強制退会、情報編集が行えます。</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="admin"><%= link_to "アーティスト一覧", artists_index_path %></h3>
+          <p>アーティスト一覧ページです。アーティスト情報の確認や強制退会、情報編集が行えます。</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="admin"><p><%= link_to "購入履歴", admins_user_history_path %></p></h3>
+          <p>ユーザーの購入履歴の一覧を確認できます。</p>
+        </div>
+        <div class="col-md-3">
+          <h3 class="admin"><%= link_to "管理者情報編集", edit_admin_registration_path %></h3>
+          <p>管理者情報を変更できます。</p>
+	</div>
+</div>

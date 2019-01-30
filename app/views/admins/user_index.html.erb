@@ -1,16 +1,26 @@
-<h1>Admins#user_index!</h1>
-
-<%= form_tag("user_index", :method => 'get' ) do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag 'Search', :name => nil  %>
-<% end %>
-
+<div class="text-center">
+  <h1 class="admin">ユーザー一覧</h1>
+    <div class= "user-index-search">
+      <p>
+        <!-- サーチ機能 -->
+        <%= form_tag("user_index", :method => 'get' ) do %>
+        <%= text_field_tag :search, params[:search], placeholder:"ユーザー名" %>
+        <%= submit_tag 'Search', :name => nil  %>
+        <% end %>
+        <!-- サーチ機能 -->
+      </p>
+    </div>
+</div>
+<!-- ユーザー情報 -->
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th>image</th>
       <th>id</th>
-      <th>name</th>
+      <th>名前</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>退会</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,19 +28,28 @@
 <% @users.each do |user| %>
 <tr>
   <td>
-	<%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "sample-author1.jpg" %>
+    <%= user.id %>
   </td>
   <td>
-	id : <%= user.id %>
+    <%= link_to user_path(user) do %>
+      <%= user.name %>
+    <% end %>
   </td>
   <td>
-	id : <%= user.name %>
+    <%= user.postal_code %> /
+    <%= user.user_address %>
   </td>
   <td>
-<%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %>
+    <%= user.phone_number %>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
+  <td>
+    <%= user.deleted_at %>
   </td>
 <% end %>
 </tbody>
 </table>
-
+<!-- ユーザー情報 -->
 <%= paginate @users, class: "paginate" %>

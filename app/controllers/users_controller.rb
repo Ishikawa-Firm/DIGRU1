@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_admin = User.find(params[:id])
     #特定のユーザーが登録したお気に入りを全て取得する
     # @favorites = Favorite.where("user_id = ?", @user)
     @test = Favorite.where(user_id: @user.id)
@@ -90,7 +91,7 @@ class UsersController < ApplicationController
   def history
     @carts = Cart.where(user_id: current_user)
     @products = Product.all
-    @histories = CartItem.where(product_id: @products, cart_id: @carts)
+    @histories = CartItem.where(product_id: @products, cart_id: @carts).order(created_at: :desc)
       @histories.each do |h|
         @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
       end

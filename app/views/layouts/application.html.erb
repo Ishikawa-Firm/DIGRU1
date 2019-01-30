@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     <!-- Custom stlylesheet -->
     <link rel="stylesheet" href="style.css" type="text/css">
@@ -74,11 +74,12 @@
 
             <% elsif admin_signed_in? %>
 
-                <ul class="nav-menu nav navbar-nav artist">
+                <ul class="nav-menu nav navbar-nav admin">
                   <li><%= link_to admin_path(current_admin.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p><p>マイページ</p><% end %></li>
-                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p><p>FAQ</p><% end %></li>
-                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p><p>アーティスト一覧</p><% end %></li>
                   <li><%= link_to admins_user_index_path, class:"cat-5" do %><p class="glyphicon glyphicon glyphicon-user header-icon"></p><p>ユーザー一覧</p><% end %></li>
+                  <li><%= link_to admins_user_history_path, class:"cat-6" do %><p class="glyphicon glyphicon glyphicon-folder-open header-icon"></p><p>ユーザー購入履歴</p><% end %></li>
+                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p><p>アーティスト一覧</p><% end %></li>
+                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p><p>FAQ</p><% end %></li>
                   <li><%= link_to destroy_admin_session_path, class:"cat-4", method: :delete do %><p class="glyphicon glyphicon-log-out header-icon"></p><p>ログアウト</p><% end %></li>
                 </ul>
 
@@ -102,7 +103,6 @@
     <div class='container'>
       <%= yield %>
     </div>
-
   </body>
 
   <footer class="footer mt-auto py-3">

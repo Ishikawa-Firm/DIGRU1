@@ -16,3 +16,13 @@
   //= require bootstrap-sprockets
   //= require_tree
   //= require cocoon
+
+$(function (){
+	$( ".button" ).one( "click", function() {
+		var index = $( "button" ).index( this );
+		$( this ).css({
+		    borderStyle: "inset",
+		    cursor: "auto"
+		});
+	});
+});

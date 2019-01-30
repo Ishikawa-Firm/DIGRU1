@@ -79,9 +79,11 @@
 			</div>
 			<!-- 商品へのコメント -->
 			<!-- コメント投稿用フォーム -->
+            <% if user_signed_in? %>
 			<%= form_for [@product, @comment] do |f| %>
 	            <%= f.text_area :comment_text, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
 	    		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    		<% end %>
     		<% end %>
 			<!-- コメント投稿用フォーム -->
 		</div>
@@ -104,6 +106,9 @@
 		    		<% end %>
 		    	<% end %>
 		    	<% elsif artist_signed_in? && @product.artist_id == current_artist.id %>
+			    	<p><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-default" %></p>
+			    	<p><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-default", method: :delete, "data-confirm" => "Are you sure?" %></p>
+			    <% elsif admin_signed_in? %>
 			    	<p><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-default" %></p>
 			    	<p><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-default", method: :delete, "data-confirm" => "Are you sure?" %></p>
 		    	<% end %>
