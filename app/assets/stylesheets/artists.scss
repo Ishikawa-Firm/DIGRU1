@@ -319,3 +319,19 @@ input {
 .update-status-button{
 	float: left;
 }
+
+.history-status1 {
+  background-color: #F8E0F1;
+}
+
+.history-status2 {
+  background-color: #F5F6CE;
+}
+
+.history-status3 {
+  background-color: #E0F2F7;
+}
+
+.#{key} {
+  color: green;
+}

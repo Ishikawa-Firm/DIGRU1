@@ -22,6 +22,10 @@
   </table>
 </div>
 
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -86,7 +90,15 @@
       </td>
 
       <!--小計-->
-      <td>
+      <% if h.status == '受付' %>
+        <td class="history-status1">
+      <% elsif h.status == '商品準備中' %>
+        <td class="history-status2">
+      <% elsif h.status == '出荷済み' %>
+        <td class="history-status3">
+      <% else %>
+        <td>
+      <% end %>
         <%= h.status %>
     　</td>
 
