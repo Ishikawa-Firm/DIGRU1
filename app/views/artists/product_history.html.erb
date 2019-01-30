@@ -39,82 +39,87 @@
       <th>送付先ご氏名/ご住所</th>
       <th>ステータス</th>
       <th>変更</th>
-      <th></th>
     </tr>
   </thead>
-  <tbody>
-  <% @histories.each do |h| %>
-    <tr>
-      <!--購入者名前-->
-      <td>
-    	<%= h.cart.user.name %>
-      </td>
+  <% if !@cart_items.blank? %>
+    <tbody>
+      <% @histories.each do |h| %>
+        <tr>
+          <!--購入者名前-->
+          <td>
+        	 <%= h.cart.user.name %>
+          </td>
 
-      <!--カートID-->
-      <td>
-      <%= h.cart_id %>
-      </td>
+          <!--カートID-->
+          <td>
+            <%= h.cart_id %>
+          </td>
 
-      <!--購入日時-->
-      <td>
-    	<%= simple_time(h.cart.added_at) %>
-      </td>
+          <!--購入日時-->
+          <td>
+        	 <%= simple_time(h.cart.added_at) %>
+          </td>
 
-      <!--購入内容-->
-      <td>
-        <%= link_to product_path(h.product) do %>
-      	  <%= h.product.name %>
-        <% end %>
-      </td>
+          <!--購入内容-->
+          <td>
+            <%= link_to product_path(h.product) do %>
+          	  <%= h.product.name %>
+            <% end %>
+          </td>
 
-      <!--単価-->
-      <td>
-      	<%= h.price.to_s(:delimited) %>円
-      </td>
+          <!--単価-->
+          <td>
+          	<%= h.price.to_s(:delimited) %>円
+          </td>
 
-      <!--購入枚数-->
-      <td>
-      	<%= h.quantity %>
-    　</td>
+          <!--購入枚数-->
+          <td>
+          	<%= h.quantity %>
+        　</td>
 
-      <!--小計-->
-      <td style="color: #DF0202">
-        <%= (h.price * h.quantity).to_s(:delimited) %>円
-    　</td>
+          <!--小計-->
+          <td style="color: #DF0202">
+            <%= (h.price * h.quantity).to_s(:delimited) %>円
+        　</td>
 
-      <!--送付先-->
-      <td>
-      	<%= @user.other_name %>様/
-        <%= @user.other_postal_code %>
-        <%= @user.other_address %>
-      </td>
+          <!--送付先-->
+          <td>
+          	<%= @user.other_name %>様/
+            <%= @user.other_postal_code %>
+            <%= @user.other_address %>
+          </td>
 
-      <!--小計-->
-      <% if h.status == '受付' %>
-        <td class="history-status1">
-      <% elsif h.status == '商品準備中' %>
-        <td class="history-status2">
-      <% elsif h.status == '出荷済み' %>
-        <td class="history-status3">
-      <% else %>
-        <td>
+          <!--小計-->
+          <% if h.status == '受付' %>
+            <td class="history-status1">
+          <% elsif h.status == '商品準備中' %>
+            <td class="history-status2">
+          <% elsif h.status == '出荷済み' %>
+            <td class="history-status3">
+          <% else %>
+            <td>
+          <% end %>
+            <%= h.status %>
+        　</td>
+
+          <!--ステータス-->
+          <td style="width: 18%;">
+            <%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
+              <%= f.hidden_field :quantity, value: h.quantity %>
+              <%= f.hidden_field :product_id, value: h.product_id %>
+              <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
+              <%= f.select :status, CartItem.restrict_status_artist.keys.to_a, {}, class:"select-status" %>
+              <%= f.submit "更新", class: "btn btn-xs btn-primary update-status-button" %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-        <%= h.status %>
-    　</td>
-
-      <!--ステータス-->
-      <td>
-        <%= form_for h, :url => {:controller => :cart_items, :action => :update_item, :id => h.id}  do |f| %>
-          <%= f.hidden_field :quantity, value: h.quantity %>
-            <%= f.hidden_field :product_id, value: h.product_id %>
-            <!-- CartItem modelにrestrict_statusメソッドを定義し，特定の選択肢を除外 -->
-            <%= f.select :status, CartItem.restrict_status_artist.keys.to_a, {}, class:"select-status" %>
-      </td>
-      <td>
-          <%= f.submit "更新", class: "btn btn-sm btn-primary update-status-button" %>
-        <% end %>
-      </td>
-
-    <% end %>
-  </tbody>
+    </tbody>
+  <% else %>
+    <tbody>
+      <tr>
+        <td>購入された商品はまだありません．</td>
+      </tr>
+    </tbody>
+  <% end %>
 </table>

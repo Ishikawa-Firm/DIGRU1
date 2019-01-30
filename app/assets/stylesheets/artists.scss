@@ -314,10 +314,11 @@ input {
 .select-status{
 	color: #DF0202;
 	float: left;
+  margin-right: 10px;
 }
 
-.update-status-button{
-	float: left;
+.update-status-button {
+  width: 30%;
 }
 
 .history-status1 {
@@ -335,3 +336,4 @@ input {
 .#{key} {
   color: green;
 }
+
