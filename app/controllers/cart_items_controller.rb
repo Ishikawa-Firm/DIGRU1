@@ -51,6 +51,7 @@ class CartItemsController < ApplicationController
 						redirect_to artists_product_history_path, flash: {key: "ＯＫ！"}
 					else
 						redirect_to cart_path(@cart_item.cart), flash: {key: "#{@cart_item.product.name}の数量が#{@cart_item.quantity}個に変更されました．"}
+					end
         	end
         else
         	@cart_items = CartItem.where(cart_id: @cart_item.cart.id)
