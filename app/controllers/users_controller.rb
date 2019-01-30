@@ -97,6 +97,14 @@ class UsersController < ApplicationController
       end
   end
 
+  def update_status
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to users_history_path(current_user.id)
+  end
+
+
+
   def session_select
   end
 
@@ -118,5 +126,9 @@ class UsersController < ApplicationController
 
   def buy_params
     params.require(:cart).permit(:address_id, :total_price, :added_at)
+  end
+
+  def cart_item_params
+    params.require(:cart_item).permit(:product_id, :price, :quantity, :status)
   end
 end
