@@ -11,6 +11,8 @@ class Product < ApplicationRecord
 
 	attachment :image
 
+	enum genre:{"J-Pop": 0, "Rock/Pops":1, "Animation/Game":2, "World":3}
+
     def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
     end
