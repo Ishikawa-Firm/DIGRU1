@@ -38,12 +38,13 @@
               <span class="cart-item-name"><%= c.product.name%></span>
               /<%= c.product.artist.name%>
               <%= form_for c, :url => {:controller => :cart_items, :action => :update_item, :id => c.id}  do |f| %>
-                <span class="cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円（税込）</span>
-                <p>数量：<%= f.number_field :quantity, value: c.quantity.to_i, min: 1 %></p>
+                <p class="cart-item-sub-total">小計：<%= (c.sub_total).to_i %>円（税込）</p>
+                <p class="cart-item-stock"><span class= "c-stock">●</span> 在庫あり：<%= c.product.stock%></p>
+                <p>数量：<%= f.number_field :quantity, value: c.quantity.to_i, min: 1, max: c.product.stock %></p>
                 <%= f.hidden_field :product_id, value: c.product_id %>
                 <%= f.hidden_field :status, value: '商品準備中' %>
                 <%= f.submit "数量を更新", class: "btn btn-warning btn-xs btn" %>
-                <%= link_to 'カートから削除する',({controller: 'cart_items', action: 'destroy_item', id: c.id }), method: :delete %>
+                <%= link_to 'カートから削除する',({controller: 'cart_items', action: 'destroy_item', id: c.id }), method: :delete, class:"cart-item-delete" %>
               <% end %>
             </div>
           </div>
@@ -53,10 +54,16 @@
       <% end %>
     </div>
     <div class="col-xs-4">
-      <div class="show-sidebar">
-        総計:<%= @sum %>円（税込）
-        <p><%= link_to '購入手続きへ', users_confirm_order_path, class: "btn btn-primary" %><p>
-        <p>※ご注文内容確認画面（配送先指定等）へ遷移します．</p>
+      <div class= "show-sidebar">
+        <p class= "cart-show-button-none"></p>
+        <p class= "cart-show-button"><%= link_to '購入手続きへ', users_confirm_order_path, class: "btn btn-lg btn-primary cart-show-button-to-confirm" %><p>
+        <div class="clearfix"></div>
+        <li class="text-under-button">※ご注文内容確認画面へ遷移します．</li>
+        <div class= "total-price-none"></div>
+        <div class= "total-price-box">
+          <p class= "total-price-text"> 総計:</p>
+          <p class= "total-price"><%= @sum.to_s(:delimited) %>円<span>(税込)</span></p>
+        </div>
       </div>
     </div>
   </div>

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get    '/users/registration_select',    to: 'users#registration_select'
   get    '/users/thanks',    to: 'users#thanks'
   get    '/users/history',    to: 'users#history'
+  patch  '/users/history/:id', to: 'users#update_status'
   resources :users, only: [:show, :edit, :update, :destroy]
 
   # get    '/artists/search/',    to: 'artists#search'
