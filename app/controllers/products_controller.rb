@@ -47,6 +47,8 @@ class ProductsController < ApplicationController
     @cart_item = CartItem.new
     @comment = Comment.new
     @artist = current_artist
+    @disc_numbers = DiscNumber.all
+    @musics = Music.all
   end
 
   def edit
