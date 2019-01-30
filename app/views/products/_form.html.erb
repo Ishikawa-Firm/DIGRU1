@@ -23,7 +23,7 @@
 
   <div id="disc" style="border: 2px solid #00F;">
     <%= f.fields_for :disc_numbers do |df| %>
-    
+
     <h4> 枚数</h4>
     <%= render partial: "disc_number_fields", locals: {f: df } %>
     <!-- 動的リスト実装のためにrender扱い、localsでdfをfに置き換え(rendar元はf) -->
