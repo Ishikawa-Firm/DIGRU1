@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2019_01_27_071921) do
     t.integer "price"
     t.string "label"
     t.integer "genre", limit: 1, default: 0, null: false
-    t.integer "stock"
+    t.integer "stock", null: false
     t.string "image_id"
     t.text "movie_url"
     t.boolean "deleted_at"

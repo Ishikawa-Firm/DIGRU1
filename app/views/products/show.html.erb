@@ -63,7 +63,12 @@
 			<!-- 商品の詳細情報 -->
 			<div class="border" aria-hidden="true""> <span class="glyphicon glyphicon-headphones"> CD詳細情報</span></div>
 			<div class="product-detailed-information">
-				<p>「CD構成」，「曲名」</p>
+				<% @product.disc_numbers.each do |disc_number| %>
+					<p><%= disc_number.disc_name %>枚目</p>
+						<% disc_number.musics.each do |music| %>
+							<p><%= music.truck_number %>曲目 / <%= music.name %></p>
+						<% end %>
+				<% end %>
 			</div>
 			<!-- 商品の詳細情報 -->
 

@@ -1,11 +1,10 @@
-<div class="nested-fields" id="music" style="border: 2px solid #000;" >
+<div class="nested-fields" id="music" style="border: 2px solid #0F0;" >
 	<%= f.text_field :disc_name, class: "" %>
     	<%= link_to_add_association "曲名を追加", f, :musics, class: "btn btn-success", 
   'data-association-insertion-node' => '#music', 
   'data-association-insertion-method' => 'append' %>
 	    <%= link_to_remove_association '枚数を削除', f, class: 'btn btn-info' %>
 	    	<%= f.fields_for :musics do |mf| %>
-        		<h4>曲名　　　　　　　順番</h4>
         		<%= render partial: "music_fields", locals: {f: mf } %>
     		<% end %>
 </div>
