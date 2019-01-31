@@ -58,7 +58,7 @@ RESPONSIVE
 	NAVIGATION
 ===========================================================*/
  #nav {
-     height: 70px;
+     height: 20px;
 }
  #nav:after {
      content: "";
@@ -147,18 +147,18 @@ RESPONSIVE
 .nav-logo {
      width: 100%;
      margin: 0 auto;
-     padding-top: 10px;
+     padding-top: 15px;
+     padding-bottom: 15px;
 }
 
 .nav-logo li {
      text-align: center;
      list-style: none;
-     font-weight: 600;
-     font-size: 45px;
 }
 
-.logo-icon {
-    font-size: 45px;
+.nav-logo i {
+    position: relative;
+    top: 18px;
 }
 
 #r {

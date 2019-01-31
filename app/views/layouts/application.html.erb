@@ -17,6 +17,8 @@
     <!-- Font Awesome Icon -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
+    <!-- Font Awesome Icon Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all">
     <!-- Custom stlylesheet -->
     <link rel="stylesheet" href="style.css" type="text/css">
 
@@ -42,7 +44,9 @@
           <div class="container">
             <!-- logo -->
             <div class="nav-logo">
-              <li class="nav-logo-text"><%= link_to products_path do %><span class="glyphicon glyphicon-cd logo-icon"></span><span id="dig">DIG</span><span id="r">R</span><span id="dig">U</span><% end %></li>
+              <li>
+              <i class="fas fa-headphones faa-bounce animated fa-3x fa-fw" id="r"></i><%= link_to products_path do %><%= image_tag 'DIGRU_logo', :size =>'150x50' %><% end %>
+              </li>
             </div>
             <!-- /logo -->
 
@@ -53,44 +57,44 @@
                 <% if current_user.carts.all.last && current_user.carts.all.last.added_at == nil %>
                   <li><%= link_to cart_path(current_user.carts.all.last), class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p><p>カート</p><% end %></li>
                 <% else%>
-                  <li><%= link_to carts_empty_path, class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p>カート<% end %></li>
+                  <li><%= link_to carts_empty_path, class:"cat-5" do %><p class="glyphicon glyphicon-shopping-cart header-icon"></p> カート<% end %></li>
                 <% end %>
-                <li><%= link_to users_history_path(current_user), class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p>商品注文履歴<% end %></li>
-                <li><%= link_to user_path(current_user.id), class:"cat-1" do %><p class="glyphicon glyphicon-home header-icon"></p>マイページ<% end %></li>
-                <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p>アーティスト<% end %></li>
-                <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p>FAQ<% end %></li>
+                <li><%= link_to users_history_path(current_user), class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p> 商品注文履歴<% end %></li>
+                <li><%= link_to user_path(current_user.id), class:"cat-1" do %><p class="glyphicon glyphicon-home header-icon"></p> マイページ<% end %></li>
+                <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p> アーティスト<% end %></li>
+                <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p> FAQ<% end %></li>
                 <li><%= link_to destroy_user_session_path, method: :delete, class:"cat-4" do %><p class="glyphicon glyphicon-log-out header-icon"></p>ログアウト<% end %></li>
               </ul>
 
             <% elsif artist_signed_in? %>
 
                 <ul class="nav-menu nav navbar-nav artist">
-                  <li><%= link_to new_product_path, class:"cat-5" do %><p class="glyphicon glyphicon-bell header-icon"></p>商品を出品する<% end %></li>
-                  <li><%= link_to artists_product_history_path, class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p>受注商品管理<% end %></li>
-                  <li><%= link_to artist_path(current_artist.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p>マイページ<% end %></li>
-                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p>アーティスト<% end %></li>
-                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p>FAQ<% end %></li>
-                  <li><%= link_to destroy_artist_session_path, class:"cat-4", method: :delete do %><p class="glyphicon glyphicon-log-out header-icon"></p>ログアウト<% end %></li>
+                  <li><%= link_to new_product_path, class:"cat-5" do %><p class="glyphicon glyphicon-bell header-icon"></p> 商品を出品する<% end %></li>
+                  <li><%= link_to artists_product_history_path, class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p> 受注商品管理<% end %></li>
+                  <li><%= link_to artist_path(current_artist.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p> マイページ<% end %></li>
+                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p> アーティスト<% end %></li>
+                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p> FAQ<% end %></li>
+                  <li><%= link_to destroy_artist_session_path, class:"cat-4", method: :delete do %><p class="glyphicon glyphicon-log-out header-icon"></p> ログアウト<% end %></li>
                 </ul>
 
             <% elsif admin_signed_in? %>
 
                 <ul class="nav-menu nav navbar-nav admin">
-                  <li><%= link_to admin_path(current_admin.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p>マイページ<% end %></li>
-                  <li><%= link_to admins_user_index_path, class:"cat-5" do %><p class="glyphicon glyphicon glyphicon-user header-icon"></p>ユーザー一覧<% end %></li>
-                  <li><%= link_to admins_user_history_path, class:"cat-6" do %><p class="glyphicon glyphicon glyphicon-folder-open header-icon"></p>ユーザー購入履歴<% end %></li>
-                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p>アーティスト<% end %></li>
-                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p>FAQ<% end %></li>
-                  <li><%= link_to destroy_admin_session_path, class:"cat-4", method: :delete do %><p class="glyphicon glyphicon-log-out header-icon"></p>ログアウト<% end %></li>
+                  <li><%= link_to admin_path(current_admin.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p> マイページ<% end %></li>
+                  <li><%= link_to admins_user_index_path, class:"cat-5" do %><p class="glyphicon glyphicon glyphicon-user header-icon"></p> ユーザー一覧<% end %></li>
+                  <li><%= link_to admins_user_history_path, class:"cat-6" do %><p class="glyphicon glyphicon glyphicon-folder-open header-icon"></p> ユーザー購入履歴<% end %></li>
+                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p> アーティスト<% end %></li>
+                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p> FAQ<% end %></li>
+                  <li><%= link_to destroy_admin_session_path, class:"cat-4", method: :delete do %><p class="glyphicon glyphicon-log-out header-icon"></p> ログアウト<% end %></li>
                 </ul>
 
             <% else %>
 
                 <ul class="nav-menu nav navbar-nav not">
-                  <li><%= link_to users_session_select_path, class:"cat-5" do %><p class="glyphicon glyphicon-log-in header-icon"></p><p>ログイン</p><% end %></li>
-                  <li><%= link_to users_registration_select_path, class:"cat-6" do %><p class="glyphicon glyphicon-edit header-icon"></p><p>会員登録</p><% end %></li>
-                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p><p>アーティスト一覧</p><% end %></li>
-                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p><p>FAQ</p><% end %></li>
+                  <li><%= link_to users_session_select_path, class:"cat-5" do %><p class="glyphicon glyphicon-log-in header-icon"></p> ログイン<% end %></li>
+                  <li><%= link_to users_registration_select_path, class:"cat-6" do %><p class="glyphicon glyphicon-edit header-icon"></p> 会員登録<% end %></li>
+                  <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p> アーティスト一覧<% end %></li>
+                  <li><%= link_to users_help_path, class:"cat-3" do %><p class="glyphicon glyphicon-question-sign header-icon"></p> FAQ<% end %></li>
                 </ul>
 
             <% end %>
