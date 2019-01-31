@@ -16,12 +16,14 @@
 
 <!-- 検索機能 -->
 <div class= "product-index-search">
+	<div class="text-center">
 	<p>
 		<%= form_tag("/products/index", :method => 'get' ) do %>
 			<%= text_field_tag :search, params[:search], class:"product-index-search-form", placeholder:"キーワードを入力してください" %>
 			<%= submit_tag 'CDを検索する', :name => nil  %>
 		<% end %>
 	</p>
+	</div>
 </div>
 <!-- 検索機能 -->
 

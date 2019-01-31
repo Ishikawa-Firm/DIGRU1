@@ -45,13 +45,13 @@
 	<div class="clearfix"></div><br><br>
 
 	<div class="border" aria-hidden="true"">
-		<span class="glyphicon glyphicon-headphones"> お気に入りされたCD</span>
+		<span class="glyphicon glyphicon-headphones"> お気に入りに入れたCD</span>
 	</div>
 	<table class='table table-hover table-inverse'>
 	  	<thead>
 			<tr>
-				<th>image</th>
-				<th>name</th>
+				<th></th>
+				<th></th>
 				<th colspan="3"></th>
 			</tr>
 		</thead>
@@ -59,10 +59,12 @@
 			<% @favorites.each do |favorite| %>
 				<tr>
 					<td>
-						<%= attachment_image_tag favorite.product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+						<%= attachment_image_tag favorite.product, :image, size: "50x50" , format: 'jpeg', fallback: "no_image.jpg" %>
 					</td>
 					<td>
-						<%= favorite.product.name %>
+						<%= link_to product_path(favorite.product) do %>
+      	 					<%= favorite.product.name %>
+					    <% end %>
 					</td>
 				</tr>
 			<% end %>
@@ -91,8 +93,8 @@
 		<table class='table table-hover table-inverse'>
 		  	<thead>
 				<tr>
-					<th>image</th>
-					<th>name</th>
+					<th></th>
+					<th></th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -100,10 +102,12 @@
 				<% @favorites.each do |favorite| %>
 					<tr>
 						<td>
-							<%= attachment_image_tag favorite.product, :image, size: "70x70" , format: 'jpeg', fallback: "no_image.jpg", class: "" %>
+							<%= attachment_image_tag favorite.product, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
 						</td>
 						<td>
-							<%= favorite.product.name %>
+							<%= link_to product_path(favorite.product) do %>
+      	 						<%= favorite.product.name %>
+					        <% end %>
 						</td>
 					</tr>
 				<% end %>

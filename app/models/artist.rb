@@ -22,8 +22,11 @@ class Artist < ApplicationRecord
   end
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :name_kana, presence: true, length: { maximum: 30 }
   validates :postal_code, presence: true, numericality: true, length: { is: 7 }
   validates :phone_number, presence: true, length: { maximum: 11 }
   validates :user_address, presence: true, length: { maximum: 100 }
+  validates :member, presence: true, length: { maximum: 300 }
+  validates :introduction, presence: true, length: { maximum: 300 }
 
 end
