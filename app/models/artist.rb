@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
   	devise :database_authenticatable, :registerable,
 		:recoverable, :rememberable, :validatable
 
- 	has_many :products
+ 	has_many :products, dependent: :destroy
 
 	def active_for_authentication?
 		! self.deleted_at?
