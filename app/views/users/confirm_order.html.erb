@@ -25,6 +25,8 @@
 					<div class="order-border"></div>
 				<% end %>
 			</div>
+		</div>
+		<div class="col-xs-4 select-buy">
 			<div class="address-select">
 				配送先指定
 				<%= form_for @cart, :url => {:controller => :users, :action => :buy, :id => @cart.id} do |f|%>
@@ -33,8 +35,6 @@
 					<p> <%= f.hidden_field :added_at, value: Time.now %>
 				<p><%= link_to '送付先新規登録', users_address_new_path, class: "btn btn-success btn-xm" %></p>
 			</div>
-		</div>
-		<div class="select-buy">
 			<!-- 配送先が指定されている場合 -->
 			<p class= "total-price-text"> 総合計</p>
 			<p class= "total-price"><%= @sum.to_s(:delimited) %>円<span>(税込)</span></p>
