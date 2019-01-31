@@ -95,8 +95,6 @@ ActiveRecord::Schema.define(version: 2019_01_27_071921) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favorites_on_product_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-    t.index [nil], name: "index_favorites_on_product"
-    t.index [nil], name: "index_favorites_on_user"
   end
 
   create_table "musics", force: :cascade do |t|
