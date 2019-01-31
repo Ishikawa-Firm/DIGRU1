@@ -1,1 +1,37 @@
-addresses#show
+<li class="address-title">登録送付先一覧</li>
+<% if current_user.addresses.blank? %>
+		<p>まだ送付先は登録されていません．</p>
+		<%= link_to '配送先を登録する', users_address_new_path %>
+<% else %>
+	<div class= "address-background">
+		<div class="address-index">
+			<table class='table table-hover table-inverse'>
+				<thead>
+				    <tr>
+				        <th>送付先ご氏名</th>
+				        <th>送付先ご住所</th>
+				        <th></th>
+				    </tr>
+				</thead>
+				<tbody>
+				    <% @addresses.each do |a| %>
+				        <tr>
+				        <!--ご注文日時-->
+				        <td>
+				    	    <%= a.other_name %>
+				        </td>
+
+				        <!--ご注文内容-->
+				        <td>
+				            <%= a.other_postal_code %>
+				        </td>
+				        <!--枚数-->
+				        <td>
+				      	    <%= a.other_address %>
+				        </td>
+				    <% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+<% end %>
