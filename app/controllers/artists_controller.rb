@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+
   def index
     @artists = Artist.order("name").search(params[:search]).page(params[:page]).reverse_order.where(deleted_at: nil)
   end
@@ -46,6 +47,7 @@ class ArtistsController < ApplicationController
     @histories.each do |h|
       @user = h.cart.user.addresses.find_by(["id = ?", h.cart.address_id])
     end
+    @cart_items = CartItem.where(product_id: @products)
   end
 
   private

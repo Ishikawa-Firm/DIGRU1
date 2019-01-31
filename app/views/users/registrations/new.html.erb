@@ -18,6 +18,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :ハンドルネーム %><br />
+        <%= f.text_field :hundle_name, class:"sign-up-input" %>
+      </div>
+
+      <div class="field">
         <%= f.label :Email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"sign-up-input" %>
       </div>

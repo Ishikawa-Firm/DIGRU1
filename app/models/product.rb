@@ -25,11 +25,9 @@ class Product < ApplicationRecord
 	    end
 	  end
 
-	# validates :name, presence: true
-	# validates :price, presence: true
-	# validates :label, presence: true
-	# validates :genre, presence: true
-	# validates :stock, presence: true
-	# validates :movie_url, presence: true
+	validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+	validates :price, presence: true, numericality: true, length: { maximum: 10 }
+	validates :label, presence: true, length: { minimum: 2, maximum: 30 }
+	validates :stock, presence: true, length: { maximum: 10000 }
 
 end

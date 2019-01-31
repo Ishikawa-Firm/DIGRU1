@@ -21,4 +21,9 @@ class Artist < ApplicationRecord
     end
   end
 
+  validates :name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :postal_code, presence: true, numericality: true, length: { is: 7 }
+  validates :phone_number, presence: true, length: { maximum: 11 }
+  validates :user_address, presence: true, length: { maximum: 100 }
+
 end

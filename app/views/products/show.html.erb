@@ -103,8 +103,8 @@
 		    	<%= form_for @cart_item do |f| %>
 		    		<%= f.hidden_field :product_id, value: @product.id %>
 		    		<%= f.hidden_field :price, value: @product.price %>
-		    		<% if @product.stock > 1 %>
-		    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: 99%></p>
+		    		<% if @product.stock > 0 %>
+		    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: @product.stock %></p>
 		    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
 		    		<% else %>
 		    			<p> ❌ 現在品切れ中です．</p>

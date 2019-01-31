@@ -314,8 +314,26 @@ input {
 .select-status{
 	color: #DF0202;
 	float: left;
+  margin-right: 10px;
 }
 
-.update-status-button{
-	float: left;
+.update-status-button {
+  width: 30%;
 }
+
+.history-status1 {
+  background-color: #F8E0F1;
+}
+
+.history-status2 {
+  background-color: #F5F6CE;
+}
+
+.history-status3 {
+  background-color: #E0F2F7;
+}
+
+.#{key} {
+  color: green;
+}
+
