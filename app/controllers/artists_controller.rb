@@ -27,11 +27,8 @@ class ArtistsController < ApplicationController
 
   def destroy
     artist = Artist.find(params[:id])
-    if current_admin.nil?
-      artist.destroy
-      redirect_to products_path
-    else artist.update(deleted_at: Time.now)
-      redirect_to products_path
+    artist.update(deleted_at: Time.now)
+    redirect_to products_path
     end
     # 購入履歴から消えないように注意（テーブルが違うので大丈夫だとは思うが・・・）
     # このメソッドで商品の論理削除に横展可能？
