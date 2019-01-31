@@ -47,8 +47,6 @@ class ProductsController < ApplicationController
     @cart_item = CartItem.new
     @comment = Comment.new
     @artist = current_artist
-    @disc_numbers = DiscNumber.all
-    @musics = Music.all
   end
 
   def edit
@@ -78,8 +76,8 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(
         :name, :price, :label, :genre, :stock, :image, :movie_url,
-          disc_numbers_attributes:[:product_id, :disc_name, :_destroy,
-            musics_attributes:[:disc_number_id, :name, :truck_number, :_destroy]
+          disc_numbers_attributes:[:id, :product_id, :disc_name, :_destroy,
+            musics_attributes:[:id, :disc_number_id, :name, :truck_number, :_destroy]
           ]
         )
     end

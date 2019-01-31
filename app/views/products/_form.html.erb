@@ -1,10 +1,3 @@
-<h2> 出品フォーム </h2>
-
-<h4> アーティスト名</h4>
-<%= current_artist.name %>
-
-<%= form_for(@product) do |f| %>
-
   <% if @product.errors.any? %>  <!-- form forの@bookに合わせる -->
       <div id="error_explanation" class="alert-danger">
         <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
@@ -21,17 +14,17 @@
 
   <div id="disc" style="border: 2px solid #00F;">
     <%= f.fields_for :disc_numbers do |df| %>
-    
     <h4> 枚数</h4>
-  <%= link_to_add_association "枚数を追加", f, :disc_numbers, class: "btn btn-primary", 
-  'data-association-insertion-node' => '#disc', 
-  'data-association-insertion-method' => 'append' %>
-  <!-- cocoonを使用、動的ウィンドウの出現位置を調整する記述 -->
+    
 
     <%= render partial: "disc_number_fields", locals: {f: df } %>
     <!-- 動的リスト実装のためにrender扱い、localsでdfをfに置き換え(rendar元はf) -->
   <% end %>
   </div>
+  <%= link_to_add_association "枚数を追加", f, :disc_numbers, class: "btn btn-primary", 
+  'data-association-insertion-node' => '#disc', 
+  'data-association-insertion-method' => 'append' %>
+  <!-- cocoonを使用、動的ウィンドウの出現位置を調整する記述 -->
 
   <h4> 値段</h4>
   <%= f.text_field :price, class: "" %>
@@ -54,4 +47,3 @@
 
   <p><%= f.submit '商品を出品する' %></p>
 
-<% end %>
