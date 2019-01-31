@@ -29,7 +29,6 @@ class ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     artist.update(deleted_at: Time.now)
     redirect_to products_path
-    end
     # 購入履歴から消えないように注意（テーブルが違うので大丈夫だとは思うが・・・）
     # このメソッドで商品の論理削除に横展可能？
   end
