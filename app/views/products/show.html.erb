@@ -118,23 +118,31 @@
 						<%= e %>
 					<% end %>
 				<% end %>
+
 				<% if user_signed_in? %>
-		    	<%= form_for @cart_item do |f| %>
-		    		<%= f.hidden_field :product_id, value: @product.id %>
-		    		<%= f.hidden_field :price, value: @product.price %>
-		    		<% if @product.stock > 0 %>
-		    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: @product.stock %></p>
-		    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
-		    		<% else %>
-		    			<li  class="product-sidebar-sold-out"> ❌ 現在品切れ中です．</p>
-		    		<% end %>
-		    	<% end %>
+
+			    	<%= form_for @cart_item do |f| %>
+			    		<%= f.hidden_field :product_id, value: @product.id %>
+			    		<%= f.hidden_field :price, value: @product.price %>
+			    		<% if @product.stock > 0 %>
+			    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: @product.stock %></p>
+			    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
+			    		<% else %>
+			    			<li  class="product-sidebar-sold-out"> ❌ 現在品切れ中です．</p>
+			    		<% end %>
+			    	<% end %>
+
 		    	<% elsif artist_signed_in? && @product.artist_id == current_artist.id %>
-			    	<p><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-default" %></p>
-			    	<p><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-default", method: :delete, "data-confirm" => "Are you sure?" %></p>
+
+			    	<p class="product-show-button"><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-primary" %></p>
+			    	<p class="product-show-button"><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %></p>
+
 			    <% elsif admin_signed_in? %>
-			    	<p><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-default" %></p>
-			    	<p><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-default", method: :delete, "data-confirm" => "Are you sure?" %></p>
+
+			    	<p class="product-show-button"><%= link_to "商品情報編集", edit_product_path(@product), class: "col-xs-12 btn btn-primary" %></p>
+			    	<div></div>
+			    	<p class="product-show-button"><%= link_to "商品削除", product_path(@product), class: "col-xs-12 btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %></p>
+
 		    	<% end %>
 		    </div>
 		</div>

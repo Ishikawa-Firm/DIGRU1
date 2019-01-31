@@ -69,7 +69,7 @@
             <% elsif artist_signed_in? %>
 
                 <ul class="nav-menu nav navbar-nav artist">
-                  <li><%= link_to new_product_path, class:"cat-5" do %><p class="glyphicon glyphicon-bell header-icon"></p> 商品を出品する<% end %></li>
+                  <li><%= link_to new_product_path, class:"cat-5" do %><p class="glyphicon glyphicon-bell header-icon"></p> 商品出品<% end %></li>
                   <li><%= link_to artists_product_history_path, class:"cat-6" do %><p class="glyphicon glyphicon-cd header-icon"></p> 受注商品管理<% end %></li>
                   <li><%= link_to artist_path(current_artist.id), class:"cat-1" do %><p class="glyphicon glyphicon-log-in header-icon"></p> マイページ<% end %></li>
                   <li><%= link_to artists_path, class:"cat-2" do %><p class="glyphicon glyphicon-headphones header-icon"></p> アーティスト<% end %></li>
