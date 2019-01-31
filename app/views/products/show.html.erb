@@ -62,14 +62,31 @@
 
 			<!-- 商品の詳細情報 -->
 			<div class="border" aria-hidden="true""> <span class="glyphicon glyphicon-headphones"> CD詳細情報</span></div>
-			<div class="product-detailed-information">
-				<% @product.disc_numbers.each do |disc_number| %>
-					<p><%= disc_number.disc_name %>枚目</p>
+			<table class="product-detailed-information">
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<% @product.disc_numbers.each do |disc_number| %>
+						<p>Disc:<%= disc_number.disc_name %></p>
+					</tr>
+				</tbody>
+
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="backgrund-color:<%= cycle('#FFffFF','#FFff99') %>">
 						<% disc_number.musics.each do |music| %>
-							<p><%= music.truck_number %>曲目 / <%= music.name %></p>
+						<p><%= music.truck_number %>. <%= music.name %></p>
 						<% end %>
+					</tr>
+				</tbody>
 				<% end %>
-			</div>
+			</table>
 			<!-- 商品の詳細情報 -->
 
 			<!-- 商品へのコメント -->
