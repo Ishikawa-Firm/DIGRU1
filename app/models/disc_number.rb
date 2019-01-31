@@ -3,5 +3,5 @@ class DiscNumber < ApplicationRecord
 	has_many :musics
 	accepts_nested_attributes_for :musics, allow_destroy: true
 
-	validates :disc_name, presence: true, length: { minimum: 2, maximum: 50 }
+	validates :disc_name, presence: true, length: { maximum: 50 }
 end

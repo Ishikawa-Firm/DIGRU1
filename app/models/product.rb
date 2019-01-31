@@ -29,6 +29,5 @@ class Product < ApplicationRecord
 	validates :price, presence: true, numericality: true, length: { maximum: 10 }
 	validates :label, presence: true, length: { minimum: 2, maximum: 30 }
 	validates :stock, presence: true, length: { maximum: 10000 }
-	validates :image_id, presence: true
 
 end
