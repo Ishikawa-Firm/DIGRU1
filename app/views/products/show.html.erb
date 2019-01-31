@@ -16,13 +16,25 @@
 					<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "product-item-image" %>
 				</div>
 				<div class="product-information-text">
-					<p>商品情報：</p>
+					<table class= "table">
+					    <tr>
+					        <th>シングル/アルバム名</th>
+					        <td><%= @product.name%></td>
+					    </tr>
+					    <tr>
+					        <th>アーティスト名</th>
+					        <td><%= @product.artist.name%></td>
+					    </tr>
+					    <tr>
+					        <th>ジャンル</th>
+					        <td><%= @product.genre%></td>
+					    </tr>
+					    <tr>
+					        <th>レーベル</th>
+					        <td><%= @product.label%></td>
+					    </tr>
+					</table>
 
-					<p><%= @product.name%> </p>
-					<p>/<%= @product.artist.name%></p>
-
-					<p>ジャンル：<%= @product.genre%></p>
-					<p>レーベル：<%= @product.label%></p>
 					<% if @product.stock > 0 %>
 						<p>在庫数：<%= @product.stock%></p>
 					<% else %>
@@ -96,6 +108,7 @@
     		<% end %>
 			<!-- コメント投稿用フォーム -->
 		</div>
+		<!-- sidebar  -->
 		<div class="col-xs-4">
 			<div class="show-sidebar">
 				<% if @cart_item.errors %>
@@ -111,7 +124,7 @@
 		    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: @product.stock %></p>
 		    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
 		    		<% else %>
-		    			<p> ❌ 現在品切れ中です．</p>
+		    			<li  class="product-sidebar-sold-out"> ❌ 現在品切れ中です．</p>
 		    		<% end %>
 		    	<% end %>
 		    	<% elsif artist_signed_in? && @product.artist_id == current_artist.id %>
@@ -123,5 +136,6 @@
 		    	<% end %>
 		    </div>
 		</div>
+		<!-- sidebar -->
 	</div>
 </div>
