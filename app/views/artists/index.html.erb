@@ -1,6 +1,5 @@
 <li class= "artist-index-title" >アーティスト一覧</li>
 
-
 <div class= "artist-index-search-box">
 	<%= form_tag("/artists/index", :method => 'get' , class: "artist-index-search") do %>
 		<%= text_field_tag :search, params[:search], class: "artist-index-search-form", placeholder:"キーワードを入力してください" %>
@@ -8,10 +7,54 @@
 	<% end %>
 </div>
 
+<% if admin_signed_in? %>
+
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>名前</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>退会</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<tbody>
+<% @artists.each do |artist| %>
+<tr>
+  <td>
+    <%= artist.id %>
+  </td>
+  <td>
+    <%= link_to artist_path(artist.id) do %>
+      <%= artist.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= artist.postal_code %> /
+    <%= artist.user_address %>
+  </td>
+  <td>
+    <%= artist.phone_number %>
+  </td>
+  <td>
+    <%= artist.email %>
+  </td>
+  <td>
+    <%= artist.deleted_at %>
+  </td>
+<% end %>
+</tbody>
+</table>
+
+<% else %>
+
 <div class= "artist-index-box">
 	<% @artists.each do |artist| %>
 		<div class="artist-index-item">
-			<%= link_to artist_path(artist.id) do%>
+			<%= link_to artist_path(artist.id) do %>
 				<%= attachment_image_tag artist, :profile_image, size: "150x150", fallback: "sample-author1.jpg", class: "artist-index-item-image" %>
 				<li class=""><%= artist.name %></li>
 			<% end %>
@@ -20,3 +63,5 @@
 
 	<%= paginate @artists, class: "paginate" %>
 </div>
+
+<% end %>
