@@ -9,20 +9,31 @@
     </div>
   <% end %>
 
-<h2>新規配送先登録フォーム</h2>
+<div class="address-edit">
+  <h1 class="address-edit-title">新規配送先登録フォーム</h1>
 
-<%= form_for @address, :url => {:controller => :users, :action => :create_address, :id => @address.id} do |f|%>
+  <%= form_for @address, :url => {:controller => :users, :action => :create_address, :id => @address.id} do |f|%>
 
-	ユーザ名：<%= current_user.name %>
+    <div class="field">
+      <%= f.label :配送先ご氏名 %>
+  	  <%= f.text_field :other_name, class:"address-edit-input", autofocus: true %>
+    </div>
 
-	<p>配送先ご氏名：<%= f.text_field :other_name, class: "", autofocus: true %></p>
+    <div class="field">
+      <%= f.label :配送先郵便番号 %>
+  	  <%= f.text_field :other_postal_code, class:"address-edit-input" %>
+    </div>
 
-	<p>配送先郵便番号：<%= f.text_field :other_postal_code, class: "" %></p>
+    <div class="field">
+      <%= f.label :配送先ご住所%>
+  	  <%= f.text_field :other_address, class:"address-edit-input" %>
+    </div>
 
-	<p>配送先ご住所：<%= f.text_field :other_address, class: "" %></p>
+    <div class="actions">
+  	   <%= f.submit "配送先登録", class: "address-edit-button" %>
+    </div>
 
-	<p><%= f.submit "配送先登録", class: "btn btn-primary btn-xm" %></p>
+  	<p class="back-to-cart"><%= link_to 'カート内容確認画面へ戻る', users_confirm_order_path, class: "" %></p>
 
-	<p><%= link_to 'カート内容確認画面へ戻る', users_confirm_order_path, class: "" %></p>
-
-<% end %>
+  <% end %>
+</div>

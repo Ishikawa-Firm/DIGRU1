@@ -16,13 +16,25 @@
 					<%= attachment_image_tag @product, :image, size: "200x200" , format: 'jpeg', fallback: "no_image.jpg", class: "product-item-image" %>
 				</div>
 				<div class="product-information-text">
-					<p>商品情報：</p>
+					<table class= "table">
+					    <tr>
+					        <th>シングル/アルバム名</th>
+					        <td><%= @product.name%></td>
+					    </tr>
+					    <tr>
+					        <th>アーティスト名</th>
+					        <td><%= @product.artist.name%></td>
+					    </tr>
+					    <tr>
+					        <th>ジャンル</th>
+					        <td><%= @product.genre%></td>
+					    </tr>
+					    <tr>
+					        <th>レーベル</th>
+					        <td><%= @product.label%></td>
+					    </tr>
+					</table>
 
-					<p><%= @product.name%> </p>
-					<p>/<%= @product.artist.name%></p>
-
-					<p>ジャンル：<%= @product.genre%></p>
-					<p>レーベル：<%= @product.label%></p>
 					<% if @product.stock > 0 %>
 						<p>在庫数：<%= @product.stock%></p>
 					<% else %>
@@ -33,12 +45,12 @@
 					<% if user_signed_in? %>
 						<% if !@product.favorited_by?(current_user) %>
 						    <%= link_to product_favorites_path(@product), method: :post do %>
-		    	 				<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		    	 				<i class="fas fa-heart fa-fw" style="color: #FF0040;"></i>
 		    	 			 	お気に入りに入れる
 		 					<% end %>
 						<% else %>
 						    <%= link_to product_favorites_path(@product), method: :delete do %>
-					    		<i class="fa fa-heart-o"" aria-hidden="true"></i>
+					    		<i class="fas fa-heart"" aria-hidden="true" style="color: #5858FA;"></i>
 					    	  	お気に入りから外す
 						    <% end %>
 						<% end %>
@@ -87,21 +99,27 @@
 				</tbody>
 				<% end %>
 			</table>
+
 			<!-- 商品の詳細情報 -->
 
 			<!-- 商品へのコメント -->
 			<div class="border"><span class="glyphicon glyphicon-comment"> コメント</span></div>
 			<div class="comment">
 				    <% @product.comments.each do |comment| %>
+				    	<% if comment.user.hundle_name.nil? %>
+				    	<p>名前：名無しのユーザー
+				    	<% else %>
 				    	<p>名前：<%= comment.user.hundle_name %>
-				    	 / 投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %><p>
+				    	<% end %>
+				    	 / 投稿日時：<%= comment.created_at.strftime('%Y/%m/%d') %></p>
 					    <p>コメント：<%= comment.comment_text %>
-				         <%= link_to "削除", product_comments_path(@product.id), method: :delete %><p>
+				         <%= link_to "削除", product_comments_path(@product.id), method: :delete %></p>
 				    <% end %>
 			</div>
 			<!-- 商品へのコメント -->
 			<!-- コメント投稿用フォーム -->
             <% if user_signed_in? %>
+            <br>
 			<%= form_for [@product, @comment] do |f| %>
 	            <%= f.text_area :comment_text, rows:'5', class: "form-control", placeholder: "コメントをここに" %>
 	    		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
@@ -109,6 +127,7 @@
     		<% end %>
 			<!-- コメント投稿用フォーム -->
 		</div>
+		<!-- sidebar  -->
 		<div class="col-xs-4">
 			<div class="show-sidebar">
 				<% if @cart_item.errors %>
@@ -124,7 +143,7 @@
 		    			<p>数量: <%= f.number_field :quantity, value: @cart_item.quantity.to_i, min: 1, max: @product.stock %></p>
 		    			<p><%= f.submit "カートに入れる", class: "btn btn-primary" %></p>
 		    		<% else %>
-		    			<p> ❌ 現在品切れ中です．</p>
+		    			<li  class="product-sidebar-sold-out"> ❌ 現在品切れ中です．</p>
 		    		<% end %>
 		    	<% end %>
 		    	<% elsif artist_signed_in? && @product.artist_id == current_artist.id %>
@@ -136,5 +155,6 @@
 		    	<% end %>
 		    </div>
 		</div>
+		<!-- sidebar -->
 	</div>
 </div>
