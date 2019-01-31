@@ -6,25 +6,28 @@
     width: 100%;
     margin: 1.5em 0;
     overflow: hidden;
+    font-size: 0.8em;
 }
 
 .says {
     display: inline-block;
     position: relative;
-    margin: 10px 0 0 15px;
+    top: -10px;
+    margin: 10px 0 0 20px;
     padding: 13px 13px;
     border-radius: 12px;
-    background: #d7ebfe;
+    background: #E0F8F1;
+    width: 500px;
 }
 
 .says:after {
     content: "";
     display: inline-block;
     position: absolute;
-    top: px;
+    top: 18px;
     left: -24px;
     border: 12px solid transparent;
-    border-right: 12px solid #d7ebfe;
+    border-right: 12px solid #E0F8F1;
 }
 
 .says p {
