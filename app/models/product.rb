@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
-	has_many :cart_items
-	has_many :disc_numbers
+	has_many :cart_items, dependent: :destroy
+	has_many :disc_numbers, dependent: :destroy
 	accepts_nested_attributes_for :disc_numbers, allow_destroy: true
     has_many :comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
-    has_many :users, through: :favorites
+    has_many :users, through: :favorites, dependent: :destroy
 
 	belongs_to :artist
 	belongs_to :user, optional: true
