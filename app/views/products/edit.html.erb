@@ -1,6 +1,5 @@
-<h2> 商品情報編集 </h2>
-
-<h4> アーティスト名</h4>
-<%= current_artist.name%>
-
-<%= render "form" %>
+<p>編集フォーム</p>
+<%= current_artist.name %>
+<%= form_for(@product, :url => {:action => 'update'}) do |f| %>
+	<%= render partial: "form", locals: {f: f } %>
+<% end %>
