@@ -147,14 +147,25 @@ RESPONSIVE
 .nav-logo {
      width: 100%;
      margin: 0 auto;
-     padding: 20px 0;
+     padding-top: 10px;
 }
 
 .nav-logo li {
      text-align: center;
      list-style: none;
-     font-size: 40px;
+     font-weight: 600;
+     font-size: 45px;
 }
+
+.logo-icon {
+    font-size: 45px;
+}
+
+#r {
+    color: #F6C03F;
+}
+
+
 /*----------------------------*\
 	menu
 \*----------------------------*/

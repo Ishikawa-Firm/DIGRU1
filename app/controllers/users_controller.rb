@@ -103,8 +103,6 @@ class UsersController < ApplicationController
     redirect_to users_history_path(current_user.id)
   end
 
-
-
   def session_select
   end
 
