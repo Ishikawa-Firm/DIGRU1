@@ -1,3 +1,5 @@
+<% if @artist == current_artist %>
+
 <div class="edit">
   <h1 class="edit-title">アーティスト情報編集</h1>
 
@@ -52,5 +54,67 @@
 </div>
 
 <li class="delete">
-    <%= link_to " 退会する", artist_path, method: :delete, class: "edit_artist_#{current_artist.id}" %>
+    <%= link_to " 退会する", artist_path, method: :delete %>
 </li>
+
+<% elsif admin_signed_in? %>
+
+<div class="edit">
+  <h1 class="edit-title">アーティスト情報編集</h1>
+
+  <%= form_for(@artist) do |f| %>
+  	<div class="edit-box">
+	    <div class="field">
+	      <%= f.label :アーティスト名 %><br />
+	      <%= f.text_field :name, autocomplete: "アーティスト名", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティスト名ふりがな %><br />
+	      <%= f.text_field :name_kana, autocomplete: "アーティスト名ふりがな", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :電話番号 %><br />
+	      <%= f.text_field :phone_number, autocomplete: "電話番号", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :郵便番号 %><br />
+	      <%= f.text_field :postal_code, autocomplete: "郵便番号", class:"edit-input" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :ご住所 %><br />
+	      <%= f.text_field :user_address, autocomplete: "住所", class:"edit-input" %>
+	    </div>
+	</div>
+	<div class="edit-box">
+	    <div class="field">
+	      <%= f.label :メンバー %><br />
+	      <%= f.text_area :member, autofocus: true, autocomplete: "メンバー", class:"edit-input-member" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティスト紹介 %><br />
+	      <%= f.text_area :introduction, autocomplete: "アーティスト紹介", class:"edit-input-introduction" %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :アーティストプロフィール画像 %><br />
+	      <%= f.attachment_field :profile_image, autocomplete: "アーティストプロフィール画像", class:"" %>
+	    </div>
+	</div>
+
+    <div class="actions">
+      <%= f.submit "更新", class:"edit-button" %>
+    </div>
+  <% end %>
+</div>
+
+<li class="delete">
+    <%= link_to " 退会させる", artist_path, method: :delete %>
+</li>
+<% else %>
+
+<% end %>
